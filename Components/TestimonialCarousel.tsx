@@ -10,11 +10,11 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 interface Testimonial {
-  ImageUrl?: string;
-  Name: string;
-  Proffession: string;
-  Content: string;
-  Rating?: number;
+  image?: string;
+  name: string;
+  profession: string;
+  content: string;
+  rating?: number;
 }
 
 interface TestimonialsCarouselProps {
@@ -42,7 +42,7 @@ export default function TestimonialsCarousel({
 
   return (
     <div className="container mx-auto px-2 py-4">
-      <SectionHeader subtitle="Testimonial" title="What Our Clients Say"/>
+      <SectionHeader subtitle="Testimonial" title="What Our Clients Say" />
 
       <div className="relative px-4 md:px-16 wow fadeIn" data-wow-delay="0.1s">
         <Swiper
@@ -81,11 +81,11 @@ export default function TestimonialsCarousel({
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index} className="h-auto">
               <TestimonialItem
-                image={testimonial.ImageUrl}
-                name={testimonial.Name}
-                profession={testimonial.Proffession}
-                content={testimonial.Content}
-                rating={testimonial.Rating}
+                image={testimonial.image}
+                name={testimonial.name}
+                profession={testimonial.profession}
+                content={testimonial.content}
+                rating={testimonial.rating}
               />
             </SwiperSlide>
           ))}

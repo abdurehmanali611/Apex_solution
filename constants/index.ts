@@ -171,20 +171,20 @@ export const Blogs = [
 
 export const Testimonial = [
   {
-    Name: "Community Member",
-    Proffession: "Local Resident",
-    ImageUrl: "/assets/testimonial-1.jpg",
-    Content:
+    name: "Community Member",
+    profession: "Local Resident",
+    image: "/assets/testimonial-1.jpg",
+    content:
       "This community has been a blessing to me and my family. The support and fellowship we've found here is truly remarkable.",
-    Rating: 5,
+    rating: 5,
   },
   {
-    Name: "Community Member",
-    Proffession: "Local Resident",
-    ImageUrl: "/assets/testimonial-2.jpg",
-    Content:
+    name: "Community Member",
+    profession: "Local Resident",
+    image: "/assets/testimonial-2.jpg",
+    content:
       "This community has been a blessing to me and my family. The support and fellowship we've found here is truly remarkable.",
-    Rating: 5,
+    rating: 5,
   },
 ];
 

@@ -6,7 +6,7 @@ import PortfolioGrid from "@/Components/PortfolioGrid";
 import ProjectGrid from "@/Components/ProjectGrid";
 import ServiceGrid from "@/Components/ServiceGrid";
 import TestimonialsCarousel from "@/Components/TestimonialCarousel";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/Components/ui/button";
 import {
   Card,
   CardContent,
@@ -35,14 +35,15 @@ interface blogs {
   description: string;
   source: string;
   date: Date;
+  link: string;
 }
 
 interface testimonial {
-  image?: string;
-  name?: string;
-  profession?: string;
-  content?: string;
-  rating?: number;
+  image: string;
+  name: string;
+  profession: string;
+  content: string;
+  rating: number;
 }
 
 export default function UserHome() {
@@ -94,9 +95,11 @@ export default function UserHome() {
         <CardContent className="w-[30%] self-center flex flex-col gap-7 items-center">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
           suscipit, nobis sed aliquid doloremque
-        <CardFooter>
-          <Button className="flex justify-center w-fit cursor-pointer hover:bg-amber-500">Let&apos;s Work Together</Button>
-        </CardFooter>
+          <CardFooter>
+            <Button className="flex justify-center w-fit cursor-pointer hover:bg-amber-500">
+              Let&apos;s Work Together
+            </Button>
+          </CardFooter>
         </CardContent>
       </Card>
       <section>

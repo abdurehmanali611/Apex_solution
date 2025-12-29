@@ -1,6 +1,6 @@
 "use client";
 import CustomFormField, { formFieldTypes } from "@/Components/customFormField";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/Components/ui/button";
 import {
   Card,
   CardContent,
@@ -71,7 +71,12 @@ export default function Contact() {
                 placeholder="Enter Message"
                 inputClassName="w-110"
               />
-              <Button type="submit" className="bg-amber-500 text-black hover:bg-amber-500 cursor-pointer">Submit</Button>
+              <Button
+                type="submit"
+                className="bg-amber-500 text-black hover:bg-amber-500 cursor-pointer"
+              >
+                Submit
+              </Button>
             </form>
           </Form>
         </CardContent>
