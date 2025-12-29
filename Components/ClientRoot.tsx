@@ -15,7 +15,7 @@ export default function ClientRoot({ children }: Props) {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">
       <Navbar active={active} setActive={setActive} />
-      {children}
+      <main className="py-10">{children}</main>
       <Toaster />
       <Footer active={active} setActive={setActive} />
     </ThemeProvider>
