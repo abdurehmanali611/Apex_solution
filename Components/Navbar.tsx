@@ -2,6 +2,7 @@
 import { NavbarComponents } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
+import { Avatar } from "./ui/avatar";
 
 interface NavbarProps {
   active: string;
@@ -12,13 +13,14 @@ const Navbar = ({ active, setActive }: NavbarProps) => {
   return (
     <div className="flex justify-between items-center w-full p-5">
       <div className="flex items-center gap-3">
-        <Image
-          src="/vercel.svg"
-          alt="Vercel"
-          width={20}
-          height={20}
-          className="rounded-full"
-        />
+        <Avatar className="bg-gray-300">
+          <Image
+            src="/assets/logo.png"
+            alt="Vercel"
+            fill
+            className="rounded-full"
+          />
+        </Avatar>
         <h3 className="text-xl font-bold">
           <span className="text-amber-500">Apex</span> Solutions
         </h3>
