@@ -212,6 +212,44 @@ export const project = [
   },
 ];
 
+export const teamMembers = [
+  {
+    image: "/assets/ceo.jpg",
+    name: "Atlabachew Tadese",
+    position: "CoFounder and CEO",
+    title: "The Founder",
+    description: "Leader of Greatness and Success",
+    facebook: "https://www.facebook.com/",
+    instagram: "https://www.instagram.com/",
+    linkedin: "https://www.linkedin.com/",
+    telegram: "https://www.telegram.com/",
+  },
+  {
+    image: "/assets/cto.jpg",
+    name: "Abdurehman Ali",
+    position: "CoFounder and CTO",
+    title: "The Invincible",
+    description: "Source of Hard working and Passion",
+    facebook: "https://www.facebook.com/",
+    instagram: "https://www.instagram.com/",
+    linkedin: "https://www.linkedin.com/",
+    github: "https://www.github.com/",
+    telegram: "https://www.telegram.com/",
+  },
+  {
+    image: "/assets/secretary.jpg",
+    name: "Yusra Ali",
+    position: "CEO Secretary",
+    title: "The striver",
+    description: "Backbone of achievements and success",
+    facebook: "https://www.facebook.com/",
+    instagram: "https://www.instagram.com/",
+    linkedin: "https://www.linkedin.com/",
+    github: "https://www.github.com/",
+    telegram: "https://www.telegram.com/",
+  },
+];
+
 export const footerLink = [
   {
     id: 1,

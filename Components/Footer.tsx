@@ -14,9 +14,9 @@ const Footer = ({ active, setActive }: FooterProps) => {
   return (
     <Card>
       <CardContent>
-        <div className="flex flex-col gap-5 px-10">
+        <div className="flex flex-col gap-5 px-0 md:px-10">
           <div className="flex justify-center items-center w-full p-5">
-            <div className="flex items-center gap-10">
+            <div className="flex flex-wrap items-center gap-8 md:gap-10">
               {NavbarComponents.map((item) => (
                 <Link
                   href={item.link}
@@ -32,7 +32,7 @@ const Footer = ({ active, setActive }: FooterProps) => {
             </div>
           </div>
           <Separator />
-          <div className="flex flex-col gap-10 w-[55%] mx-59">
+          <div className="flex flex-col gap-10 w-full md:w-[55%] mx-0 md:mx-59">
             <p className="text-center">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis
               maiores voluptatem doloremque. Dolores at temporibus laboriosam,

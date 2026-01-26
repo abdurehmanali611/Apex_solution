@@ -69,7 +69,7 @@ export default function UserHome() {
         <Hero />
       </section>
       <section>
-        <AboutComponent />
+        <AboutComponent show={true}/>
       </section>
       <section>
         <ServiceGrid services={displayedServices} />
@@ -92,7 +92,7 @@ export default function UserHome() {
           <CardTitle>Do You have a Project Idea ?</CardTitle>
           <CardDescription>Let&apos;s discuss your project</CardDescription>
         </CardHeader>
-        <CardContent className="w-[30%] self-center flex flex-col gap-7 items-center">
+        <CardContent className="w-full md:w-[50%] self-center flex flex-col gap-7 items-center">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
           suscipit, nobis sed aliquid doloremque
           <CardFooter>

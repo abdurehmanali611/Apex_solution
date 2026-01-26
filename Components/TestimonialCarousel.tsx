@@ -41,7 +41,7 @@ export default function TestimonialsCarousel({
   }
 
   return (
-    <div className="container mx-auto px-2 py-4">
+    <div className="px-2 py-4">
       <SectionHeader subtitle="Testimonial" title="What Our Clients Say" />
 
       <div className="relative px-4 md:px-16 wow fadeIn" data-wow-delay="0.1s">
@@ -91,15 +91,14 @@ export default function TestimonialsCarousel({
           ))}
         </Swiper>
 
-        {/* Navigation Buttons */}
         <button
-          className="testimonial-button-prev flex items-center justify-center absolute w-12 h-12 md:w-15 md:h-12 top-1/2 left-0 md:-left-4 -translate-y-1/2 transition-all duration-500 bg-[#F1C152] text-[#0C1214] hover:bg-[#0C1214] hover:text-[#F1C152] z-10 rounded"
+          className="testimonial-button-prev flex items-center justify-center absolute w-12 h-12 md:w-15 md:h-12 top-1/2 left-0 md:-left-4 -translate-y-1/2 transition-all duration-500 bg-green-500 text-[#0C1214] hover:bg-[#0C1214] hover:text-green-500 z-10 rounded cursor-pointer"
           aria-label="Previous testimonial"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
         <button
-          className="testimonial-button-next flex items-center justify-center absolute w-12 h-12 md:w-15 md:h-12 top-1/2 right-0 md:-right-4 -translate-y-1/2 transition-all duration-500 bg-[#F1C152] text-[#0C1214] hover:bg-[#0C1214] hover:text-[#F1C152] z-10 rounded"
+          className="testimonial-button-next flex items-center justify-center absolute w-12 h-12 md:w-15 md:h-12 top-1/2 right-0 md:-right-4 -translate-y-1/2 transition-all duration-500 bg-green-500 text-[#0C1214] hover:bg-[#0C1214] hover:text-green-500 z-10 rounded cursor-pointer"
           aria-label="Next testimonial"
         >
           <ChevronRight className="w-6 h-6" />

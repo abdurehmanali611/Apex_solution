@@ -25,20 +25,19 @@ export default function ProjectGrid({ projects, screen }: ProjectProp) {
   });
   return (
     <section className="w-full py-20">
-      <div className="container mx-auto px-4 flex flex-col gap-12">
+      <div className="px-4 flex flex-col gap-12">
         <div className="text-center md:text-left">
           <SectionHeader subtitle="Projects" title="Now, We're Working on..." />
         </div>
 
         {projects && projects.length > 0 && (
-          <div className="relative bg-linear-to-b from-transparent to-gray-50/50">
+          <div>
             <Marquee
               gradient={true}
               gradientColor="white"
               gradientWidth={100}
               speed={35}
               pauseOnHover={true}
-              className="py-4"
             >
               {projects.map((project: Project, idx: number) => (
                 <ProjectItem

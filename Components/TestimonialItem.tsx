@@ -28,7 +28,7 @@ export default function TestimonialItem({
               className="object-cover"
             />
           </div>
-          <div className="w-12 h-12 bg-[#10b982] rounded-full absolute flex items-center justify-center top-6.25 -left-6.25">
+          <div className="w-12 h-12 bg-amber-500 rounded-full absolute flex items-center justify-center top-6.25 -left-6.25">
             <Quote className="text-white w-5 h-5" />
           </div>
         </div>

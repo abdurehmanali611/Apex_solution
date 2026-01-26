@@ -27,7 +27,7 @@ export default function PortfolioGrid({ portfolios }: portfolioProp) {
 
   return (
     <div className="w-full py-12">
-      <div className="container mx-auto px-4">
+      <div className="px-4">
         <div className="max-w-6xl mx-auto">
           <SectionHeader
             subtitle="Our Portfolio"
@@ -35,7 +35,6 @@ export default function PortfolioGrid({ portfolios }: portfolioProp) {
           />
 
           <div className="flex flex-col gap-10">
-            {/* Filter Buttons */}
             <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 px-4">
               {portfolioButton.map((item) => (
                 <Button

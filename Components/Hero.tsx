@@ -1,23 +1,23 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { HeroFooter } from "@/constants";
+import { useRouter } from "next/navigation";
 const Hero = () => {
+  const router = useRouter()
   return (
-    <div className="flex h-screen justify-between items-center px-10">
-      <div className="flex flex-col gap-5">
+    <div className="flex h-screen justify-between items-center lg:px-10 md:px-5">
+      <div className="flex flex-col gap-5 items-center sm:items-start">
         <h2 className="text-2xl font-bold font-serif leading-9">
-          <span className="text-amber-500">Hi,</span> We&apos;re <br />
-          <span className="text-amber-500 pl-10">Apex</span> Solutions
+          <span className="text-amber-500 pl-0 md:pl-20 lg:pl-0">Apex</span> Solutions
         </h2>
         <h3 className="text-xl font-serif font-semibold text-amber-500">
           Software Products | Tech Solutions
         </h3>
         <p className="text-center w-[70%] font-sans text-md font-normal">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sunt
-          commodi quam provident ipsum, eum expedita. Perferendis quae sapiente
-          ullam
+          10+ years of real world telecom and IT experience Hospitality-focused, technology
+          expertise, Reliable, secure and scalable solutions and Hands-on implementations.
         </p>
-        <Button className="cursor-pointer w-fit mx-40" size="lg">
+        <Button className="cursor-pointer w-fit mx-40" size="lg" onClick={() => router.push("/Contact")}>
           Say Hello
         </Button>
         <div className="flex items-center gap-2 py-3 w-fit shadow-md border-4 border-amber-500/50 rounded-xl">
@@ -38,7 +38,7 @@ const Hero = () => {
         width={550}
         height={550}
         loading="eager"
-        className="rounded-xl"
+        className="rounded-xl hidden sm:block"
       />
     </div>
   );

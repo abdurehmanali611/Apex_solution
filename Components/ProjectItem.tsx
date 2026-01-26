@@ -19,7 +19,7 @@ export default function ProjectItem({ image, title }: Projects) {
           />
         </div>
         <div className="flex flex-col">
-          <span className="text-[10px] uppercase tracking-widest text-blue-500 font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <span className="text-[10px] uppercase tracking-widest text-amber-500 font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             Project
           </span>
           <h3 className="font-serif text-base font-semibold text-gray-800 whitespace-nowrap leading-tight">
