@@ -58,66 +58,83 @@ export const Service = [
   {
     icon: "streamline-plump-color:browser-website-1",
     title: "Website Development",
-    description: "",
+    description:
+      "Developing an elegant and attractive website that truly represent you or your organization or team in the digital world.",
+  },
+  {
+    icon: "noto-v1:man-technologist",
+    title: "System Development",
+    description:
+      "Developing and Enhancing not just a website or digital presence but also enhancing your revenue and profit to significant level/amount by building a digital system and/or working area.",
   },
   {
     icon: "carbon:application-mobile",
     title: "Mobile App Development",
-    description: "",
+    description:
+      "Leverging up an income and customer satisfaction of your company or service by providing/building super enthusiastic and simple to use mobile application.",
   },
   {
-    icon: "noto-v1:man-technologist",
-    title: "Tech Support",
-    description: "",
+    icon: "material-symbols-light:tools-installation-kit-outline-sharp",
+    title: "Network Design and Installation",
+    description:
+      "LAN, WAN and Wi-Fi infrastructure, structured Cabling and wireless Optimization: Secure and Scalable designs for Hotels, Offices and Institutions.",
+  },
+  {
+    icon: "noto-v1:hotel",
+    title: "Hotel Management System",
+    description:
+      "Local and web Based HMS Solutions for the Front Office, Back Office, reporting and operational Workflows with customizations based on the Hotel Size and Operation Style.",
+  },
+  {
+    icon: "mdi:cctv",
+    title: "CCTV Surveillance Systems",
+    description:
+      "HikVision & enterprise-grade CCTV Solutions, NVR/DVR installation and configuration, Remote Monitoring and System Optimiztion.",
+  },
+  {
+    icon: "twemoji:door",
+    title: "Digital Door Lock Systems",
+    description:
+      "Hotel Smart Lock Installation, Software Activation, Card Programming and Access Control with Full Integration with Hotel Operations.",
+  },
+  {
+    icon: "streamline-plump-color:cog-automation",
+    title: "Custom Software and Automation Systems",
+    description:
+      "Building Up and Enhancing custom Softwares and system automations with enthusiastic business automation tools that has inventory and reporting systems.",
+  },
+  {
+    icon: "icon-park:laptop-computer",
+    title: "IT Support and System Maintainance",
+    description:
+      "Preventive and Corrective Maintainance for Servers, Networks and System TroubleShooting with Long-Term Support Contracts.",
   },
 ];
 
 export const Portfolios = [
   {
-    image: "/assets/Website-1.png",
-    type: "Website",
-    title: "1st Website",
+    link: "https://hotcol.vercel.app/",
+    title: "HotCol",
+    description:
+      "HotCol is a hotel management system designed for enhancing digital working enviroments for Hotels and Cafes with Greater level Detail-Oriented and stanning way of reporting and analytics.",
+    type: "Digital System",
+    duration: 20,
+    version: 1
   },
   {
+    link: "https://hotel-display-swart.vercel.app/",
+    title: "Hotel Display",
+    description: "Bereket International Hotels' Hotel Display Website is one of our Great and exceptional project that we also as a company experienced a new way of thinking and problem solving skill.",
+    type: "Website",
+    duration: 7,
+  },
+  {
+    title: "Victory Hotel",
+    description: "Awesome Digital Door Lock System Installation and Configuration and PBX Maintainance for our great client Victory Hotel, Hossana with modern and reliable technologies that escalate Victory to the true form of victory.",
+    type: "Hotel and Hospitality Technology",
+    duration: 10,
     image: "/assets/website-2.jpg",
-    type: "Website",
-    title: "2nd Website",
-  },
-  {
-    image: "/assets/website-3.jpg",
-    type: "Website",
-    title: "3rd Website",
-  },
-  {
-    image: "/assets/mobile-app-1.avif",
-    type: "Mobile App",
-    title: "1st Mobile App",
-  },
-  {
-    image: "/assets/mobile-app-2.avif",
-    type: "Mobile App",
-    title: "2nd Mobile App",
-  },
-  {
-    image: "/assets/mobile-app-3.png",
-    type: "Mobile App",
-    title: "3rd Mobile App",
-  },
-  {
-    image: "/assets/UI-1.avif",
-    type: "Ui Design",
-    title: "1st Ui Design",
-  },
-  {
-    image: "/assets/UI-2.jfif",
-    type: "Ui Design",
-    title: "2nd Ui Design",
-  },
-  {
-    image: "/assets/UI-3.jfif",
-    type: "Ui Design",
-    title: "3rd Ui Design",
-  },
+  }
 ];
 
 export const portfolioButton = [

@@ -16,6 +16,7 @@ import {
   CardTitle,
 } from "@/Components/ui/card";
 import { Blogs, Portfolios, project, Service, Testimonial } from "@/constants";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
 interface ServiceProp {
@@ -24,9 +25,13 @@ interface ServiceProp {
   description: string;
 }
 interface portfolio {
-  image: string;
+  link?: string;
   title: string;
   type: string;
+  description: string
+  duration: number
+  image?: string
+  version?: number
 }
 
 interface blogs {
@@ -51,6 +56,7 @@ export default function UserHome() {
   const [portfolio, setPortfolio] = useState<portfolio[]>([]);
   const [blogs, setBlogs] = useState<blogs[]>([]);
   const [testimonials, setTestimonials] = useState<testimonial[]>([]);
+  const router = useRouter()
   useEffect(() => {
     (() => {
       setServices(Service);
@@ -60,7 +66,7 @@ export default function UserHome() {
     })();
   }, []);
   const displayedServices = services.slice(0, 3);
-  const displayedPortfolio = portfolio.slice(0, 9);
+  const displayedPortfolio = portfolio.slice(0, 4);
   const displayedBlogs = blogs.slice(0, 3);
   const displayedTestimonials = testimonials.slice(0, 3);
   return (
@@ -75,15 +81,15 @@ export default function UserHome() {
         <ServiceGrid services={displayedServices} />
         {Service.length > 3 && (
           <div className="flex justify-center">
-            <Button className="cursor-pointer">View All Services</Button>
+            <Button className="cursor-pointer" onClick={() => router.push("/Services")}>View All Services</Button>
           </div>
         )}
       </section>
       <section>
         <PortfolioGrid portfolios={displayedPortfolio} />
-        {Portfolios.length > 9 && (
+        {Portfolios.length > 4 && (
           <div className="flex justify-center">
-            <Button className="cursor-pointer">View All Projects</Button>
+            <Button className="cursor-pointer" onClick={() => router.push("/PortFolio")}>View All Projects</Button>
           </div>
         )}
       </section>
@@ -106,7 +112,7 @@ export default function UserHome() {
         <BlogGrid blogs={displayedBlogs} />
         {Blogs.length > 3 && (
           <div className="flex justify-center">
-            <Button className="cursor-pointer">View All Blogs</Button>
+            <Button className="cursor-pointer" onClick={() => router.push("/Blog")}>View All Blogs</Button>
           </div>
         )}
       </section>
