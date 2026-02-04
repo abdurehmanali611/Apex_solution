@@ -16,7 +16,7 @@ interface PortfolioItem {
   description: string;
   duration: number;
   image?: string;
-  version?: string;
+  version?: number;
 }
 
 export default function PortfolioItem({
