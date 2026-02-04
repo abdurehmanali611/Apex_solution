@@ -11,7 +11,7 @@ const Hero = () => {
       <div className="container max-w-7xl px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
-          <div className="flex flex-col gap-8 order-2 lg:order-1 md:items-center lg:items-start">
+          <div className="flex flex-col gap-8 order-2 lg:order-1 items-center lg:items-start">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <span className="text-amber-600 dark:text-amber-500 text-xs font-bold uppercase tracking-[0.3em]">
