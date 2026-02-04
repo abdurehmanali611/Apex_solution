@@ -26,8 +26,8 @@ export const NavbarComponents = [
   },
   {
     id: 6,
-    name: "Projects",
-    link: "/Projects",
+    name: "Partners",
+    link: "/Partners",
   },
   {
     id: 7,
@@ -109,9 +109,24 @@ export const Service = [
     description:
       "Preventive and Corrective Maintainance for Servers, Networks and System TroubleShooting with Long-Term Support Contracts.",
   },
+  {
+    icon: "carbon:ibm-consulting-advantage-assistant",
+    title: "Tech Consulting",
+    description:
+      "Proffessional, Elegant and Skilled IT Consulting Services with our incredible proffessionals for both Governmental and Non-Governmental Institutions",
+  },
 ];
 
 export const Portfolios = [
+  {
+    link: "https://hotel-display-swart.vercel.app/",
+    title: "Hotel Display",
+    description:
+      "Bereket International Hotels' Hotel Display Website is one of our Great and exceptional project that we also as a company experienced a new way of thinking and problem solving skill.",
+    type: "Website",
+    duration: 7,
+    image: "/assets/hotel-display.png"
+  },
   {
     link: "https://hotcol.vercel.app/",
     title: "HotCol",
@@ -119,21 +134,131 @@ export const Portfolios = [
       "HotCol is a hotel management system designed for enhancing digital working enviroments for Hotels and Cafes with Greater level Detail-Oriented and stanning way of reporting and analytics.",
     type: "Digital System",
     duration: 20,
-    version: 1
+    version: 1,
+    image: "/assets/hotcol.png"
   },
   {
-    link: "https://hotel-display-swart.vercel.app/",
-    title: "Hotel Display",
-    description: "Bereket International Hotels' Hotel Display Website is one of our Great and exceptional project that we also as a company experienced a new way of thinking and problem solving skill.",
-    type: "Website",
-    duration: 7,
+    title: "GebreSadik Hotel & Spa",
+    description: "With Our one giant Client GebreSadik Hotel & Spa We delivered a bunch of Services that Incorporates CCTV Camera, Digital Lock Configuration(Degi digital lock) and also Network Setups.",
+    type: "Hotel and Hospitality Technology",
+    duration: 15,
+    image: "/assets/gebresadik.jpg"
   },
   {
     title: "Victory Hotel",
-    description: "Awesome Digital Door Lock System Installation and Configuration and PBX Maintainance for our great client Victory Hotel, Hossana with modern and reliable technologies that escalate Victory to the true form of victory.",
+    description:
+      "Awesome Digital Door Lock System Installation and Configuration for our great client Victory Hotel, Hossana with modern and reliable technologies that escalate Victory to the true form of victory.",
     type: "Hotel and Hospitality Technology",
-    duration: 10,
-    image: "/assets/website-2.jpg",
+    duration: 7,
+    image: "/assets/victory.jfif"
+  },
+  {
+    title: "Tinsea Hotel(G+4)",
+    description: "Here is one our clients with an outstanding performance by the service delivered from us which is an impressive 16-Channel NVR CCTV Camera System Installation and Configuration and Full Wi-Fi design and Installation.",
+    type: "Hotel and Hospitality Technology",
+    duration: 7,
+    image: "/assets/tinsea.jpg"
+  },
+  {
+    title: "Shuferoch Hotel",
+    description: "Shuferoch Hotel is one of Our Clients which we glad to work with them and we served them with 16-Channel NVR CCTV and Full Wi-Fi Design and Installation and we will continue to provide a value for the Future.",
+    type: "Hotel and Hospitality Technology",
+    duration: 7,
+    image: "/assets/shuferoch.jpg"
+  },
+  {
+    title: "Alem Hotel",
+    description: "Alem Hotel is one of Our Clients which we glad to work with them and we served them with HikVision 32-Channel NVR CCTV Camera Installation and we will continue to provide a value for the Future.",
+    type: "Hotel and Hospitality Technology",
+    duration: 7,
+    image: "/assets/alem.jpg"
+  },
+  {
+    title: "Handakina Cafe and Pension",
+    description: "Here is One of other clients which we had a nice experience which got in contact for the installation of HikVision 4-Channel DVR and we Successfully accomplished it that gave a great joy for our client.",
+    type: "Hotel and Hospitality Technology",
+    duration: 3
+  },
+  {
+    title: "Boez Cafe and Restaurant",
+    description: "Here is One of other clients which we had a nice experience which got in contact for the installation of 4-Channel NVR CCTV and we Successfully accomplished it that gave a great joy for our client.",
+    type: "Hotel and Hospitality Technology",
+    duration: 2
+  },
+  {
+    title: "Ela Resort",
+    description: "Here is One of other clients which we had a nice experience which got in contact for digital door lock system and shared network resources and we Successfully accomplished it that gave a great joy for our client.",
+    type: "Hotel and Hospitality Technology",
+    duration: 2,
+    image: "/assets/ela.jfif"
+  },
+  {
+    title: "Ilitro Hotel",
+    description: "Here is One of other clients which we had a nice experience which got in contact for digital door lock system and shared network resources and we Successfully accomplished it that gave a great joy for our client.",
+    type: "Hotel and Hospitality Technology",
+    duration: 2
+  },
+  {
+    title: "Hiwot Hospital",
+    description: "Here is One of other clients which we had a nice experience which got in contact for the Network Design and Implementation for Hospital Management System(HMS) and we Successfully accomplished it that gave a great joy for our client.",
+    type: "Network and Wi-Fi Infrastructure Projects",
+    duration: 2
+  },
+  {
+    title: "Central Ethiopia President's Home",
+    description: "Here is One of other clients which we had a nice experience which got in contact for Secure Wireless network Installation and we Successfully accomplished it that gave a great joy for our client.",
+    type: "Network and Wi-Fi Infrastructure Projects",
+    special: true,
+    duration: 2
+  },
+  {
+    title: "Central Ethiopia Region Plan & Design Office",
+    description: "Here is One of other clients which we had a nice experience which got in contact for Wi-Fi expansion and Infrastructure Upgrade and we Successfully accomplished it that gave a great joy for our client.",
+    type: "Network and Wi-Fi Infrastructure Projects",
+    special: true,
+    duration: 3
+  },
+  {
+    title: "Kalehiwot Babile College",
+    description: "Here is One of other clients which we had a nice experience which got in contact for the Network Installation and Wi-Fi Deployment and we Successfully accomplished it that gave a great joy for our client.",
+    type: "Network and Wi-Fi Infrastructure Projects",
+    duration: 4
+  },
+  {
+    title: "Lechigogo Preparatory Schools",
+    description: "Here is One of other clients which we had a nice experience which got in contact for LAN Design and Installation and we Successfully accomplished it that gave a great joy for our client.",
+    type: "Network and Wi-Fi Infrastructure Projects",
+    duration: 7
+  },
+  {
+    title: "Tesdika Pension(G+3)",
+    description: "Here is One of other clients which we had a nice experience which got in contact for structured Cabling and Wi-Fi expansion and we Successfully accomplished it that gave a great joy for our client.",
+    type: "Network and Wi-Fi Infrastructure Projects",
+    duration: 2
+  },
+  {
+    title: "Dani Pension(G+4)",
+    description: "Here is One of other clients which we had a nice experience which got in contact for Full wireless network Implementation and we Successfully accomplished it that gave a great joy for our client.",
+    type: "Network and Wi-Fi Infrastructure Projects",
+    duration: 2
+  },
+  {
+    title: "Shallom Pension(G+4)",
+    description: "Here is One of other clients which we had a nice experience which got in contact for the Network Design and Installation and we Successfully accomplished it that gave a great joy for our client.",
+    type: "Network and Wi-Fi Infrastructure Projects",
+    duration: 2
+  },
+  {
+    title: "Lopiso Cafe & Pension(G+3)",
+    description: "Here is One of other clients which we had a nice experience which got in contact for End to End network and Wi-Fi Setup and we Successfully accomplished it that gave a great joy for our client.",
+    type: "Network and Wi-Fi Infrastructure Projects",
+    duration: 2
+  },
+  {
+    title: "Asham Hotel",
+    description: "Here is One of other clients which we had a nice experience which got in contact for Wireless network Installation and we Successfully accomplished it that gave a great joy for our client.",
+    type: "Network and Wi-Fi Infrastructure Projects",
+    duration: 1
   }
 ];
 
@@ -188,45 +313,32 @@ export const Blogs = [
 
 export const Testimonial = [
   {
-    name: "Community Member",
-    profession: "Local Resident",
+    name: "Mr. Bekele",
+    profession: "Bereket International Hotel Manager",
     image: "/assets/testimonial-1.jpg",
     content:
-      "This community has been a blessing to me and my family. The support and fellowship we've found here is truly remarkable.",
+      "Working with ApexSolution is easy. Their technical support aligns with project timelines and never becomes a bottleneck.",
     rating: 5,
   },
   {
-    name: "Community Member",
-    profession: "Local Resident",
+    name: "Mr. Abraham",
+    profession: "Gebresadik Hotel Manager",
     image: "/assets/testimonial-2.jpg",
     content:
-      "This community has been a blessing to me and my family. The support and fellowship we've found here is truly remarkable.",
+      "ApexSolution delivers proffessional tech support with zero excuses. They take ownership of problems and fix them--simple as that.",
     rating: 5,
   },
 ];
 
-export const project = [
+export const Partner = [
   {
-    image: "/assets/website-1.png",
-    title: "1st Website",
-    current: true,
+    image: "/assets/partner-1.jpg",
+    title: "Abo-tech",
     description:
-      "This community has been a blessing to me and my family. The support and fellowship we've found here is truly remarkable.",
-  },
-  {
-    image: "/assets/website-2.jpg",
-    title: "2nd Website",
-    current: false,
-    description:
-      "This community has been a blessing to me and my family. The support and fellowship we've found here is truly remarkable.",
-  },
-  {
-    image: "/assets/website-3.jpg",
-    title: "3rd Website",
-    current: true,
-    description:
-      "This community has been a blessing to me and my family. The support and fellowship we've found here is truly remarkable.",
-  },
+      "Abo-tech is a networking and telecommunication company and distributer which had a great role in accomplishing many IT and Networking Projects",
+    location: "Hawassa",
+    phone: ["+251913276623", "+251927914729"]
+  }
 ];
 
 export const teamMembers = [
@@ -252,19 +364,7 @@ export const teamMembers = [
     linkedin: "https://www.linkedin.com/",
     github: "https://www.github.com/",
     telegram: "https://www.telegram.com/",
-  },
-  {
-    image: "/assets/secretary.jpg",
-    name: "Yusra Ali",
-    position: "CEO Secretary",
-    title: "The striver",
-    description: "Backbone of achievements and success",
-    facebook: "https://www.facebook.com/",
-    instagram: "https://www.instagram.com/",
-    linkedin: "https://www.linkedin.com/",
-    github: "https://www.github.com/",
-    telegram: "https://www.telegram.com/",
-  },
+  }
 ];
 
 export const footerLink = [
@@ -290,12 +390,60 @@ export const footerLink = [
   },
   {
     id: 5,
-    icon: "logos:facebook",
+    icon: "logos:tiktok-icon",
     link: "",
   },
   {
     id: 6,
-    icon: "skill-icons:instagram",
+    icon: "logos:youtube-icon",
     link: "",
+  },
+];
+
+export const AdminList = [
+  {
+    id: 1,
+    name: "Dashboard",
+    icon: "streamline-sharp-color:dashboard-circle",
+  },
+  {
+    id: 2,
+    name: "HeroFooter",
+    icon: "fluent-mdl2:completed",
+  },
+  {
+    id: 3,
+    name: "Services",
+    icon: "flat-color-icons:services",
+  },
+  {
+    id: 4,
+    name: "Portfolios",
+    icon: "dashicons:portfolio",
+  },
+  {
+    id: 5,
+    name: "Blogs",
+    icon: "streamline-ultimate-color:blogger-logo",
+  },
+  {
+    id: 6,
+    name: "Team Members",
+    icon: "fluent-color:people-team-48",
+  },
+  {
+    id: 7,
+    name: "Partners",
+    icon: "carbon:partnership",
+  },
+  {
+    id: 8,
+    name: "Contact Messages",
+    icon: "flat-color-icons:contacts",
+  },
+  {
+    id: 9,
+    name: "Testimonials",
+    icon: "dashicons:testimonial",
   },
 ];

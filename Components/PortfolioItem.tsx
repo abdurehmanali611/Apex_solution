@@ -48,7 +48,7 @@ export default function PortfolioItem({
           {title}
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex items-center justify-between gap-5">
+      <CardContent className="flex items-start justify-between gap-5">
         {image && (
           <Image
             src={image}
@@ -59,7 +59,7 @@ export default function PortfolioItem({
             className="rounded-xl"
           />
         )}
-        <p className="text-lg font-serif text-center">{description}</p>
+        <p className="text-lg font-serif">{description}</p>
       </CardContent>
       <CardFooter className="flex items-center justify-between">
         <h2 className="font-serif">
@@ -69,7 +69,7 @@ export default function PortfolioItem({
           {writtenDuration}
         </h2>
         {link && (
-          <Link href={link} className="text-blue-500 underline">
+          <Link href={link} target="blank" className="text-blue-500 underline">
             Visit Here
           </Link>
         )}

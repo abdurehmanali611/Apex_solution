@@ -1,8 +1,6 @@
 "use client"
 import { Icon } from "@iconify/react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import { Button } from "./ui/button";
-import { useRouter } from "next/navigation";
+import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
 
 interface ServiceItemProps {
   icon: string;
@@ -15,7 +13,6 @@ export default function ServiceItem({
   title,
   description,
 }: ServiceItemProps) {
-  const router = useRouter()
   return (
     <Card>
       <Icon icon={icon} className="self-center w-10 h-10" />
@@ -25,9 +22,6 @@ export default function ServiceItem({
           {description || "No Description Provided"}
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex justify-center">
-        <Button variant="outline" className="cursor-pointer" onClick={() => router.push("/Contact")}>Contact Us</Button>
-      </CardContent>
     </Card>
   );
 }

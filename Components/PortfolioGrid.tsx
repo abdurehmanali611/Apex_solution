@@ -7,6 +7,7 @@ interface portfolio {
   type: string;
   title: string;
   description: string;
+  special?: boolean
   duration: number;
   image?: string
   version?: number

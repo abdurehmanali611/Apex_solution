@@ -5,3 +5,7 @@ export const ContactForm = z.object({
     Subject: z.string().min(2, "Please Enter Subject"),
     Message: z.string().min(2, "Please Enter Message")
 })
+export const Login = z.object({
+    username: z.string().min(2, "What was Our Username"),
+    password: z.string().min(2, "What was Our Password")
+})
