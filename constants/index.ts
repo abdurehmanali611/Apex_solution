@@ -174,6 +174,13 @@ export const Portfolios = [
     image: "/assets/alem.jpg"
   },
   {
+    title: "Sono Hotel",
+    description: "Sono Hotel is one of Our Clients which we glad to work with them and we served them with 16-Channel NVR CCTV Camera Installation and configuration and full Wi-Fi design and installationwe will continue to provide a value for the Future.",
+    type: "Hotel and Hospitality Technology",
+    duration: 7,
+    image: "/assets/sono.jpg"
+  },
+  {
     title: "Handakina Cafe and Pension",
     description: "Here is One of other clients which we had a nice experience which got in contact for the installation of HikVision 4-Channel DVR and we Successfully accomplished it that gave a great joy for our client.",
     type: "Hotel and Hospitality Technology",
@@ -335,15 +342,19 @@ export const Partner = [
     image: "/assets/partner-1.jpg",
     title: "Abo-tech",
     description:
-      "Abo-tech is a networking and telecommunication company and distributer which had a great role in accomplishing many IT and Networking Projects",
-    location: "Hawassa",
-    phone: ["+251913276623", "+251927914729"]
+      "Abo-tech is a networking and telecommunication company and distributer which had a great role in accomplishing many IT and Networking Projects"
+  },
+  {
+    image: "/assets/partner-2.PNG",
+    title: "Ahadu Hospitality",
+    description:
+      "Ahadu Hospitality is a Hospitality company and which had a great experience in expressing and defining hospitality as a service."
   }
 ];
 
 export const teamMembers = [
   {
-    image: "/assets/ceo.jpg",
+    image: "/assets/ceo.PNG",
     name: "Atlabachew Tadese",
     position: "CoFounder and CEO",
     title: "The Founder",

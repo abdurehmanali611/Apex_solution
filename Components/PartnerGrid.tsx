@@ -2,22 +2,12 @@ import Image from "next/image";
 import PartnerItem from "./PartnerItem";
 import SectionHeader from "./SectionHeader";
 import Marquee from "react-fast-marquee";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
-import { Badge } from "./ui/badge";
-import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 interface partners {
   image: string;
   title: string;
   description: string;
-  location: string;
-  phone: string[];
 }
 
 interface ProjectProp {
@@ -55,35 +45,26 @@ export default function PartnerGrid({ partners, screen }: ProjectProp) {
         {screen === "Partner" && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
             {partners.map((partner: partners, idx: number) => (
-              <Card key={idx}>
+              <Card key={idx} className="dark:bg-slate-950">
                 <CardHeader>
-                  <CardTitle className="text-xl font-serif font-semibold text-center">
+                  <CardTitle className="text-xl font-serif font-semibold text-center text-slate-700 dark:text-slate-300">
                     {partner.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="flex gap-5 items-center">
-                  <Image
-                    src={partner.image}
-                    alt={partner.title}
-                    width={200}
-                    height={200}
-                    loading="eager"
-                    className="rounded-xl"
-                  />
-                  <p className="font-serif text-lg">{partner.description}</p>
+                <CardContent className="flex flex-col gap-5">
+                  <div className="relative h-44 w-full overflow-hidden">
+                    <Image
+                      src={partner.image}
+                      alt={partner.title}
+                      fill
+                      loading="eager"
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <p className="font-serif text-lg text-center">
+                    {partner.description}
+                  </p>
                 </CardContent>
-                <CardFooter className="flex items-center justify-between">
-                  <Badge>{partner.location}</Badge>
-                    {partner.phone.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={`tel:${item}`}
-                        className="underline"
-                      >
-                        {item}
-                      </Link>
-                    ))}
-                </CardFooter>
               </Card>
             ))}
           </div>
