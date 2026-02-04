@@ -12,14 +12,12 @@ import { Button } from "@/Components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/Components/ui/card";
 import { Blogs, Portfolios, Partner, Service, Testimonial } from "@/constants";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
@@ -74,7 +72,6 @@ export default function UserHome() {
   const displayedPortfolio = portfolio.slice(0, 4);
   const displayedBlogs = blogs.slice(0, 3);
   const displayedTestimonials = testimonials.slice(0, 3);
-  const specialPortFolio = portfolio.filter((item) => item.special === true);
   return (
     <div className="flex flex-col gap-10">
       <section>
@@ -88,7 +85,7 @@ export default function UserHome() {
         {Service.length > 3 && (
           <div className="flex justify-center">
             <Button
-              className="cursor-pointer"
+              className="mt-4 w-full md:w-max px-8 py-6 cursor-pointer bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl shadow-lg shadow-amber-500/20 transition-all hover:scale-105 active:scale-95 self-center"
               onClick={() => router.push("/Services")}
             >
               View All Services
@@ -101,7 +98,7 @@ export default function UserHome() {
         {Portfolios.length > 4 && (
           <div className="flex justify-center">
             <Button
-              className="cursor-pointer"
+              className="mt-4 w-full md:w-max px-8 py-6 cursor-pointer bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl shadow-lg shadow-amber-500/20 transition-all hover:scale-105 active:scale-95 self-center"
               onClick={() => router.push("/PortFolio")}
             >
               View All Projects
@@ -109,78 +106,115 @@ export default function UserHome() {
           </div>
         )}
       </section>
-      <section>
-        <SectionHeader
-          subtitle="Special PortFolio"
-          title="Our Special Projects"
-        />
-        <div className="grid grid-cols-2 items-center gap-6 px-4">
-          {specialPortFolio.map((item, idx) => (
-            <Card key={idx}>
-              <CardHeader className="flex flex-col gap-5 items-center">
-                <div className="flex items-center w-full justify-between">
-                  <Badge>{item.type}</Badge>
-                  {item.version && <Badge>{item.version}</Badge>}
-                </div>
-                <CardTitle className="font-serif text-lg">{item.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="flex items-start justify-between gap-5">
-                {item.image && (
+      <section className="py-20 bg-slate-50/50 dark:bg-slate-900/20">
+        <div className="container max-w-7xl px-6">
+          <SectionHeader
+            subtitle="Featured Project"
+            title="Our Flagship Innovation"
+          />
+
+          {Portfolios.filter((p) => p.special).map((portfolio, idx) => (
+            <div key={idx} className="relative group mt-10">
+              <div className="absolute -inset-1 bg-linear-to-r from-amber-500 to-yellow-400 rounded-3xl blur opacity-15 group-hover:opacity-30 transition duration-1000"></div>
+              <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white dark:bg-slate-950 rounded-3xl overflow-hidden shadow-2xl border border-amber-100/50 dark:border-amber-900/20">
+                <div className="relative h-50 lg:h-full min-h-75">
                   <Image
-                    src={item.image}
-                    alt={item.title}
-                    width={200}
-                    height={200}
-                    loading="eager"
-                    className="rounded-xl"
+                    src={portfolio.image || "/assets/computer.jpeg"}
+                    alt={portfolio.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                )}
-                <p className="text-lg font-serif text-center">{item.description}</p>
-              </CardContent>
-              <CardFooter className="flex items-center justify-between">
-                <h2 className="font-serif">
-                  <span className="font-semibold text-lg text-amber-500">
-                    Duration:
-                  </span>{" "}
-                  {item.duration > 30
-                    ? `${item.duration % 30} ${item.duration === 30 ? "month" : "months"}`
-                    : `${item.duration} days`}
-                </h2>
-                {item.link && (
-                  <Link
-                    href={item.link}
-                    target="blank"
-                    className="text-blue-500 underline"
+                  <div className="absolute top-6 left-6">
+                    <Badge className="bg-amber-500 text-white px-4 py-1 text-sm rounded-lg shadow-lg">
+                      Special Edition
+                    </Badge>
+                  </div>
+                </div>
+
+                <div className="p-8 lg:p-16 flex flex-col justify-center gap-6">
+                  <h3 className="text-3xl font-serif font-bold text-slate-900 dark:text-white leading-tight">
+                    {portfolio.title}
+                  </h3>
+
+                  <p className="font-serif text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
+                    {portfolio.description}
+                  </p>
+
+                  <div className="flex flex-col gap-4 border-l-2 border-amber-500 pl-6 py-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-amber-600 dark:text-amber-500 font-bold">
+                        Duration:
+                      </span>
+                      <span className="text-slate-700 dark:text-slate-300 font-serif">
+                        {portfolio.duration} Days
+                      </span>
+                    </div>
+                    {portfolio.version && (
+                      <div className="flex items-center gap-2">
+                        <span className="text-amber-600 dark:text-amber-500 font-bold">
+                          Release:
+                        </span>
+                        <span className="text-slate-700 dark:text-slate-300 font-serif">
+                          v{portfolio.version}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  <Button
+                    className="w-fit px-8 py-6 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl shadow-lg transition-all cursor-pointer"
+                    onClick={() => router.push(portfolio.link || "/Portfolio")}
                   >
-                    Visit Here
-                  </Link>
-                )}
-              </CardFooter>
-            </Card>
+                    Explore Project details
+                  </Button>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </section>
-      <Card className="flex flex-col text-center">
-        <CardHeader>
-          <CardTitle>Do You have a Project Idea ?</CardTitle>
-          <CardDescription>Let&apos;s discuss your project</CardDescription>
-        </CardHeader>
-        <CardContent className="w-full md:w-[50%] self-center items-center text-center">
-          Here is a source for <br />
-          <span className="font-serif text-lg text-amber-500 italic">
-            software development, Networking and IT Consultancy
-          </span>
-          <br /> knowledges and skills so What do you say ?
-        </CardContent>
-        <CardFooter className="flex w-full justify-center">
-          <Button
-            className="flex justify-center w-fit cursor-pointer hover:bg-amber-500"
-            onClick={() => router.push("/Contact")}
-          >
-            Let&apos;s Work Together
-          </Button>
-        </CardFooter>
-      </Card>
+      <section className="py-16 px-6">
+        <div className="max-w-4xl mx-auto relative">
+          <Card className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-amber-100 dark:border-amber-900/30 rounded-3xl p-8 md:p-12 text-center shadow-xl relative overflow-hidden">
+            <div className="absolute -top-12 -left-12 w-24 h-24 bg-amber-500/5 rounded-full" />
+            <CardHeader className="p-0 mb-4">
+              <span className="text-amber-600 dark:text-amber-500 font-bold uppercase tracking-[0.2em] text-[10px] mb-2 block">
+                Ready to start?
+              </span>
+              <CardTitle className="text-2xl md:text-3xl font-serif font-bold text-slate-900 dark:text-white leading-tight">
+                Have a Project Idea? <br />
+                <span className="text-amber-500">
+                  Let&apos;s Build it Together
+                </span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-0 mb-8 max-w-xl mx-auto">
+              <p className="font-serif text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed">
+                From{" "}
+                <span className="text-amber-600 font-medium">
+                  Software Development
+                </span>{" "}
+                to
+                <span className="text-amber-600 font-medium">
+                  {" "}
+                  IT Consultancy
+                </span>
+                , we provide the technical foundation your business needs to
+                grow.
+              </p>
+            </CardContent>
+
+            <CardFooter className="p-0 flex justify-center">
+              <Button
+                className="px-8 py-5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                onClick={() => router.push("/Contact")}
+              >
+                Get in Touch
+              </Button>
+            </CardFooter>
+          </Card>
+        </div>
+      </section>
       <section>
         <BlogGrid blogs={displayedBlogs} />
         {Blogs.length > 3 && (

@@ -13,59 +13,77 @@ interface NavbarProps {
 
 const Navbar = ({ active, setActive }: NavbarProps) => {
   const [menuShow, setMenuShow] = useState(false);
+  
   return (
-    <div className="flex justify-between items-center w-full p-5">
-      <div className="flex items-center gap-3">
-        <Avatar className="bg-gray-100">
-          <Image
-            src="/assets/logo.png"
-            alt="Logo"
-            fill
-            className="rounded-full"
-          />
-        </Avatar>
-        <h3 className="text-xl font-bold">
-          <span className="text-amber-500">Apex</span> Solutions
-        </h3>
+    <nav className="sticky top-0 z-50 w-full bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-amber-100 dark:border-amber-900/20">
+      <div className="max-w-7xl mx-auto flex justify-between items-center p-4 md:px-8">
+        <div className="flex items-center gap-3 group cursor-pointer">
+          <Avatar className="h-10 w-10 border-2 border-amber-500/20 group-hover:border-amber-500 transition-colors">
+            <Image
+              src="/assets/logo.png"
+              alt="Logo"
+              fill
+              className="rounded-full object-cover"
+            />
+          </Avatar>
+          <h3 className="text-xl font-bold tracking-tight">
+            <span className="text-amber-600 dark:text-amber-500">Apex</span> 
+            <span className="text-slate-800 dark:text-slate-200"> Solutions</span>
+          </h3>
+        </div>
+
+        {/* Desktop Menu */}
+        <div className="hidden lg:flex items-center gap-8">
+          {NavbarComponents.map((item) => (
+            <Link
+              href={item.link}
+              onClick={() => setActive(item.name)}
+              key={item.id}
+              className={`text-sm font-medium transition-all duration-300 hover:text-amber-500 ${
+                active === item.name 
+                  ? "text-amber-600 dark:text-amber-500 underline decoration-2 underline-offset-8" 
+                  : "text-slate-600 dark:text-slate-400"
+              } ${
+                item.name === "Contact Us" &&
+                "bg-amber-500 hover:bg-amber-600 text-white! px-5 py-2.5 rounded-xl shadow-lg shadow-amber-500/20 hover:scale-105 active:scale-95 no-underline!"
+              }`}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+
+        {/* Mobile Toggle */}
+        <button className="lg:hidden" onClick={() => setMenuShow(!menuShow)}>
+          {menuShow ? (
+            <X className="w-8 h-8 text-amber-600" />
+          ) : (
+            <Menu className="w-8 h-8 text-slate-700 dark:text-slate-300" />
+          )}
+        </button>
       </div>
-      {menuShow ? (
-        <X
-          className="w-10 h-10 bg-destructive/20 text-destructive rounded-xl p-2 block lg:hidden cursor-pointer"
-          onClick={() => setMenuShow(!menuShow)}
-        />
-      ) : (
-        <Menu
-          className="w-10 h-10 bg-primary text-primary-foreground rounded-xl p-2 block lg:hidden cursor-pointer"
-          onClick={() => setMenuShow(!menuShow)}
-        />
+
+      {/* Mobile Menu Dropdown */}
+      {menuShow && (
+        <div className="lg:hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-amber-100 shadow-xl p-6 flex flex-col gap-4 animate-in slide-in-from-top-2">
+          {NavbarComponents.map((item) => (
+            <Link
+              href={item.link}
+              key={item.id}
+              onClick={() => {
+                setMenuShow(false);
+                setActive(item.name);
+              }}
+              className={`text-lg font-semibold ${
+                active === item.name ? "text-amber-500" : "text-slate-700 dark:text-slate-300"
+              }`}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
       )}
-      <div
-        className={`lg:flex lg:flex-row lg:items-center lg:gap-10 ${
-          menuShow
-            ? "grid grid-cols-3 md:grid-cols-6 items-center text-center gap-5 bg-popover border border-border text-popover-foreground rounded-xl shadow-xl left-[50%] -translate-x-1/2 w-[90%] p-4 z-50 absolute top-[12%]"
-            : "hidden"
-        }`}
-      >
-        {NavbarComponents.map((item) => (
-          <Link
-            href={item.link}
-            onClick={() => {
-              setMenuShow(false);
-              setActive(item.name);
-            }}
-            key={item.id}
-            className={`font-semibold font-sans cursor-pointer hover:text-amber-500 ${
-              active == item.name && "text-amber-500 underline"
-            } ${
-              item.name == "Contact Us" &&
-              "bg-amber-500 p-2 rounded-xl text-black/75 hover:text-black hover:underline mx-32 w-36 md:mx-87 lg:mx-0 lg:w-28 lg:text-center"
-            }`}
-          >
-            {item.name}
-          </Link>
-        ))}
-      </div>
-    </div>
+    </nav>
   );
 };
 

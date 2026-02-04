@@ -6,17 +6,17 @@ import {
   CardTitle,
 } from "./ui/card";
 import { Badge } from "./ui/badge";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
-interface portfolio {
+interface PortfolioItem {
   link?: string;
   title: string;
   type: string;
   description: string;
   duration: number;
   image?: string;
-  version?: number;
+  version?: string;
 }
 
 export default function PortfolioItem({
@@ -27,49 +27,58 @@ export default function PortfolioItem({
   duration,
   image,
   version,
-}: portfolio) {
+}: PortfolioItem) {
   const writtenDuration =
-    duration >= 30
-      ? `${duration % 30} ${duration === 30 ? "month" : "months"}`
-      : `${duration} days`;
+    duration >= 30 ? `${Math.floor(duration / 30)} months` : `${duration} days`;
+
   return (
-    <Card>
-      <CardHeader className="flex flex-col gap-5 items-center">
-        <div className="flex items-center w-full justify-between">
-          <Badge>{type}</Badge>
+    <Card className="overflow-hidden border-none shadow-lg bg-white dark:bg-slate-900 group">
+      <div className="relative h-48 w-full overflow-hidden">
+        <Image
+          src={image || "/assets/computer.jpeg"}
+          alt={title}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute top-3 left-3 flex items-center justify-between w-full px-5">
+          <Badge className="bg-amber-500 hover:bg-amber-600">{type}</Badge>
           {version && (
-            <Badge>
-              <span>Version: </span>
-              {version}
+            <Badge
+              variant="outline"
+              className="bg-amber-500 backdrop-blur-md text-black"
+            >
+              v{version}
             </Badge>
           )}
         </div>
-        <CardTitle className="text-center text-xl font-serif">
+      </div>
+
+      <CardHeader>
+        <CardTitle className="text-xl font-bold text-amber-600 dark:text-amber-500">
           {title}
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex items-start justify-between gap-5">
-        {image && (
-          <Image
-            src={image}
-            alt={title}
-            width={200}
-            height={200}
-            loading="eager"
-            className="rounded-xl"
-          />
-        )}
-        <p className="text-lg font-serif">{description}</p>
+
+      <CardContent>
+        <p className="font-serif text-slate-600 dark:text-slate-400 text-sm line-clamp-3">
+          {description}
+        </p>
       </CardContent>
-      <CardFooter className="flex items-center justify-between">
-        <h2 className="font-serif">
-          <span className="font-semibold text-lg text-amber-500">
-            Duration:
-          </span>{" "}
-          {writtenDuration}
-        </h2>
+
+      <CardFooter className="border-t border-amber-50 dark:border-amber-900/20 pt-4 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="text-[10px] uppercase tracking-widest font-bold text-slate-400">
+            Project Duration:
+          </span>
+          <span className="text-sm font-bold text-amber-600">
+            {writtenDuration}
+          </span>
+        </div>
         {link && (
-          <Link href={link} target="blank" className="text-blue-500 underline">
+          <Link
+            href={link}
+            className="text-sm font-bold text-amber-600 underline hover:text-blue-500"
+          >
             Visit Here
           </Link>
         )}

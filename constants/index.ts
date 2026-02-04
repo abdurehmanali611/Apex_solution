@@ -150,7 +150,7 @@ export const Portfolios = [
       "Awesome Digital Door Lock System Installation and Configuration for our great client Victory Hotel, Hossana with modern and reliable technologies that escalate Victory to the true form of victory.",
     type: "Hotel and Hospitality Technology",
     duration: 7,
-    image: "/assets/victory.jfif"
+    image: "/assets/victory.jpg"
   },
   {
     title: "Tinsea Hotel(G+4)",
@@ -313,19 +313,19 @@ export const Blogs = [
 
 export const Testimonial = [
   {
-    name: "Mr. Bekele",
-    profession: "Bereket International Hotel Manager",
+    name: "Mr. Abraham",
+    profession: "Gebresadik Hotel Manager",
     image: "/assets/testimonial-1.jpg",
     content:
       "Working with ApexSolution is easy. Their technical support aligns with project timelines and never becomes a bottleneck.",
     rating: 5,
   },
   {
-    name: "Mr. Abraham",
-    profession: "Gebresadik Hotel Manager",
+    name: "Mr. Bekele",
+    profession: "Bereket International Hotel Manager",
     image: "/assets/testimonial-2.jpg",
     content:
-      "ApexSolution delivers proffessional tech support with zero excuses. They take ownership of problems and fix them--simple as that.",
+      "Their Tech Support ensures our systems run smoothly 24/7. Issues are solved quickly, even during peak hours.",
     rating: 5,
   },
 ];

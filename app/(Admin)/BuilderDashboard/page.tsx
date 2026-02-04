@@ -1,4 +1,13 @@
 "use client";
+import AdminBlogs from "@/Components/AdminBlogs";
+import AdminContact from "@/Components/AdminContact";
+import AdminDashboard from "@/Components/AdminDashboard";
+import AdminHeroFooter from "@/Components/AdminHeroFooter";
+import AdminPartners from "@/Components/AdminPartners";
+import AdminPortFolios from "@/Components/AdminPortFolios";
+import AdminServices from "@/Components/AdminServices";
+import AdminTeams from "@/Components/AdminTeams";
+import AdminTestimonial from "@/Components/AdminTestimonial";
 import { Avatar } from "@/Components/ui/avatar";
 import {
   Breadcrumb,
@@ -87,7 +96,27 @@ export default function BuilderDashboard() {
             </BreadcrumbList>
           </Breadcrumb>
         </div>
-        
+        {link === "Dashboard" ? (
+          <AdminDashboard />
+        ) : link === "HeroFooter" ? (
+          <AdminHeroFooter />
+        ) : link === "Services" ? (
+          <AdminServices />
+        ) : link === "Portfolios" ? (
+          <AdminPortFolios />
+        ) : link === "Blogs" ? (
+          <AdminBlogs />
+        ) : link === "Team Members" ? (
+          <AdminTeams />
+        ) : link === "Partners" ? (
+          <AdminPartners />
+        ) : link === "Contact Messages" ? (
+          <AdminContact />
+        ) : link === "Testimonials" ? (
+          <AdminTestimonial />
+        ) : (
+          "No Such type of screen"
+        )}
       </SidebarInset>
     </SidebarProvider>
   );

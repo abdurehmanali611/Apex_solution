@@ -18,10 +18,10 @@ export default function SectionHeader({
       className={`text-center mx-auto mb-5 ${className}`}
       style={{ maxWidth }}
     >
-      <p className="text-xl uppercase text-amber-500 font-semibold">
+      <p className="text-xl font-serif capitalize text-amber-500 font-semibold">
         {subtitle}
       </p>
-      <h1 className="text-lg font-bold font-sans my-5">
+      <h1 className="text-lg font-bold font-serif text-slate-700 dark:text-slate-300 my-5">
         {title}
       </h1>
       {description && (

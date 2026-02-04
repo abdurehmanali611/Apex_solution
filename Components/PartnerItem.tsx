@@ -1,26 +1,18 @@
 import Image from "next/image";
 
-interface partners {
+interface PartnerItemProps {
   image: string;
   title: string;
 }
 
-export default function PartnerItem({ image, title }: partners) {
+export default function PartnerItem({ image, title }: PartnerItemProps) {
   return (
-    <div className="flex flex-col gap-10">
-      <div className="group flex items-center gap-4 mr-6 p-2 pr-6 bg-white/50 backdrop-blur-sm border border-gray-100 rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md hover:border-blue-100 hover:-translate-y-1">
-        <div className="relative h-12 w-12 overflow-hidden rounded-xl bg-gray-100">
-          <Image
-            src={image}
-            alt={title}
-            fill
-            loading="eager"
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
-          />
+    <div className="mx-4 my-2 group">
+      <div className="flex items-center gap-4 p-3 pr-8 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-amber-100 dark:border-amber-900/20 rounded-2xl shadow-sm hover:border-amber-500 transition-all duration-300">
+        <div className="relative h-10 w-10 transition-all duration-500">
+          <Image src={image} alt={title} fill className="object-contain" />
         </div>
-        <h3 className="font-serif text-base font-semibold text-gray-800 whitespace-nowrap leading-tight">
-          {title}
-        </h3>
+        <span className="font-bold text-slate-700 dark:text-slate-300 whitespace-nowrap">{title}</span>
       </div>
     </div>
   );
