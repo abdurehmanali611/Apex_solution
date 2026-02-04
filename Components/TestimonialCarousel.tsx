@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 interface Testimonial {
-  image?: string;
+  image: string;
   name: string;
   profession: string;
   content: string;

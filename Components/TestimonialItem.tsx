@@ -17,7 +17,6 @@ export default function TestimonialItem({ image, name, profession, content, rati
       <div className="flex flex-col gap-6 relative z-10">
         <div className="flex items-center gap-5">
           <div className="relative shrink-0">
-            {/* Enlarged Avatar to w-20 */}
             <div className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-amber-500/30 p-1 bg-white dark:bg-slate-800">
               <Image
                 src={image ?? "/assets/testimonial-1.jpg"}
