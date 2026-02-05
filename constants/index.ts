@@ -349,6 +349,12 @@ export const Partner = [
     title: "Ahadu Hospitality",
     description:
       "Ahadu Hospitality is a Hospitality company and which had a great experience in expressing and defining hospitality as a service."
+  },
+  {
+    image: "/assets/strivein.jpg",
+    title: "StriveIn",
+    description:
+      "StriveIn is a software company which we share with them many backstories and victories. Our Friendship with them will be a long lasting one."
   }
 ];
 
