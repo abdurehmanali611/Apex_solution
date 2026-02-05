@@ -354,7 +354,7 @@ export const Partner = [
 
 export const teamMembers = [
   {
-    image: "/assets/ceo.PNG",
+    image: "/assets/ceo.jpg",
     name: "Atlabachew Tadese",
     position: "CoFounder and CEO",
     title: "The Founder",
