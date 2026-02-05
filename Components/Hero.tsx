@@ -43,7 +43,7 @@ const Hero = () => {
             <div className="flex items-center gap-8 pt-4 border-t border-slate-100 dark:border-slate-800 w-fit">
               {HeroFooter.map((item) => (
                 <div key={item.id} className="flex flex-col">
-                  <span className="text-xl font-bold text-amber-600 dark:text-amber-500">{item.amount}</span>
+                  <span className="text-xl font-bold text-amber-600 dark:text-amber-500">{item.amount}+</span>
                   <span className="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">{item.name}</span>
                 </div>
               ))}

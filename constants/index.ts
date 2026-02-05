@@ -40,17 +40,17 @@ export const HeroFooter = [
   {
     id: 1,
     name: "Experience",
-    amount: "10+",
+    amount: 10,
   },
   {
     id: 2,
     name: "Projects Done",
-    amount: "10+",
+    amount: 10,
   },
   {
     id: 3,
     name: "Happy Clients",
-    amount: "10+",
+    amount: 10,
   },
 ];
 

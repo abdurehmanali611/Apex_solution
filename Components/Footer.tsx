@@ -33,7 +33,7 @@ const Footer = ({ active, setActive }: FooterProps) => {
           </div>
           <Separator className="bg-slate-100 dark:bg-slate-800" />
           <div className="flex flex-col gap-10 w-full md:w-[55%] mx-0 md:mx-59">
-            <p className="font-serif text-lg italic leading-relaxed text-slate-600 dark:text-slate-400 text-center md:text-start lg:text-center">
+            <p className="font-serif text-lg italic leading-relaxed text-slate-600 dark:text-slate-400 text-start md:text-start lg:text-center ">
               <span className="text-amber-500 font-bold not-italic">
                 ApexSolution&apos;s{" "}
               </span>

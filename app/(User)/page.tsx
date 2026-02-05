@@ -99,7 +99,7 @@ export default function UserHome() {
           <div className="flex justify-center">
             <Button
               className="mt-4 w-full md:w-max px-8 py-6 cursor-pointer bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl shadow-lg shadow-amber-500/20 transition-all hover:scale-105 active:scale-95 self-center"
-              onClick={() => router.push("/PortFolio")}
+              onClick={() => router.push("/Portfolio")}
             >
               View All Projects
             </Button>
