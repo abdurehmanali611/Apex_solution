@@ -184,7 +184,8 @@ export const Portfolios = [
     title: "Handakina Cafe and Pension",
     description: "Here is One of other clients which we had a nice experience which got in contact for the installation of HikVision 4-Channel DVR and we Successfully accomplished it that gave a great joy for our client.",
     type: "Hotel and Hospitality Technology",
-    duration: 3
+    duration: 3,
+    image: "/assets/handakina.jpg"
   },
   {
     title: "Boez Cafe and Restaurant",
@@ -203,7 +204,8 @@ export const Portfolios = [
     title: "Ilitro Hotel",
     description: "Here is One of other clients which we had a nice experience which got in contact for digital door lock system and shared network resources and we Successfully accomplished it that gave a great joy for our client.",
     type: "Hotel and Hospitality Technology",
-    duration: 2
+    duration: 2,
+    image: "/assets/ilitro.jpg"
   },
   {
     title: "Hiwot Hospital",
