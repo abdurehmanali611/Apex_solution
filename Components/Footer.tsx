@@ -12,7 +12,7 @@ interface FooterProps {
 
 const Footer = ({ active, setActive }: FooterProps) => {
   return (
-    <Card>
+    <Card className="w-full dark:bg-slate-950">
       <CardContent>
         <div className="flex flex-col gap-5 px-0 md:px-10">
           <div className="flex justify-center items-center w-full p-5">
@@ -31,17 +31,25 @@ const Footer = ({ active, setActive }: FooterProps) => {
               ))}
             </div>
           </div>
-          <Separator />
+          <Separator className="bg-slate-100 dark:bg-slate-800" />
           <div className="flex flex-col gap-10 w-full md:w-[55%] mx-0 md:mx-59">
-            <p className="text-center">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis
-              maiores voluptatem doloremque. Dolores at temporibus laboriosam,
-              itaque commodi suscipit excepturi sed, rerum maiores autem
-              incidunt doloremque, laborum atque aliquam distinctio?
+            <p className="font-serif text-lg italic leading-relaxed text-slate-600 dark:text-slate-400 text-center md:text-start lg:text-center">
+              <span className="text-amber-500 font-bold not-italic">
+                ApexSolution&apos;s{" "}
+              </span>
+              tech service is fast, reliable and knowledgable. System issues are
+              solved before they affect operations. Our team understands
+              Hospitality and IT Inside Out. What Stands out with ApexSolution
+              is responsiveness. One Call the issue is handled Which keeps our
+              customers system stable and productive.
             </p>
             <div className="flex items-center gap-10 justify-center">
               {footerLink.map((item) => (
-                <Link href={item.link} key={item.id}>
+                <Link
+                  href={item.link}
+                  key={item.id}
+                  className="p-2 rounded-full bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-amber-500 hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-300"
+                >
                   <Icon icon={item.icon} className="w-7 h-7" />
                 </Link>
               ))}

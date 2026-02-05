@@ -25,7 +25,7 @@ const Hero = () => {
               </h1>
             </div>
 
-            <p className="font-serif text-slate-700 dark:text-slate-300 text-base leading-relaxed lg:w-125 text-center w-88">
+            <p className="font-serif text-slate-700 dark:text-slate-300 text-base leading-relaxed lg:w-125 text-start w-88 pl-4 md:pl-0">
               10+ years of real-world telecom and IT experience. 
               We deliver <span className="text-amber-600 dark:text-amber-500 font-medium">reliable, secure and scalable solutions </span> 
               backed by technical expertise.
