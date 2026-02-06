@@ -40,12 +40,12 @@ export const HeroFooter = [
   {
     id: 1,
     name: "Experience",
-    amount: 10,
+    amount: 20,
   },
   {
     id: 2,
     name: "Projects Done",
-    amount: 10,
+    amount: 20,
   },
   {
     id: 3,
@@ -198,7 +198,7 @@ export const Portfolios = [
     description: "Here is One of other clients which we had a nice experience which got in contact for digital door lock system and shared network resources and we Successfully accomplished it that gave a great joy for our client.",
     type: "Hotel and Hospitality Technology",
     duration: 2,
-    image: "/assets/ela.jfif"
+    image: "/assets/elaresort.jpg"
   },
   {
     title: "Ilitro Hotel",
@@ -211,7 +211,8 @@ export const Portfolios = [
     title: "Hiwot Hospital",
     description: "Here is One of other clients which we had a nice experience which got in contact for the Network Design and Implementation for Hospital Management System(HMS) and we Successfully accomplished it that gave a great joy for our client.",
     type: "Network and Wi-Fi Infrastructure Projects",
-    duration: 2
+    duration: 2,
+    image: "/assets/hiwot.jpg"
   },
   {
     title: "Central Ethiopia President's Home",
@@ -228,16 +229,11 @@ export const Portfolios = [
     duration: 3
   },
   {
-    title: "Kalehiwot Babile College",
-    description: "Here is One of other clients which we had a nice experience which got in contact for the Network Installation and Wi-Fi Deployment and we Successfully accomplished it that gave a great joy for our client.",
-    type: "Network and Wi-Fi Infrastructure Projects",
-    duration: 4
-  },
-  {
     title: "Lechigogo Preparatory Schools",
     description: "Here is One of other clients which we had a nice experience which got in contact for LAN Design and Installation and we Successfully accomplished it that gave a great joy for our client.",
     type: "Network and Wi-Fi Infrastructure Projects",
-    duration: 7
+    duration: 7,
+    image: "/assets/lichgogo.jpg"
   },
   {
     title: "Tesdika Pension(G+3)",
@@ -267,7 +263,8 @@ export const Portfolios = [
     title: "Asham Hotel",
     description: "Here is One of other clients which we had a nice experience which got in contact for Wireless network Installation and we Successfully accomplished it that gave a great joy for our client.",
     type: "Network and Wi-Fi Infrastructure Projects",
-    duration: 1
+    duration: 1,
+    image: "/assets/asham.jpg"
   }
 ];
 
