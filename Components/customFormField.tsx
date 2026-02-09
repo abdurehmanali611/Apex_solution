@@ -48,6 +48,18 @@ import {
 } from "./ui/alert-dialog";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "./ui/input-otp";
 import clsx from "clsx";
+import { Switch } from "./ui/switch";
+import dynamic from "next/dynamic";
+
+const PhoneInput = dynamic(
+  () => import("./phone-input").then((mod) => mod.PhoneInput),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-10 w-full animate-pulse rounded-md bg-gray-200"></div>
+    ),
+  }
+);
 
 export enum formFieldTypes {
   INPUT = "input",
@@ -58,10 +70,13 @@ export enum formFieldTypes {
   IMAGE_UPLOADER = "imageUploader",
   SKELETON = "skeleton",
   ALERTDIALOG = "alertDialog",
+  SWITCH = "switch",
+  PHONE_INPUT = "phoneInput",
 }
 
 interface BaseProps {
   label?: string;
+  isNumeric?: boolean;
   placeholder?: string;
   children?: React.ReactNode;
   renderSkeleton?: (field: any) => React.ReactNode;
@@ -70,7 +85,7 @@ interface BaseProps {
   listdisplay?: Array<any>;
   isDoctorList?: boolean;
   previewUrl?: string | null;
-  fileType?: "image" | "video" | null; // Add fileType prop
+  fileType?: "image" | "video" | null;
   handleCloudinary?: (result: any) => void;
   icon?: typeof User | typeof Mail | typeof User2 | typeof Calendar1;
   type?: string;
@@ -81,11 +96,16 @@ interface BaseProps {
   handleAlertDialog?: (result: any) => void;
   passKey?: string;
   dialogError?: string | null;
-  add?: "allergy" | "symptom";
-  className?: string; // Add className prop
-  inputClassName?: string; // Add inputClassName for custom input styling
-  labelClassName?: string; // Add labelClassName for custom label styling
-  formItemClassName?: string; // Add formItemClassName for custom form item styling
+  add?: string;
+  className?: string;
+  inputClassName?: string;
+  labelClassName?: string;
+  formItemClassName?: string;
+  disabled?: boolean;
+  required?: boolean;
+  readOnly?: boolean;
+  autoFocus?: boolean;
+  autoComplete?: string;
 }
 
 interface FormConnectedProps extends BaseProps {
@@ -98,7 +118,9 @@ interface FormConnectedProps extends BaseProps {
     | formFieldTypes.RADIO_BUTTON
     | formFieldTypes.SELECT
     | formFieldTypes.IMAGE_UPLOADER
-    | formFieldTypes.SKELETON;
+    | formFieldTypes.SKELETON
+    | formFieldTypes.SWITCH
+    | formFieldTypes.PHONE_INPUT;
 }
 
 interface AlertDialogProps extends BaseProps {
@@ -115,6 +137,7 @@ type customProps = FormConnectedProps | AlertDialogProps;
 
 const RenderInput = ({ field, props }: { field: any; props: customProps }) => {
   const [open, setOpen] = React.useState(false);
+  const [localValue, setLocalValue] = React.useState("");
 
   const isVideoUrl = (url: string) => {
     if (!url) return false;
@@ -134,38 +157,52 @@ const RenderInput = ({ field, props }: { field: any; props: customProps }) => {
               })}
             >
               <Input
-                {...(props.add ? {} : field)}
                 placeholder={props.placeholder}
                 type={props.type}
                 onChange={(e) => {
-                  if (props.type === "number") {
-                    const value = e.target.value;
-                    const numValue = value === "" ? 0 : parseFloat(value);
-                    field.onChange(numValue);
+                  if (props.add) {
+                    setLocalValue(e.target.value);
                   } else {
-                    field.onChange(e.target.value);
+                    if (props.type === "number") {
+                      const value = e.target.value;
+                      const numValue = value === "" ? 0 : parseFloat(value);
+                      field.onChange(numValue);
+                    } else {
+                      field.onChange(e.target.value);
+                    }
                   }
                 }}
-                value={props.type === "number" ? field.value || 0 : field.value}
+                value={
+                  props.add
+                    ? localValue
+                    : props.type === "number"
+                    ? field.value || 0
+                    : field.value
+                }
                 onKeyDown={(e) => {
                   if (
                     e.key === "Enter" &&
-                    e.currentTarget.value !== "" &&
+                    localValue.trim() !== "" &&
                     props.add
                   ) {
                     e.preventDefault();
-                    const newValue = e.currentTarget.value.trim();
+                    const newValue = localValue.trim();
                     const currentArray = Array.isArray(field.value)
                       ? field.value
                       : [];
                     field.onChange([...currentArray, newValue]);
-                    e.currentTarget.value = "";
+                    setLocalValue("");
                   }
                 }}
                 className={clsx(props.inputClassName, {
-                  "h-12 px-4 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-200": 
+                  "h-12 px-4 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-200":
                     !props.inputClassName && !props.add,
                 })}
+                disabled={props.disabled}
+                required={props.required}
+                readOnly={props.readOnly}
+                autoFocus={props.autoFocus}
+                autoComplete={props.autoComplete}
               />
               {props.add && (
                 <div className="flex flex-col flex-wrap gap-2 max-h-24 overflow-y-auto p-2 border rounded-md">
@@ -189,7 +226,7 @@ const RenderInput = ({ field, props }: { field: any; props: customProps }) => {
                             field.onChange(next);
                           }}
                         >
-                          ×
+                          Ã—
                         </button>
                       </span>
                     )
@@ -201,6 +238,13 @@ const RenderInput = ({ field, props }: { field: any; props: customProps }) => {
         </div>
       );
 
+    case formFieldTypes.SWITCH:
+      return (
+        <FormControl>
+          <Switch {...field} id={props.placeholder} disabled={props.disabled} />
+        </FormControl>
+      );
+
     case formFieldTypes.TEXTAREA:
       return (
         <FormControl>
@@ -208,6 +252,28 @@ const RenderInput = ({ field, props }: { field: any; props: customProps }) => {
             placeholder={props.placeholder}
             {...field}
             className={clsx("w-80 h-36 ml-4", props.inputClassName)}
+            disabled={props.disabled}
+            required={props.required}
+            readOnly={props.readOnly}
+            autoFocus={props.autoFocus}
+          />
+        </FormControl>
+      );
+
+    case formFieldTypes.PHONE_INPUT:
+      return (
+        <FormControl>
+          <PhoneInput
+            defaultCountry="ET"
+            countryCallingCodeEditable
+            international
+            {...field}
+            placeholder={props.placeholder}
+            className={clsx(props.inputClassName)}
+            disabled={props.disabled}
+            required={props.required}
+            readOnly={props.readOnly}
+            autoFocus={props.autoFocus}
           />
         </FormControl>
       );
@@ -222,6 +288,8 @@ const RenderInput = ({ field, props }: { field: any; props: customProps }) => {
                 "w-fit justify-between ml-6 font-normal cursor-pointer",
                 props.inputClassName
               )}
+              disabled={props.disabled}
+              type="button"
             >
               <Calendar1 className="mr-2 h-4 w-4" />
               {field.value ? field.value.toDateString() : "Select Date"}
@@ -257,6 +325,8 @@ const RenderInput = ({ field, props }: { field: any; props: customProps }) => {
             }
           }}
           value={field.value}
+          disabled={props.disabled}
+          required={props.required}
         >
           {props.listdisplay?.map((item) => (
             <div key={item} className="flex gap-2 items-center cursor-pointer">
@@ -264,6 +334,7 @@ const RenderInput = ({ field, props }: { field: any; props: customProps }) => {
                 value={item}
                 id={item}
                 className="cursor-pointer"
+                disabled={props.disabled}
               />
               <Label htmlFor={item} className="cursor-pointer">
                 {item}
@@ -275,7 +346,19 @@ const RenderInput = ({ field, props }: { field: any; props: customProps }) => {
 
     case formFieldTypes.SELECT:
       return (
-        <Select value={field.value} onValueChange={field.onChange}>
+        <Select
+          value={field.value !== undefined ? field.value.toString() : ""}
+          onValueChange={(value) => {
+            if (props.isNumeric) {
+              const numValue = value ? parseInt(value, 10) : undefined;
+              field.onChange(isNaN(numValue!) ? undefined : numValue);
+            } else {
+              field.onChange(value || "");
+            }
+          }}
+          disabled={props.disabled}
+          required={props.required}
+        >
           <SelectTrigger
             className={clsx(
               {
@@ -295,31 +378,42 @@ const RenderInput = ({ field, props }: { field: any; props: customProps }) => {
                     (item) =>
                       item.roleType === "Doctor" && (
                         <Tooltip key={item._id}>
-                          <TooltipTrigger className="flex flex-col gap-3">
-                            <SelectItem
-                              key={item._id}
-                              value={item.Full_Name}
-                              className="p-2 w-225"
-                            >
-                              <Image
-                                src={item.image}
-                                alt={item.Full_Name || "Icon"}
-                                width={24}
-                                height={24}
-                                loading="eager"
-                                className="rounded-full"
-                              />
-                              <span className="font-semibold">
-                                {item.Full_Name}
-                              </span>
-                            </SelectItem>
+                          <TooltipTrigger className="flex flex-col gap-3" asChild>
+                            <div>
+                              <SelectItem
+                                key={item._id}
+                                value={item.Full_Name}
+                                className="p-2 w-225"
+                                disabled={props.disabled}
+                              >
+                                <Image
+                                  src={item.image}
+                                  alt={item.Full_Name || "Icon"}
+                                  width={24}
+                                  height={24}
+                                  loading="eager"
+                                  className="rounded-full"
+                                />
+                                <span className="font-semibold">
+                                  {item.Full_Name}
+                                </span>
+                              </SelectItem>
+                            </div>
                           </TooltipTrigger>
                           <TooltipContent>{item.Speciality}</TooltipContent>
                         </Tooltip>
                       )
                   )
                 : props.listdisplay?.map((item) => (
-                    <SelectItem key={item.id} value={item.name}>
+                    <SelectItem
+                      key={item.id}
+                      value={
+                        item.realValue !== undefined
+                          ? item.realValue.toString()
+                          : item.name
+                      }
+                      disabled={props.disabled}
+                    >
                       {item.name}
                     </SelectItem>
                   ))}
@@ -342,6 +436,7 @@ const RenderInput = ({ field, props }: { field: any; props: customProps }) => {
                 clientAllowedFormats: [
                   "png",
                   "jpeg",
+                  "jpg",
                   "webp",
                   "jfif",
                   "mp4",
@@ -361,6 +456,7 @@ const RenderInput = ({ field, props }: { field: any; props: customProps }) => {
                     "flex items-center gap-2 cursor-pointer",
                     props.inputClassName
                   )}
+                  disabled={props.disabled}
                 >
                   <Upload className="w-4 h-4" />
                   {props.previewUrl ? "Change File" : "Choose File"}
@@ -427,6 +523,7 @@ const CustomFormField = (props: customProps) => {
                 key={item}
                 variant="link"
                 className="cursor-pointer text-blue-400 hover:text-red-400"
+                disabled={props.disabled}
               >
                 {item}
               </Button>
@@ -456,6 +553,7 @@ const CustomFormField = (props: customProps) => {
                 onChange={(e) => {
                   if (props.setPassKey) props.setPassKey(e);
                 }}
+                disabled={props.disabled}
               >
                 <InputOTPGroup>
                   <InputOTPSlot index={0} />
@@ -483,6 +581,7 @@ const CustomFormField = (props: customProps) => {
                     if (props.setPassKey) props.setPassKey("");
                     if (props.setDialogError) props.setDialogError(null);
                   }}
+                  disabled={props.disabled}
                 >
                   Cancel
                 </AlertDialogCancel>
@@ -492,7 +591,11 @@ const CustomFormField = (props: customProps) => {
                     e.preventDefault();
                     props.handleAlertDialog?.(item);
                   }}
-                  disabled={!props.passKey || props.passKey.length < 6}
+                  disabled={
+                    !props.passKey || 
+                    props.passKey.length < 6 || 
+                    props.disabled
+                  }
                 >
                   Submit
                 </AlertDialogAction>
@@ -511,21 +614,15 @@ const CustomFormField = (props: customProps) => {
       name={name}
       render={({ field }) => (
         <FormItem
-          className={clsx(
-            props.formItemClassName,
-            {
-              "flex flex-col items-center gap-3":
-                props.fieldType === formFieldTypes.IMAGE_UPLOADER,
-              "flex flex-col gap-3": !props.formItemClassName,
-            }
-          )}
+          className={clsx(props.formItemClassName, {
+            "flex flex-col items-center gap-3":
+              props.fieldType === formFieldTypes.IMAGE_UPLOADER,
+            "flex flex-col gap-3": !props.formItemClassName,
+          })}
         >
           {label && (
-            <FormLabel 
-              className={clsx(
-                "text-foreground!",
-                props.labelClassName
-              )}
+            <FormLabel
+              className={clsx("text-foreground!", props.labelClassName)}
             >
               {label}
             </FormLabel>

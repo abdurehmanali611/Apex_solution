@@ -40,7 +40,7 @@ export const HeroFooter = [
   {
     id: 1,
     name: "Experience",
-    amount: 20,
+    amount: 10,
   },
   {
     id: 2,
@@ -50,7 +50,7 @@ export const HeroFooter = [
   {
     id: 3,
     name: "Happy Clients",
-    amount: 10,
+    amount: 20,
   },
 ];
 
@@ -132,7 +132,7 @@ export const Portfolios = [
     title: "HotCol",
     description:
       "HotCol is a hotel management system designed for enhancing digital working enviroments for Hotels and Cafes with Greater level Detail-Oriented and stanning way of reporting and analytics.",
-    type: "Digital System",
+    type: "Digital System(SaaS)",
     duration: 20,
     version: 1,
     image: "/assets/hotcol.png"
@@ -266,25 +266,6 @@ export const Portfolios = [
     duration: 1,
     image: "/assets/asham.jpg"
   }
-];
-
-export const portfolioButton = [
-  {
-    id: 1,
-    name: "All",
-  },
-  {
-    id: 2,
-    name: "Website",
-  },
-  {
-    id: 3,
-    name: "Mobile App",
-  },
-  {
-    id: 4,
-    name: "Ui Design",
-  },
 ];
 
 export const Blogs = [
@@ -463,3 +444,45 @@ export const AdminList = [
     icon: "dashicons:testimonial",
   },
 ];
+
+export const HeroFooterList = [
+  {
+    id: 1,
+    name: "Experience"
+  },
+  {
+    id: 2,
+    name: "Projects Done"
+  },
+  {
+    id: 3,
+    name: "Happy Clients"
+  }
+]
+
+export const portFolioTypes = [
+  {
+    id: 1,
+    name: "Website"
+  },
+  {
+    id: 2,
+    name: "Web App"
+  },
+  {
+    id: 3,
+    name: "Digital System(SaaS)"
+  },
+  {
+    id: 4,
+    name: "Mobile App"
+  },
+  {
+    id: 5,
+    name: "Hotel and Hospitality Technology"
+  },
+  {
+    id: 6,
+    name: "Network and Wi-Fi infrastructure Projects"
+  }
+]

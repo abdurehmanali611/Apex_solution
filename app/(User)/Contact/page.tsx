@@ -9,12 +9,15 @@ import {
   CardTitle,
 } from "@/Components/ui/card";
 import { Form } from "@/Components/ui/form";
+import { CreateContact } from "@/lib/actions";
 import { ContactForm } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
 export default function Contact() {
+  const [loading, setLoading] = useState(false)
   const form = useForm<z.infer<typeof ContactForm>>({
     resolver: zodResolver(ContactForm),
     defaultValues: {
@@ -35,7 +38,10 @@ export default function Contact() {
         </CardHeader>
         <CardContent className="flex flex-col gap-5">
           <Form {...form}>
-            <form className="flex flex-col gap-8 items-center">
+            <form className="flex flex-col gap-8 items-center" onSubmit={form.handleSubmit((values) => {
+              CreateContact(values, setLoading)
+              form.reset()
+            })}>
               <div className="flex flex-col sm:flex-row gap-5 items-center">
                 <CustomFormField
                   name="Full_Name"
@@ -75,7 +81,7 @@ export default function Contact() {
                 type="submit"
                 className="bg-amber-500 text-black hover:bg-amber-500 cursor-pointer w-40"
               >
-                Submit
+                {loading ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </Form>
