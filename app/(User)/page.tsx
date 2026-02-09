@@ -119,7 +119,7 @@ export default function UserHome() {
               <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white dark:bg-slate-950 rounded-3xl overflow-hidden shadow-2xl border border-amber-100/50 dark:border-amber-900/20">
                 <div className="relative h-50 lg:h-full min-h-75">
                   <Image
-                    src={portfolio.image || "/assets/computer.jpeg"}
+                    src={portfolio.image || "/assets/computer.jpg"}
                     alt={portfolio.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"

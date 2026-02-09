@@ -35,7 +35,7 @@ const Footer = ({ active, setActive }: FooterProps) => {
           <div className="flex flex-col gap-10 w-full mx-0">
             <div className="flex flex-col md:flex-row items-center md:justify-between gap-10">
               <div className="flex flex-col gap-4">
-                <h2 className="text-[22px] font-bold font-serif text-slate-700 dark:text-slate-300">
+                <h2 className="text-[21px] font-bold font-serif text-slate-700 dark:text-slate-300">
                   Our Accessibilities with Full Support
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 items-center gap-6">
@@ -48,7 +48,7 @@ const Footer = ({ active, setActive }: FooterProps) => {
                 </div>
               </div>
               <div>
-                <h2 className="text-[22px] font-bold font-serif text-slate-700 dark:text-slate-300 text-start md:text-center">
+                <h2 className="text-[21px] font-bold font-serif text-slate-700 dark:text-slate-300 text-start md:text-center">
                   Contact Us
                 </h2>
                 <div className="flex flex-row md:flex-col gap-4 mt-4 items-center">
