@@ -54,7 +54,7 @@ const Hero = () => {
             <div className="absolute -inset-1 bg-linear-to-r from-amber-500 to-yellow-400 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
             <div className="relative rounded-xl overflow-hidden shadow-2xl">
               <Image
-                src="/assets/computer.jpeg"
+                src="/assets/computer.jpg"
                 alt="Computer"
                 width={600}
                 height={500}

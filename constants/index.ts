@@ -486,3 +486,38 @@ export const portFolioTypes = [
     name: "Network and Wi-Fi infrastructure Projects"
   }
 ]
+
+export const accessibility = [
+  {
+    id: 1,
+    name: "Addis Ababa"
+  },
+  {
+    id: 2,
+    name: "Hossana"
+  },
+  {
+    id: 3,
+    name: "Bahir Dar"
+  },
+  {
+    id: 4,
+    name: "Butajira"
+  },
+  {
+    id: 5,
+    name: "Wolkite"
+  },
+  {
+    id: 6,
+    name: "Jimma"
+  },
+  {
+    id: 7,
+    name: "Gambella"
+  },
+  {
+    id: 8,
+    name: "Hawassa"
+  }
+]

@@ -1,6 +1,6 @@
 "use client";
 import { Card, CardContent } from "./ui/card";
-import { footerLink, NavbarComponents } from "@/constants";
+import { accessibility, footerLink, NavbarComponents } from "@/constants";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { Separator } from "./ui/separator";
@@ -32,17 +32,37 @@ const Footer = ({ active, setActive }: FooterProps) => {
             </div>
           </div>
           <Separator className="bg-slate-100 dark:bg-slate-800" />
-          <div className="flex flex-col gap-10 w-full md:w-[55%] mx-0 md:mx-59">
-            <p className="font-serif text-lg italic leading-relaxed text-slate-600 dark:text-slate-400 text-start md:text-start lg:text-center ">
-              <span className="text-amber-500 font-bold not-italic">
-                ApexSolution&apos;s{" "}
-              </span>
-              tech service is fast, reliable and knowledgable. System issues are
-              solved before they affect operations. Our team understands
-              Hospitality and IT Inside Out. What Stands out with ApexSolution
-              is responsiveness. One Call the issue is handled Which keeps our
-              customers system stable and productive.
-            </p>
+          <div className="flex flex-col gap-10 w-full mx-0">
+            <div className="flex items-start justify-between">
+              <div className="flex flex-col gap-4">
+                <h2 className="text-[22px] font-bold font-serif text-slate-700 dark:text-slate-300">
+                  Our Accessibilities with Full Support
+                </h2>
+                <div className="grid grid-cols-2 md:grid-cols-4 items-center gap-6">
+                  {accessibility.map((item) => (
+                    <div key={item.id} className="flex items-center gap-3">
+                      <Icon icon="streamline-plump-color:location-pin-flat" />
+                      <h2 className="font-serif text-md">{item.name}</h2>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h2 className="text-[22px] font-bold font-serif text-slate-700 dark:text-slate-300 text-center">
+                  Contact Us
+                </h2>
+                <div className="flex flex-col gap-4 mt-4 items-center">
+                  <div className="flex items-center gap-3">
+                    <Icon icon="streamline-flex-color:call-center-support-service-flat" />
+                    <Link className="font-serif text-md hover:underline" href="tel:+251930272975">+251 930 272 975</Link>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Icon icon="streamline-flex-color:call-center-support-service-flat" />
+                    <Link className="font-serif text-md hover:underline" href="tel:+251935000642">+251 935 000 642</Link>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="flex items-center gap-10 justify-center">
               {footerLink.map((item) => (
                 <Link

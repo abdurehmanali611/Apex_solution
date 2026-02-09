@@ -28,7 +28,7 @@ const AboutComponent = ({ show }: { show: boolean }) => {
           <div className="hidden lg:block w-full lg:w-1/2 relative group">
             <div className="absolute -inset-1 bg-linear-to-r from-amber-500 to-yellow-400 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
             <Image
-              src="/assets/guy.jpg"
+              src="/assets/apex.png"
               alt="Computer"
               width={600}
               height={600}

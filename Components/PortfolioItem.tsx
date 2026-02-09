@@ -35,7 +35,7 @@ export default function PortfolioItem({
     <Card className="overflow-hidden border-none shadow-lg bg-white dark:bg-slate-900 group">
       <div className="relative h-48 w-full overflow-hidden">
         <Image
-          src={image || "/assets/computer.jpeg"}
+          src={image || "/assets/computer.jpg"}
           alt={title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-110"
