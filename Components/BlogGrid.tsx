@@ -19,7 +19,7 @@ export default function BlogGrid({ blogs }: blogProp) {
     <div className="w-full py-12">
       <div className="px-4 py-5 flex flex-col gap-5">
         <SectionHeader subtitle="Blog" title="What's New in Tech World ?" />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 items-center ml-16 sm:ml-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 items-center sm:ml-10">
           {blogs &&
             blogs.length > 0 &&
             blogs.map((blog: blog, idx: number) => (

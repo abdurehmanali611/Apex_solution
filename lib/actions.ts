@@ -19,15 +19,14 @@ interface cloudinarySuccessResult {
 }
 
 const api = axios.create({
-  baseURL: "http://localhost:4000"
-})
+  baseURL: "http://localhost:4000",
+});
 
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token")
-  if (token)
-    config.headers.Authorization = `Bearer ${token}`
-  return config
-})
+  const token = localStorage.getItem("token");
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
 
 export const handleUploadSuccess = (
   result: unknown,
@@ -66,10 +65,10 @@ export async function LoginUser(
 ) {
   try {
     setLoading(true);
-    const response = await axios.post(`${api}/auth/login`, values);
+    const response = await api.post("/auth/login", values);
     const { token } = response.data;
     localStorage.setItem("token", token);
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     return response.data;
   } catch (error: unknown) {
     let errorMessage = "An Unknown Error happened";
@@ -80,13 +79,13 @@ export async function LoginUser(
     }
     toast.error(`${errorMessage}`);
   } finally {
-    setLoading(false)
+    setLoading(false);
   }
 }
 
 export async function HeroFooterFetch() {
   try {
-    const response = await axios.get(`${api}/heroFooter`);
+    const response = await api.get("/heroFooter");
     const data = response.data;
     return data;
   } catch (error: unknown) {
@@ -108,7 +107,7 @@ export async function HeroFooterUpdate(
     setLoading(true);
     const name = values.name;
     const amount = values.amount;
-    const response = await axios.put(`${api}/heroFooter/${name}`, {
+    const response = await api.patch(`/heroFooter/${name}`, {
       amount: amount,
     });
     const data = response.data;
@@ -133,7 +132,7 @@ export async function CreateService(
 ) {
   try {
     setLoading(true);
-    const response = await axios.post(`${api}/services`, values);
+    const response = await api.post("/services", values);
     const data = response.data;
     toast.success(`${values.title} created successfully`);
     return data;
@@ -152,7 +151,7 @@ export async function CreateService(
 
 export async function GetService() {
   try {
-    const response = await axios.get(`${api}/services`);
+    const response = await api.get("/services");
     const data = response.data;
     return data;
   } catch (error: unknown) {
@@ -173,7 +172,7 @@ export async function UpdateService(
 ) {
   try {
     setLoading(true);
-    const response = await axios.put(`${api}/services/${id}`, values);
+    const response = await api.put(`/services/${id}`, values);
     const data = response.data;
     toast.success(`${values.title} updated successfully`);
     return data;
@@ -192,7 +191,7 @@ export async function UpdateService(
 
 export async function DeleteService(id: number) {
   try {
-    const response = await axios.delete(`${api}/services/${id}`);
+    const response = await api.delete(`/services/${id}`);
     const data = response.data;
     toast.success(`${data.title} deleted successfully`);
     return data;
@@ -213,7 +212,7 @@ export async function CreatePortFolio(
 ) {
   try {
     setLoading(true);
-    const response = await axios.post(`${api}/portfolio`, values);
+    const response = await api.post("/portfolio", values);
     const data = response.data;
     toast.success(`${values.title} created successfully`);
     return data;
@@ -232,7 +231,7 @@ export async function CreatePortFolio(
 
 export async function GetPortFolio() {
   try {
-    const response = await axios.get(`${api}/portfolio`);
+    const response = await api.get("/portfolio");
     const data = response.data;
     return data;
   } catch (error: unknown) {
@@ -253,7 +252,7 @@ export async function UpdatePortFolio(
 ) {
   try {
     setLoading(true);
-    const response = await axios.put(`${api}/portfolio/${id}`, values);
+    const response = await api.put(`/portfolio/${id}`, values);
     const data = response.data;
     toast.success(`${values.title} updated successfully`);
     return data;
@@ -272,7 +271,7 @@ export async function UpdatePortFolio(
 
 export async function DeletePortFolio(id: number) {
   try {
-    const response = await axios.delete(`${api}/portfolio/${id}`);
+    const response = await api.delete(`/portfolio/${id}`);
     const data = response.data;
     toast.success(`${data.title} deleted successfully`);
     return data;
@@ -293,7 +292,7 @@ export async function CreateBlog(
 ) {
   try {
     setLoading(true);
-    const response = await axios.post(`${api}/blogs`, values);
+    const response = await api.post("/blogs", values);
     const data = response.data;
     toast.success(`${values.title} created successfully`);
     return data;
@@ -312,7 +311,7 @@ export async function CreateBlog(
 
 export async function GetBlog() {
   try {
-    const response = await axios.get(`${api}/blogs`);
+    const response = await api.get("/blogs");
     const data = response.data;
     return data;
   } catch (error: unknown) {
@@ -333,7 +332,7 @@ export async function UpdateBlog(
 ) {
   try {
     setLoading(true);
-    const response = await axios.put(`${api}/blogs/${id}`, values);
+    const response = await api.put(`/blogs/${id}`, values);
     const data = response.data;
     toast.success(`${values.title} updated successfully`);
     return data;
@@ -352,7 +351,7 @@ export async function UpdateBlog(
 
 export async function DeleteBlog(id: number) {
   try {
-    const response = await axios.delete(`${api}/blogs/${id}`);
+    const response = await api.delete(`/blogs/${id}`);
     const data = response.data;
     toast.success(`${data.title} deleted successfully`);
     return data;
@@ -373,7 +372,7 @@ export async function CreateTeam(
 ) {
   try {
     setLoading(true);
-    const response = await axios.post(`${api}/teams`, values);
+    const response = await api.post("/teams", values);
     const data = response.data;
     toast.success(`${values.name} created successfully`);
     return data;
@@ -392,7 +391,7 @@ export async function CreateTeam(
 
 export async function GetTeam() {
   try {
-    const response = await axios.get(`${api}/teams`);
+    const response = await api.get("/teams");
     const data = response.data;
     return data;
   } catch (error: unknown) {
@@ -413,7 +412,7 @@ export async function UpdateTeam(
 ) {
   try {
     setLoading(true);
-    const response = await axios.put(`${api}/teams/${id}`, values);
+    const response = await api.put(`/teams/${id}`, values);
     const data = response.data;
     toast.success(`${values.name} updated successfully`);
     return data;
@@ -432,7 +431,7 @@ export async function UpdateTeam(
 
 export async function DeleteTeam(id: number) {
   try {
-    const response = await axios.delete(`${api}/teams/${id}`);
+    const response = await api.delete(`/teams/${id}`);
     const data = response.data;
     toast.success(`${data.name} deleted successfully`);
     return data;
@@ -453,7 +452,7 @@ export async function CreatePartner(
 ) {
   try {
     setLoading(true);
-    const response = await axios.post(`${api}/partners`, values);
+    const response = await api.post("/partners", values);
     const data = response.data;
     toast.success(`${values.title} created successfully`);
     return data;
@@ -472,7 +471,7 @@ export async function CreatePartner(
 
 export async function GetPartner() {
   try {
-    const response = await axios.get(`${api}/partners`);
+    const response = await api.get("/partners");
     const data = response.data;
     return data;
   } catch (error: unknown) {
@@ -493,7 +492,7 @@ export async function UpdatePartner(
 ) {
   try {
     setLoading(true);
-    const response = await axios.put(`${api}/partners/${id}`, values);
+    const response = await api.put(`/partners/${id}`, values);
     const data = response.data;
     toast.success(`${values.title} updated successfully`);
     return data;
@@ -512,7 +511,7 @@ export async function UpdatePartner(
 
 export async function DeletePartner(id: number) {
   try {
-    const response = await axios.delete(`${api}/partners/${id}`);
+    const response = await api.delete(`/partners/${id}`);
     const data = response.data;
     toast.success(`${data.title} deleted successfully`);
     return data;
@@ -533,7 +532,7 @@ export async function CreateContact(
 ) {
   try {
     setLoading(true);
-    const response = await axios.post(`${api}/contacts`, values);
+    const response = await api.post("/contacts", values);
     const data = response.data;
     toast.success(`Message Sent successfully`);
     return data;
@@ -552,7 +551,7 @@ export async function CreateContact(
 
 export async function GetContact() {
   try {
-    const response = await axios.get(`${api}/contacts`);
+    const response = await api.get("/contacts");
     const data = response.data;
     return data;
   } catch (error: unknown) {
@@ -568,7 +567,7 @@ export async function GetContact() {
 
 export async function DeleteContact(id: number) {
   try {
-    const response = await axios.delete(`${api}/contacts/${id}`);
+    const response = await api.delete(`/contacts/${id}`);
     const data = response.data;
     toast.success(`Message deleted successfully`);
     return data;
@@ -589,7 +588,7 @@ export async function CreateTestimonial(
 ) {
   try {
     setLoading(true);
-    const response = await axios.post(`${api}/testimonials`, values);
+    const response = await api.post("/testimonials", values);
     const data = response.data;
     toast.success(`${values.name} created successfully`);
     return data;
@@ -608,7 +607,7 @@ export async function CreateTestimonial(
 
 export async function GetTestimonial() {
   try {
-    const response = await axios.get(`${api}/testimonials`);
+    const response = await api.get("/testimonials");
     const data = response.data;
     return data;
   } catch (error: unknown) {
@@ -629,7 +628,7 @@ export async function UpdateTestimonial(
 ) {
   try {
     setLoading(true);
-    const response = await axios.put(`${api}/testimonials/${id}`, values);
+    const response = await api.put(`/testimonials/${id}`, values);
     const data = response.data;
     toast.success(`${values.name} updated successfully`);
     return data;
@@ -648,7 +647,7 @@ export async function UpdateTestimonial(
 
 export async function DeleteTestimonial(id: number) {
   try {
-    const response = await axios.delete(`${api}/testimonials/${id}`);
+    const response = await api.delete(`/testimonials/${id}`);
     const data = response.data;
     toast.success(`${data.name} deleted successfully`);
     return data;
