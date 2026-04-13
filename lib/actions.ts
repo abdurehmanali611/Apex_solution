@@ -12,7 +12,7 @@ interface cloudinarySuccessResult {
 }
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api",
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "https://apex-backend-tdth.vercel.app/api",
 });
 
 const AUTH_COOKIE_NAME = "apex_admin_token";
@@ -53,7 +53,7 @@ async function refreshAccessToken() {
     }
 
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api"}/auth/token/refresh`,
+      `${process.env.NEXT_PUBLIC_API_URL || "https://apex-backend-tdth.vercel.app/api"}/auth/token/refresh`,
       { refresh: refreshToken }
     );
 
@@ -64,7 +64,6 @@ async function refreshAccessToken() {
     return access;
   } catch (error) {
     console.error("[token refresh failed]", error);
-    // Clear all tokens if refresh fails
     localStorage.removeItem("token");
     localStorage.removeItem("refresh");
     clearAuthCookie();
