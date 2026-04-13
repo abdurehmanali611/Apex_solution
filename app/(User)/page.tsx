@@ -42,7 +42,7 @@ interface blogs {
   title: string;
   description: string;
   source: string;
-  date: Date;
+  date: string;
   link: string;
 }
 

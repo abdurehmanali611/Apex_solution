@@ -11,7 +11,7 @@ export default function AdminLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
-      <main className="mx-auto flex min-h-screen max-w-[1700px] flex-col px-4 py-6">
+      <main className="mx-auto flex min-h-screen max-w-425 flex-col px-4 py-6">
         {children}
       </main>
     </div>
