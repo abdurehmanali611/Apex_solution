@@ -36,7 +36,7 @@ const Footer = ({ active, setActive }: FooterProps) => {
             <div className="flex flex-col md:flex-row items-center md:justify-between gap-10">
               <div className="flex flex-col gap-4 items-center">
                 <h2 className="text-[24px] font-bold font-serif bg-linear-to-r from-amber-500 to-orange-600 bg-clip-text text-transparent hover:from-orange-600 hover:to-amber-500 transition-all duration-300 drop-shadow-sm text-center">
-                    Accessible support, always
+                    Always accessible. Fully Supported
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 items-center gap-6">
                   {accessibility.map((item) => (
