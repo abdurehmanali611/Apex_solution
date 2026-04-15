@@ -119,7 +119,10 @@ export default function UserHome() {
               <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white dark:bg-slate-950 rounded-3xl overflow-hidden shadow-2xl border border-amber-100/50 dark:border-amber-900/20">
                 <div className="relative h-50 lg:h-full min-h-75">
                   <Image
-                    src={portfolio.image || "/assets/computer.jpg"}
+                    src={
+                      portfolio.image ||
+                      `${portfolio.type === "Website" ? "/assets/website.jpg" : portfolio.type === "Web App" || portfolio.type === "Digital System(SaaS)" ? "/assets/webapp.jpg" : portfolio.type === "Mobile App" ? "/assets/mobileapp.jpg" : portfolio.type === "Hotel and Hospitality Technology" ? "/assets/hotel.jpg" : "/assets/network.jpg"}`
+                    }
                     alt={portfolio.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"

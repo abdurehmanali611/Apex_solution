@@ -35,30 +35,30 @@ const Footer = ({ active, setActive }: FooterProps) => {
           <div className="flex flex-col gap-10 w-full mx-0">
             <div className="flex flex-col md:flex-row items-center md:justify-between gap-10">
               <div className="flex flex-col gap-4 items-center">
-                <h2 className="text-[21px] font-bold font-serif text-slate-700 dark:text-slate-300">
+                <h2 className="text-[24px] font-bold font-serif bg-linear-to-r from-amber-500 to-orange-600 bg-clip-text text-transparent hover:from-orange-600 hover:to-amber-500 transition-all duration-300 drop-shadow-sm text-center">
                   Our Accessibilities with Full Support
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 items-center gap-6">
                   {accessibility.map((item) => (
-                    <div key={item.id} className="flex items-center gap-3">
-                      <Icon icon="streamline-plump-color:location-pin-flat" />
-                      <h2 className="font-serif text-md">{item.name}</h2>
+                    <div key={item.id} className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-colors duration-200">
+                      <Icon icon="streamline-plump-color:location-pin-flat" className="text-amber-500" />
+                      <h2 className="font-serif text-md text-slate-600 dark:text-slate-300">{item.name}</h2>
                     </div>
                   ))}
                 </div>
               </div>
               <div>
-                <h2 className="text-[21px] font-bold font-serif text-slate-700 dark:text-slate-300 text-center">
+                <h2 className="text-[24px] font-bold font-serif bg-linear-to-r from-amber-500 to-orange-600 bg-clip-text text-transparent hover:from-orange-600 hover:to-amber-500 transition-all duration-300 drop-shadow-sm text-center">
                   Contact Us
                 </h2>
                 <div className="flex flex-row md:flex-col gap-4 mt-4 items-center">
-                  <div className="flex items-center gap-3">
-                    <Icon icon="streamline-flex-color:call-center-support-service-flat" />
-                    <Link className="font-serif text-md hover:underline" href="tel:+251930272975">+251 930 272 975</Link>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-colors duration-200">
+                    <Icon icon="streamline-flex-color:call-center-support-service-flat" className="text-amber-500" />
+                    <Link className="font-serif text-md text-slate-600 dark:text-slate-300 hover:text-amber-500 transition-colors duration-200 hover:underline" href="tel:+251930272975">+251 930 272 975</Link>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <Icon icon="streamline-flex-color:call-center-support-service-flat" />
-                    <Link className="font-serif text-md hover:underline" href="tel:+251935000642">+251 935 000 642</Link>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-colors duration-200">
+                    <Icon icon="streamline-flex-color:call-center-support-service-flat" className="text-amber-500" />
+                    <Link className="font-serif text-md text-slate-600 dark:text-slate-300 hover:text-amber-500 transition-colors duration-200 hover:underline" href="tel:+251935000642">+251 935 000 642</Link>
                   </div>
                 </div>
               </div>

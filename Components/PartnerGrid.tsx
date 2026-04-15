@@ -20,7 +20,7 @@ export default function PartnerGrid({ partners, screen }: ProjectProp) {
     <section className="w-full py-20">
       <div className="px-4 flex flex-col gap-12">
         <div className="text-center md:text-left">
-          <SectionHeader subtitle="Partners" title="Our Partners are..." />
+          <SectionHeader subtitle="Partners" title="Our Trusted Partners" />
         </div>
 
         {partners && partners.length > 0 && screen !== "Partner" && (

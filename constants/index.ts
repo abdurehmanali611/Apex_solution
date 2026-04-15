@@ -156,9 +156,8 @@ const defaultPortfolios = [
     description:
       "Bereket International Hotels' Hotel Display Website is one of our Great and exceptional project that we also as a company experienced a new way of thinking and problem solving skill.",
     type: "Website",
-    duration: 7,
-    image: "/assets/hotel-display.png",
-  },
+    duration: 7
+    },
   {
     id: 2,
     link: "https://hotcol.vercel.app/",
@@ -168,6 +167,7 @@ const defaultPortfolios = [
     type: "Digital System(SaaS)",
     duration: 20,
     version: 1,
+    special: true,
     image: "/assets/hotcol.png",
   },
   {
@@ -201,7 +201,7 @@ const defaultPortfolios = [
     id: 6,
     title: "Shuferoch Hotel",
     description:
-      "Shuferoch Hotel is one of Our Clients which we glad to work with them and we served them with 16-Channel NVR CCTV and Full Wi-Fi Design and Installation and we will continue to provide a value for the Future.",
+      "For Shuferoch Hotel, we installed a 16-channel NVR CCTV system and delivered a complete Wi-Fi network solution, and we continue to support their operations.",
     type: "Hotel and Hospitality Technology",
     duration: 7,
     image: "/assets/shuferoch.jpg",
@@ -210,7 +210,7 @@ const defaultPortfolios = [
     id: 7,
     title: "Alem Hotel",
     description:
-      "Alem Hotel is one of Our Clients which we glad to work with them and we served them with HikVision 32-Channel NVR CCTV Camera Installation and we will continue to provide a value for the Future.",
+      "Alem Hotel trusted us for a HikVision 32-channel NVR CCTV installation, and we remain committed to delivering ongoing value as their technology partner.",
     type: "Hotel and Hospitality Technology",
     duration: 7,
     image: "/assets/alem.jpg",
@@ -219,7 +219,7 @@ const defaultPortfolios = [
     id: 8,
     title: "Sono Hotel",
     description:
-      "Sono Hotel is one of Our Clients which we glad to work with them and we served them with 16-Channel NVR CCTV Camera Installation and configuration and full Wi-Fi design and installationwe will continue to provide a value for the Future.",
+      "Sono Hotel received a 16-channel NVR CCTV installation plus a full Wi-Fi design and setup, and we provided support for their future needs.",
     type: "Hotel and Hospitality Technology",
     duration: 7,
     image: "/assets/sono.jpg",
@@ -228,16 +228,15 @@ const defaultPortfolios = [
     id: 9,
     title: "Handakina Cafe and Pension",
     description:
-      "Here is One of other clients which we had a nice experience which got in contact for the installation of HikVision 4-Channel DVR and we Successfully accomplished it that gave a great joy for our client.",
+      "Handakina Cafe and Pension brought us in for a HikVision 4-channel DVR installation, and we completed the project successfully with a very satisfied client.",
     type: "Hotel and Hospitality Technology",
     duration: 3,
-    image: "/assets/handakina.jpg",
   },
   {
     id: 10,
     title: "Boez Cafe and Restaurant",
     description:
-      "Here is One of other clients which we had a nice experience which got in contact for the installation of 4-Channel NVR CCTV and we Successfully accomplished it that gave a great joy for our client.",
+      "Boez Cafe and Restaurant engaged us for a 4-channel NVR CCTV installation, which we delivered successfully and left the client pleased.",
     type: "Hotel and Hospitality Technology",
     duration: 2,
   },
@@ -245,34 +244,31 @@ const defaultPortfolios = [
     id: 11,
     title: "Ela Resort",
     description:
-      "Here is One of other clients which we had a nice experience which got in contact for digital door lock system and shared network resources and we Successfully accomplished it that gave a great joy for our client.",
+      "Ela Resort contracted us for a digital door lock system and shared network integration, and we delivered a robust solution to meet their needs.",
     type: "Hotel and Hospitality Technology",
     duration: 2,
-    image: "/assets/elaresort.jpg",
   },
   {
     id: 12,
     title: "Ilitro Hotel",
     description:
-      "Here is One of other clients which we had a nice experience which got in contact for digital door lock system and shared network resources and we Successfully accomplished it that gave a great joy for our client.",
+      "Ilitro Hotel engaged our team for digital access control and shared network resources, and we completed the installation to the client's satisfaction.",
     type: "Hotel and Hospitality Technology",
     duration: 2,
-    image: "/assets/ilitro.jpg",
   },
   {
     id: 13,
     title: "Hiwot Hospital",
     description:
-      "Here is One of other clients which we had a nice experience which got in contact for the Network Design and Implementation for Hospital Management System(HMS) and we Successfully accomplished it that gave a great joy for our client.",
+      "Hiwot Hospital chose us for network design and implementation supporting their Hospital Management System (HMS), and we delivered a secure, reliable solution.",
     type: "Network and Wi-Fi Infrastructure Projects",
     duration: 2,
-    image: "/assets/hiwot.jpg",
   },
   {
     id: 14,
     title: "Central Ethiopia President's Home",
     description:
-      "Here is One of other clients which we had a nice experience which got in contact for Secure wireless network Installation and we Successfully accomplished it that gave a great joy for our client.",
+      "We implemented a secure wireless network at the Central Ethiopia President's Home and completed the installation with precision.",
     type: "Network and Wi-Fi Infrastructure Projects",
     special: true,
     duration: 2,
@@ -281,7 +277,7 @@ const defaultPortfolios = [
     id: 15,
     title: "Central Ethiopia Region Plan & Design Office",
     description:
-      "Here is One of other clients which we had a nice experience which got in contact for Wi-Fi expansion and Infrastructure Upgrade and we Successfully accomplished it that gave a great joy for our client.",
+      "For the Central Ethiopia Region Plan & Design Office, we expanded Wi-Fi coverage and upgraded infrastructure with a successful rollout.",
     type: "Network and Wi-Fi Infrastructure Projects",
     special: true,
     duration: 3,
@@ -290,16 +286,15 @@ const defaultPortfolios = [
     id: 16,
     title: "Lechigogo Preparatory Schools",
     description:
-      "Here is One of other clients which we had a nice experience which got in contact for LAN Design and Installation and we Successfully accomplished it that gave a great joy for our client.",
+      "Lechigogo Preparatory Schools relied on us for LAN design and installation, and we delivered the project on schedule.",
     type: "Network and Wi-Fi Infrastructure Projects",
     duration: 7,
-    image: "/assets/lichgogo.jpg",
   },
   {
     id: 17,
     title: "Tesdika Pension(G+3)",
     description:
-      "Here is One of other clients which we had a nice experience which got in contact for structured Cabling and Wi-Fi expansion and we Successfully accomplished it that gave a great joy for our client.",
+      "Tesdika Pension asked us to install structured cabling and expand Wi-Fi coverage, and we carried out the upgrade successfully.",
     type: "Network and Wi-Fi Infrastructure Projects",
     duration: 2,
   },
@@ -307,7 +302,7 @@ const defaultPortfolios = [
     id: 18,
     title: "Dani Pension(G+4)",
     description:
-      "Here is One of other clients which we had a nice experience which got in contact for Full wireless network Implementation and we Successfully accomplished it that gave a great joy for our client.",
+      "Dani Pension engaged us for a full wireless network deployment, and we completed the installation with excellent results.",
     type: "Network and Wi-Fi Infrastructure Projects",
     duration: 2,
   },
@@ -315,7 +310,7 @@ const defaultPortfolios = [
     id: 19,
     title: "Shallom Pension(G+4)",
     description:
-      "Here is One of other clients which we had a nice experience which got in contact for the Network Design and Installation and we Successfully accomplished it that gave a great joy for our client.",
+      "Shallom Pension hired us for network design and installation, and we finished the project successfully with a satisfied client.",
     type: "Network and Wi-Fi Infrastructure Projects",
     duration: 2,
   },
@@ -323,7 +318,7 @@ const defaultPortfolios = [
     id: 20,
     title: "Lopiso Cafe & Pension(G+3)",
     description:
-      "Here is One of other clients which we had a nice experience which got in contact for End to End network and Wi-Fi Setup and we Successfully accomplished it that gave a great joy for our client.",
+      "Lopiso Cafe & Pension received a complete end-to-end network and Wi-Fi setup from our team, which we delivered successfully.",
     type: "Network and Wi-Fi Infrastructure Projects",
     duration: 2,
   },
@@ -331,10 +326,9 @@ const defaultPortfolios = [
     id: 21,
     title: "Asham Hotel",
     description:
-      "Here is One of other clients which we had a nice experience which got in contact for Wireless network Installation and we Successfully accomplished it that gave a great joy for our client.",
+      "Asham Hotel engaged us for wireless network installation, and we completed the work successfully with a happy client.",
     type: "Network and Wi-Fi Infrastructure Projects",
     duration: 1,
-    image: "/assets/asham.jpg",
   },
 ];
 
