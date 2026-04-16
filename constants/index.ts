@@ -455,7 +455,7 @@ const defaultTeamMembers = [
     position: "CoFounder and CTO",
     title: "The Invincible",
     description: "Source of Hard working and Passion",
-    facebook: "https://web.facebook.com/profile.php?id=100073479755802",
+    facebook: "https://github.com/abdurehmanali611",
     instagram: "https://www.instagram.com/abdurehman6252/",
     linkedin: "https://www.linkedin.com/in/abdurehman-ali-592238281/",
     telegram: "https://t.me/AbduWolf",

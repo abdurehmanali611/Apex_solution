@@ -55,7 +55,11 @@ export default function TeamItem({
           href={facebook}
           className="text-slate-400 hover:text-amber-500 transition-colors"
         >
-          <Icon icon="lucide:facebook" className="w-5 h-5" />
+          {facebook.startsWith("https://github.com") ? (
+            <Icon icon="lucide:github" className="w-5 h-5" />
+          ) : (
+            <Icon icon="lucide:facebook" className="w-5 h-5" />
+          )}
         </Link>
         <Link
           href={instagram}
