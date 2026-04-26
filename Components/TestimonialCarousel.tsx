@@ -4,7 +4,6 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import TestimonialItem from "./TestimonialItem";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -17,96 +16,50 @@ interface Testimonial {
   rating?: number;
 }
 
-interface TestimonialsCarouselProps {
-  testimonials: Testimonial[];
-}
-
-export default function TestimonialsCarousel({
-  testimonials,
-}: TestimonialsCarouselProps) {
-  if (!testimonials || testimonials.length === 0) {
-    return (
-      <div className="w-full bg-[#F8F9FA] py-12 md:py-20">
-        <div className="container mx-auto px-4 py-12 md:py-20">
-          <SectionHeader subtitle="Testimonial" />
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">
-              No testimonials available yet. Be the first to share your
-              experience!
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+export default function TestimonialsCarousel({ testimonials }: { testimonials: Testimonial[] }) {
+  if (!testimonials || testimonials.length === 0) return null;
 
   return (
-    <div className="px-2 py-4">
-      <SectionHeader subtitle="Testimonial" title="What Our Clients Say" />
+    <section className="section-padding px-6 bg-[#0D0D0D]">
+      <div className="max-w-7xl mx-auto">
+        <SectionHeader
+          subtitle="Testimonials"
+          title="What Our Clients Say"
+          description="Real feedback from real clients across Ethiopia."
+        />
+        <div className="relative">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={20}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            navigation={{ prevEl: ".t-prev", nextEl: ".t-next" }}
+            pagination={{ clickable: true, el: ".t-pagination" }}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            loop
+            className="pb-12!"
+          >
+            {testimonials.map((t, i) => (
+              <SwiperSlide key={i} className="h-auto">
+                <TestimonialItem {...t} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-      <div className="relative px-4 md:px-16 wow fadeIn" data-wow-delay="0.1s">
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={30}
-          slidesPerView={1}
-          breakpoints={{
-            640: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 30,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
-          }}
-          navigation={{
-            prevEl: ".testimonial-button-prev",
-            nextEl: ".testimonial-button-next",
-          }}
-          pagination={{
-            clickable: true,
-            el: ".testimonial-pagination",
-          }}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          loop={true}
-          className="testimonial-swiper pb-12!"
-        >
-          {testimonials.map((testimonial, index) => (
-            <SwiperSlide key={index} className="h-auto">
-              <TestimonialItem
-                image={testimonial.image}
-                name={testimonial.name}
-                profession={testimonial.profession}
-                content={testimonial.content}
-                rating={testimonial.rating}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+          <button className="t-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/8 flex items-center justify-center text-white hover:bg-blue-600 hover:border-blue-500 transition-all duration-200 cursor-pointer">
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button className="t-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/8 flex items-center justify-center text-white hover:bg-blue-600 hover:border-blue-500 transition-all duration-200 cursor-pointer">
+            <ChevronRight className="w-4 h-4" />
+          </button>
 
-        <button
-          className="testimonial-button-prev flex items-center justify-center absolute w-12 h-12 md:w-15 md:h-12 top-1/2 left-0 md:-left-4 -translate-y-1/2 transition-all duration-500 bg-green-500 text-[#0C1214] hover:bg-[#0C1214] hover:text-green-500 z-10 rounded cursor-pointer"
-          aria-label="Previous testimonial"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-        <button
-          className="testimonial-button-next flex items-center justify-center absolute w-12 h-12 md:w-15 md:h-12 top-1/2 right-0 md:-right-4 -translate-y-1/2 transition-all duration-500 bg-green-500 text-[#0C1214] hover:bg-[#0C1214] hover:text-green-500 z-10 rounded cursor-pointer"
-          aria-label="Next testimonial"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-
-        {/* Pagination */}
-        <div className="testimonial-pagination relative! bottom-0! mt-8 flex justify-center gap-2"></div>
+          <div className="t-pagination flex justify-center gap-2 mt-6" />
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

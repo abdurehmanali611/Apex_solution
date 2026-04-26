@@ -63,23 +63,24 @@ export default function BuilderDashboard() {
         <SidebarContent className="overflow-y-auto [&::-webkit-scrollbar]:hidden scrollbar-none p-4 bg-slate-950/95 rounded-[28px] shadow-[inset_0_0_0_1px_rgba(148,163,184,0.08)] ring-1 ring-slate-800/70">
           <SidebarGroup className="flex flex-col gap-8">
             <SidebarHeader className="flex flex-col gap-4">
-              <Button
-                variant="outline"
-                className="cursor-pointer w-full h-fit p-3 flex items-center gap-3 rounded-3xl border-slate-700/60 text-slate-100 shadow-sm shadow-slate-950/20"
-              >
-                <Avatar className="w-10 h-10">
-                  <Image
-                    src="/assets/logo.png"
-                    alt="Logo"
-                    fill
-                    loading="eager"
-                    className="object-cover"
-                  />
-                </Avatar>
-                <p className="text-lg font-serif">
-                  <span className="text-amber-500">Apex</span> Solutions
-                </p>
-              </Button>
+              <div className="flex items-center gap-3 p-3 rounded-2xl border border-white/8 bg-white/3">
+                <Image
+                  src="/apex-icon-amber.svg"
+                  alt="Apex Solution"
+                  width={36}
+                  height={36}
+                  className="w-9 h-9 rounded-xl"
+                  loading="eager"
+                />
+                <Image
+                  src="/apex-logo-dark-bg.svg"
+                  alt="Apex Solution"
+                  width={110}
+                  height={28}
+                  className="h-7 w-auto"
+                  loading="eager"
+                />
+              </div>
             </SidebarHeader>
             <SidebarGroupContent className="flex flex-col gap-2">
               <SidebarMenu className="flex flex-col gap-4">

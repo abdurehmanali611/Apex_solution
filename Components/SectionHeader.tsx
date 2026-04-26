@@ -3,30 +3,37 @@ interface SectionHeaderProps {
   title?: string;
   description?: string | null;
   className?: string;
-  maxWidth?: string;
+  align?: "left" | "center";
 }
 
-export default function SectionHeader({ 
-  subtitle = '',
-  title = '',
+export default function SectionHeader({
+  subtitle = "",
+  title = "",
   description = null,
-  className = '',
-  maxWidth = '700px'
+  className = "",
+  align = "center",
 }: SectionHeaderProps) {
+  const alignClass = align === "left" ? "text-left items-start" : "text-center items-center";
   return (
-    <div 
-      className={`text-center mx-auto mb-5 ${className}`}
-      style={{ maxWidth }}
-    >
-      <p className="text-xl font-serif capitalize text-amber-500 font-semibold">
-        {subtitle}
-      </p>
-      <h1 className="text-lg font-bold font-serif text-slate-700 dark:text-slate-300 my-5">
-        {title}
-      </h1>
+    <div className={`flex flex-col gap-3 mb-12 ${alignClass} ${className}`}>
+      {subtitle && (
+        <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-400">
+          <span className="w-6 h-px bg-blue-500" />
+          {subtitle}
+          <span className="w-6 h-px bg-blue-500" />
+        </span>
+      )}
+      {title && (
+        <h2
+          className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight"
+          style={{ fontFamily: "var(--font-jakarta), sans-serif", letterSpacing: "-0.02em" }}
+        >
+          {title}
+        </h2>
+      )}
       {description && (
-        <p 
-          className="mb-0"
+        <p
+          className="text-[#A1A1AA] text-base leading-relaxed max-w-2xl"
           dangerouslySetInnerHTML={{ __html: description }}
         />
       )}

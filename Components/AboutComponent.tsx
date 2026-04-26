@@ -1,116 +1,89 @@
-import Image from "next/image";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
-import { Button } from "./ui/button";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { ArrowRight, Target, Eye, Layers, Award, Brain, Sparkles } from "lucide-react";
 
-const AboutComponent = ({ show }: { show: boolean }) => {
-  const router = useRouter();
-  const listSpanStyle = "text-yellow-600 dark:text-yellow-500 text-sm leading-relaxed relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-amber-500 font-medium";
+const values = [
+  {
+    icon: Target,
+    title: "Our Mission",
+    text: "Design, deliver and support AI-augmented IT solutions that solve real business problems — combining deep technical expertise with intelligent automation to deliver outcomes that scale.",
+  },
+  {
+    icon: Eye,
+    title: "Our Vision",
+    text: "To become Africa's most trusted AI-powered technology partner — empowering businesses with intelligent, reliable and scalable digital solutions that drive efficiency and long-term growth.",
+  },
+  {
+    icon: Layers,
+    title: "Our Scope",
+    text: "End-to-end AI-integrated technology services: Smart Software & ERP, Intelligent Hotel Systems, IT Infrastructure, and AI Consulting. We own the full lifecycle.",
+  },
+  {
+    icon: Award,
+    title: "Our Quality",
+    text: "Every solution is AI-reviewed, security-hardened, and built to scale. We follow industry best practices and deliver on time — every time.",
+  },
+];
+
+export default function AboutComponent({ show }: { show: boolean }) {
   return (
-    <Card className="border-none shadow-xl overflow-hidden">
-      <CardHeader className="text-center space-y-2 pb-10">
-        <CardTitle className="text-amber-600 dark:text-amber-500 text-3xl font-bold tracking-tight">
-          About Us
-        </CardTitle>
-        <CardDescription className="text-slate-500 dark:text-slate-400 font-medium text-base uppercase tracking-widest">
-          Software Products and Tech Supports
-        </CardDescription>
-        <div className="h-1 w-20 bg-amber-500 mx-auto rounded-full" />
-      </CardHeader>
-      <CardContent>
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-12">
-          <div className="hidden lg:block w-full lg:w-1/2 relative group">
-            <div className="absolute -inset-1 bg-linear-to-r from-amber-500 to-yellow-400 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-            <Image
-              src="/assets/apex.png"
-              alt="Computer"
-              width={600}
-              height={600}
-              loading="eager"
-              className="relative rounded-xl object-cover shadow-2xl transition-transform duration-500 group-hover:scale-[1.01]"
-            />
-          </div>
-          <div className="w-full lg:w-1/2 flex flex-col gap-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
-              <div className="flex flex-col gap-3">
-                <h3 className="font-serif text-xl font-bold text-amber-600 dark:text-amber-500 border-b border-amber-100 dark:border-amber-900/50 pb-2">
-                  Our Mission
-                </h3>
-                <p className="font-serif text-slate-700 dark:text-slate-300 flex flex-col gap-3 text-sm leading-relaxed">
-                  Our Mission is to Design, Deliver and Support Practical IT and
-                  ERP Solutions that Solve real business problems. we Focus on:
-                  <span className={listSpanStyle}>Delivering dependable systems backed by real technical expertise</span>
-                  <span className={listSpanStyle}>Simplifying Operations through automation</span>
-                  <span className={listSpanStyle}>Enhancing decision-making with accurate Data</span>
-                </p>
-              </div>
+    <section className="section-padding px-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="flex flex-col gap-4 mb-14">
+          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-400">
+            <span className="w-6 h-px bg-blue-500" />
+            About Apex Solution
+            <span className="w-6 h-px bg-blue-500" />
+          </span>
+          <h2
+            className="text-3xl md:text-5xl font-bold text-white max-w-3xl leading-tight"
+            style={{ fontFamily: "var(--font-jakarta), sans-serif", letterSpacing: "-0.02em" }}
+          >
+            We Don&apos;t Just Build Systems —{" "}
+            <span className="gradient-text">We Engineer Intelligence Into Them.</span>
+          </h2>
+          <p className="text-[#A1A1AA] text-base leading-relaxed max-w-2xl mt-1">
+            Apex Solution is Ethiopia&apos;s AI-first technology company. With 10+ years of real-world experience, every solution we deliver — from hotel management systems to enterprise networks — is augmented with AI to be smarter, faster, and more resilient.
+          </p>
 
-              <div className="flex flex-col gap-3">
-                <h3 className="font-serif text-xl font-bold text-amber-600 dark:text-amber-500 border-b border-amber-100 dark:border-amber-900/50 pb-2">
-                  Our Vision
-                </h3>
-                <p className="font-serif text-slate-700 dark:text-slate-300 flex flex-col gap-4 text-sm leading-relaxed">
-                  To become a trusted technology partner in Africa, empowering businesses with smart,
-                  reliable and scalable digital solutions that drive efficiency, growth and long-term 
-                  success.
-                  <span className="text-amber-600 dark:text-amber-400 font-semibold italic text-center bg-amber-50 dark:bg-amber-950/30 p-3 rounded-lg border-l-4 border-amber-500">
-                    We Don&apos;t just Deploy Systems- <br /> 
-                    <span className="text-xs uppercase tracking-tighter opacity-80">We build foundations for the future</span>
-                  </span>
-                </p>
-              </div>
-
-              <div className={`flex flex-col gap-3 transition-all duration-500 ${show ? "hidden opacity-0" : "block opacity-100"}`}>
-                <h2 className="font-serif text-xl font-bold text-amber-600 dark:text-amber-500 border-b border-amber-100 dark:border-amber-900/50 pb-2">
-                  Our Scope
-                </h2>
-                <div className="font-serif text-slate-700 dark:text-slate-300 flex flex-col gap-2 text-sm">
-                  Apex Solution provides End-to-End technology services including: 
-                  <span className={listSpanStyle}>Software & ERP Solutions</span>
-                  <span className={listSpanStyle}>IT Infrastructure & Networking</span>
-                  <span className={listSpanStyle}>Support & Consultancy</span>
-                  <span className="text-amber-600 dark:text-amber-400 mt-4 italic font-medium">
-                    From Planning to Deployment- <br />
-                    <span className="text-xs font-bold underline decoration-amber-500/50">We Own the full lifeCycle</span>
-                  </span>
-                </div>
-              </div>
-
-              <div className={`flex flex-col gap-3 transition-all duration-500 ${show ? "hidden opacity-0" : "block opacity-100"}`}>
-                <h2 className="font-serif text-xl font-bold text-amber-600 dark:text-amber-500 border-b border-amber-100 dark:border-amber-900/50 pb-2">
-                  Our Quality
-                </h2>
-                <div className="font-serif text-slate-700 dark:text-slate-300 flex flex-col gap-2 text-sm">
-                  At Apex Solution, Quality is non-negotiable.
-                  <span className="text-red-600 dark:text-red-400 font-bold text-base mt-1">We are commited to:</span>
-                  <span className={listSpanStyle}>Delivering Reliable, Secure and Scalable Solutions</span>
-                  <span className={listSpanStyle}>Following industry best practices and standards</span>
-                  <span className={listSpanStyle}>Ensuring systems are tested, documented and Supported</span>
-                  <span className={listSpanStyle}>Meeting client requirements ontime and within Scope</span>
-                  <span className={listSpanStyle}>Continously improving through feedback and Innovation</span>
-                </div>
-              </div>
-            </div>
-
-            {show && (
-              <Button
-                className="mt-4 w-full md:w-max px-8 py-6 cursor-pointer bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl shadow-lg shadow-amber-500/20 transition-all hover:scale-105 active:scale-95 self-center"
-                onClick={() => router.push("/About")}
-              >
-                Learn More About Us
-              </Button>
-            )}
+          {/* AI badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/10 border border-blue-500/20 w-fit mt-1">
+            <Brain className="w-3.5 h-3.5 text-blue-400" />
+            <span className="text-xs font-semibold text-blue-300">AI as a Service — built into every engagement</span>
+            <Sparkles className="w-3 h-3 text-blue-400" />
           </div>
         </div>
-      </CardContent>
-    </Card>
-  );
-};
 
-export default AboutComponent;
+        {/* Values grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+          {values.map((v, idx) => (
+            <div key={idx} className="p-6 rounded-2xl bg-[#111111] border border-white/8 flex flex-col gap-4 hover:border-blue-500/20 transition-colors duration-200">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0">
+                  <v.icon className="w-5 h-5 text-blue-400" />
+                </div>
+                <h3 className="text-base font-semibold text-white" style={{ fontFamily: "var(--font-jakarta), sans-serif" }}>
+                  {v.title}
+                </h3>
+              </div>
+              <p className="text-sm text-[#71717A] leading-relaxed pl-1 border-l-2 border-blue-500/30">
+                {v.text}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {show && (
+          <div className="flex justify-center">
+            <Link
+              href="/About"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all duration-200 btn-shimmer hover:scale-105 active:scale-95"
+            >
+              Learn More About Us <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}

@@ -7,13 +7,13 @@ interface PartnerItemProps {
 
 export default function PartnerItem({ image, title }: PartnerItemProps) {
   return (
-    <div className="mx-4 my-2 group">
-      <div className="flex items-center gap-4 p-3 pr-8 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-amber-100 dark:border-amber-900/20 rounded-2xl shadow-sm hover:border-amber-500 transition-all duration-300">
-        <div className="relative h-10 w-10 transition-all duration-500">
-          <Image src={image} alt={title} fill className="object-contain" />
-        </div>
-        <span className="font-bold text-slate-700 dark:text-slate-300 whitespace-nowrap">{title}</span>
+    <div className="mx-4 flex items-center gap-3 px-5 py-3 rounded-xl bg-[#111111] border border-white/8 hover:border-blue-500/30 transition-all duration-200 group">
+      <div className="relative h-8 w-8 shrink-0">
+        <Image src={image} alt={title} fill className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
       </div>
+      <span className="text-sm font-medium text-[#71717A] group-hover:text-white transition-colors whitespace-nowrap">
+        {title}
+      </span>
     </div>
   );
 }

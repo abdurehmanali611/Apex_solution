@@ -1,40 +1,40 @@
 import BlogItem from "./BlogItem";
 import SectionHeader from "./SectionHeader";
 
-interface blog {
+interface Blog {
   image: string;
   title: string;
   description: string;
   source: string;
   date: string;
-  link: string
+  link: string;
+  category?: string;
 }
 
-interface blogProp {
-  blogs: blog[];
-}
-
-export default function BlogGrid({ blogs }: blogProp) {
+export default function BlogGrid({ blogs }: { blogs: Blog[] }) {
   return (
-    <div className="w-full py-12">
-      <div className="px-4 py-5 flex flex-col gap-5">
-        <SectionHeader subtitle="Blog" title="What's New in Tech World ?" />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 items-center sm:ml-10">
-          {blogs &&
-            blogs.length > 0 &&
-            blogs.map((blog: blog, idx: number) => (
-              <BlogItem
-                key={idx}
-                image={blog.image}
-                title={blog.title}
-                description={blog.description}
-                source={blog.source}
-                date={new Date(blog.date).toDateString()}
-                link={blog.link}
-              />
-            ))}
+    <section className="section-padding px-6">
+      <div className="max-w-7xl mx-auto">
+        <SectionHeader
+          subtitle="Insights"
+          title="What's New in Tech"
+          description="Ethiopian digital stories and global AI breakthroughs — curated to keep you ahead."
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {blogs.map((blog, idx) => (
+            <BlogItem
+              key={idx}
+              image={blog.image}
+              title={blog.title}
+              description={blog.description}
+              source={blog.source}
+              date={new Date(blog.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
+              link={blog.link}
+              category={blog.category}
+            />
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

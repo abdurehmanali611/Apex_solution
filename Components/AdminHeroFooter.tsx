@@ -8,7 +8,7 @@ import { heroPage } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "./ui/form";
 import CustomFormField, { formFieldTypes } from "./customFormField";
-import { HeroFooter, HeroFooterList, type HeroFooterItem } from "@/constants";
+import { defaultHeroFooter, HeroFooterList, type HeroFooterItem } from "@/constants";
 import { Button } from "./ui/button";
 import { HeroFooterUpdate } from "@/lib/actions";
 
@@ -25,7 +25,7 @@ const AdminHeroFooter = () => {
   });
 
   useEffect(() => {
-    setCurrentState(HeroFooter);
+    setCurrentState(defaultHeroFooter);
   }, []);
 
   const handleUpdate = async (values: z.infer<typeof heroPage>) => {

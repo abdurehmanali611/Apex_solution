@@ -15,6 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import Image from "next/image";
 import z from "zod";
 
 export default function Builder() {
@@ -40,7 +41,17 @@ export default function Builder() {
       <div className="w-89 max-w-lg rounded-[32px] border border-slate-800/90 bg-slate-900/95 p-8 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.7)] ring-1 ring-slate-700/80 h-fit">
         <Card className="bg-transparent border-0 shadow-none">
           <CardHeader className="space-y-3 text-center">
-            <CardTitle className="text-3xl text-slate-100">Apex Builder Login</CardTitle>
+            <div className="flex justify-center mb-2">
+              <Image
+                src="/apex-logo-stacked.svg"
+                alt="Apex Solution"
+                width={120}
+                height={83}
+                className="h-20 w-auto"
+                priority
+              />
+            </div>
+            <CardTitle className="text-3xl text-slate-100">Builder Login</CardTitle>
             <CardDescription className="text-slate-400">
               Sign in to manage backend content, update services, blogs, and site data.
             </CardDescription>

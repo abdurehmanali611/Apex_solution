@@ -1,41 +1,11 @@
-import { blogs, GetBlog, GetPartner, GetPortFolio, GetService, GetTeam, GetTestimonial, HeroFooterFetch, partner, portfolio, Services, teams, testimony } from "@/lib/actions";
-
 export const NavbarComponents = [
-  {
-    id: 1,
-    name: "Home",
-    link: "/",
-  },
-  {
-    id: 2,
-    name: "About Us",
-    link: "/About",
-  },
-  {
-    id: 3,
-    name: "Services",
-    link: "/Services",
-  },
-  {
-    id: 4,
-    name: "Portfolio",
-    link: "/Portfolio",
-  },
-  {
-    id: 5,
-    name: "Blog",
-    link: "/Blog",
-  },
-  {
-    id: 6,
-    name: "Partners",
-    link: "/Partners",
-  },
-  {
-    id: 7,
-    name: "Contact Us",
-    link: "/Contact",
-  },
+  { id: 1, name: "Home", link: "/" },
+  { id: 2, name: "About Us", link: "/About" },
+  { id: 3, name: "Services", link: "/Services" },
+  { id: 4, name: "Portfolio", link: "/Portfolio" },
+  { id: 5, name: "Blog", link: "/Blog" },
+  { id: 6, name: "Partners", link: "/Partners" },
+  { id: 7, name: "Contact Us", link: "/Contact" },
 ];
 
 export interface HeroFooterItem {
@@ -44,111 +14,86 @@ export interface HeroFooterItem {
   amount: number;
 }
 
-const fetchedHeroFooter = await HeroFooterFetch()
-const fetchedServices: Services[] = await GetService()
-const fetchedPortfolios: portfolio[] = await GetPortFolio()
-const fetchedBlogs: blogs[] = await GetBlog()
-const fetchedTeamMembers: teams[] = await GetTeam()
-const fetchedPartners: partner[] = await GetPartner()
-const fetchedTestimonials: testimony[] = await GetTestimonial()
-
-export const HeroFooter: HeroFooterItem[] = fetchedHeroFooter ?? [
-  {
-    id: 1,
-    name: "Experience",
-    amount: 10,
-  },
-  {
-    id: 2,
-    name: "Projects Done",
-    amount: 20,
-  },
-  {
-    id: 3,
-    name: "Happy Clients",
-    amount: 20,
-  },
+export const defaultHeroFooter: HeroFooterItem[] = [
+  { id: 1, name: "Years Experience", amount: 10 },
+  { id: 2, name: "Projects Done", amount: 50 },
+  { id: 3, name: "Happy Clients", amount: 20 },
 ];
 
-// Default Services data
-const defaultServices = [
+export const defaultServices = [
   {
     id: 1,
-    icon: "streamline-plump-color:browser-website-1",
-    title: "Website Development",
+    icon: "lucide:globe",
+    title: "AI-Powered Web Development",
     description:
-      "Developing an elegant and attractive website that truly represent you or your organization or team in the digital world.",
+      "We build intelligent websites and web apps with AI-driven personalization, smart search, automated content, and real-time analytics baked in from day one.",
   },
   {
     id: 2,
-    icon: "noto-v1:man-technologist",
-    title: "System Development",
+    icon: "lucide:layout-dashboard",
+    title: "Intelligent System Development",
     description:
-      "Developing and Enhancing not just a website or digital presence but also enhancing your revenue and profit to significant level/amount by building a digital system and/or working area.",
+      "Custom ERP and business systems enhanced with AI automation — predictive reporting, smart workflows, and decision-support dashboards that learn from your data.",
   },
   {
     id: 3,
-    icon: "carbon:application-mobile",
-    title: "Mobile App Development",
+    icon: "lucide:smartphone",
+    title: "AI Mobile App Development",
     description:
-      "Leverging up an income and customer satisfaction of your company or service by providing/building super enthusiastic and simple to use mobile application.",
+      "Mobile applications with embedded AI features — smart recommendations, voice interfaces, predictive UX, and real-time intelligence that elevates user experience.",
   },
   {
     id: 4,
-    icon: "material-symbols-light:tools-installation-kit-outline-sharp",
-    title: "Network Design and Installation",
+    icon: "lucide:network",
+    title: "Smart Network Design",
     description:
-      "LAN, WAN and Wi-Fi infrastructure, structured Cabling and wireless Optimization: Secure and Scalable designs for Hotels, Offices and Institutions.",
+      "AI-monitored LAN, WAN and Wi-Fi infrastructure with intelligent traffic management, anomaly detection, and automated optimization for hotels, offices and institutions.",
   },
   {
     id: 5,
-    icon: "noto-v1:hotel",
-    title: "Hotel Management System",
+    icon: "lucide:building-2",
+    title: "AI Hotel Management System",
     description:
-      "Local and web Based HMS Solutions for the Front Office, Back Office, reporting and operational Workflows with customizations based on the Hotel Size and Operation Style.",
+      "HMS solutions with AI-powered occupancy forecasting, automated guest communication, smart pricing, and operational intelligence for hotels of every size.",
   },
   {
     id: 6,
-    icon: "mdi:cctv",
-    title: "CCTV Surveillance Systems",
+    icon: "lucide:cctv",
+    title: "AI CCTV Surveillance",
     description:
-      "HikVision & enterprise-grade CCTV Solutions, NVR/DVR installation and configuration, Remote Monitoring and System Optimiztion.",
+      "Enterprise CCTV with AI-powered motion detection, facial recognition, behavioral analytics, and real-time alert systems — far beyond passive recording.",
   },
   {
     id: 7,
-    icon: "twemoji:door",
-    title: "Digital Door Lock Systems",
+    icon: "lucide:lock-keyhole",
+    title: "Smart Access Control",
     description:
-      "Hotel Smart Lock Installation, Software Activation, Card Programming and Access Control with Full Integration with Hotel Operations.",
+      "AI-integrated digital door lock systems with access pattern analytics, anomaly alerts, and seamless integration with hotel operations and security platforms.",
   },
   {
     id: 8,
-    icon: "streamline-plump-color:cog-automation",
-    title: "Custom Software and Automation Systems",
+    icon: "lucide:cpu",
+    title: "AI Automation & Custom Software",
     description:
-      "Building Up and Enhancing custom Softwares and system automations with enthusiastic business automation tools that has inventory and reporting systems.",
+      "Intelligent automation systems that eliminate repetitive work — AI-driven inventory management, reporting, scheduling, and business process optimization.",
   },
   {
     id: 9,
-    icon: "icon-park:laptop-computer",
-    title: "IT Support and System Maintainance",
+    icon: "lucide:shield-check",
+    title: "IT Support & AI Monitoring",
     description:
-      "Preventive and Corrective Maintainance for Servers, Networks and System TroubleShooting with Long-Term Support Contracts.",
+      "Proactive IT support powered by AI monitoring — predictive maintenance, automated incident detection, and intelligent troubleshooting before issues impact your business.",
   },
   {
     id: 10,
-    icon: "carbon:ibm-consulting-advantage-assistant",
-    title: "Tech Consulting",
+    icon: "lucide:lightbulb",
+    title: "AI Strategy & Tech Consulting",
     description:
-      "Proffessional, Elegant and Skilled IT Consulting Services with our incredible proffessionals for both Governmental and Non-Governmental Institutions",
+      "Expert AI adoption roadmaps, digital transformation strategy, and technology audits — helping Ethiopian businesses leverage AI to compete at a global level.",
   },
 ];
 
-// Static services data
-export const Service: Services[] = fetchedServices ? (defaultServices as Services[]).concat(fetchedServices) : defaultServices;
-
-// Default Portfolios data
-const defaultPortfolios = [
+export const defaultPortfolios = [
   {
     id: 1,
     link: "https://hotel-display-swart.vercel.app/",
@@ -156,8 +101,8 @@ const defaultPortfolios = [
     description:
       "Bereket International Hotels' Hotel Display Website is one of our Great and exceptional project that we also as a company experienced a new way of thinking and problem solving skill.",
     type: "Website",
-    duration: 7
-    },
+    duration: 7,
+  },
   {
     id: 2,
     link: "https://hotcol.vercel.app/",
@@ -332,48 +277,78 @@ const defaultPortfolios = [
   },
 ];
 
-// Concatenate fetched portfolios with default portfolios
-export const Portfolios: portfolio[] = fetchedPortfolios ? (defaultPortfolios as portfolio[]).concat(fetchedPortfolios) : defaultPortfolios;
-
-// Default Blogs data
-const defaultBlogs = [
+export const defaultBlogs = [
+  // ── Ethiopian Tech & Digital News ──────────────────────────
   {
     id: 1,
-    image: "/assets/blog-1.jpg",
-    title: "Artificial Intelligence in Everyday Applications",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+    title: "Ethiopia's Digital Economy Strategy: How the Country Is Leaping Into the AI Era",
     description:
-      "Artificial Intelligence is no longer limited to research labs. From smart assistants to recommendation systems, AI is transforming how we interact with technology in our daily lives.",
-    source: "TechCrunch",
-    date: "2025-01-15",
-    link: "https://techcrunch.com/category/artificial-intelligence/",
+      "Ethiopia's government has launched an ambitious Digital Economy Strategy targeting 50% internet penetration by 2030. With investments in fiber infrastructure, AI education, and tech hubs in Addis Ababa and regional cities, the country is positioning itself as East Africa's next digital powerhouse.",
+    source: "Addis Fortune",
+    date: "2024-11-08",
+    link: "https://addisfortune.com",
+    category: "Ethiopia",
   },
   {
     id: 2,
-    image: "/assets/blog-2.jpg",
-    title: "Why Modern Web Development Is Moving Toward Full-Stack Frameworks",
+    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&q=80",
+    title: "Ethiopian Startups Raise Record Funding as Fintech and AgriTech Lead the Charge",
     description:
-      "Frameworks like Next.js, Nuxt, and Remix are reshaping web development by combining frontend and backend capabilities into a single, efficient workflow.",
-    source: "Medium",
-    date: "2025-02-03",
-    link: "https://medium.com/@mdburkee/the-evolution-of-full-stack-frameworks-960bec2bd5e0",
+      "Ethiopian tech startups secured over $120M in funding, with fintech platforms like Telebirr expanding to 40M+ users and AgriTech solutions transforming smallholder farming. The ecosystem is maturing fast — and AI is at the center of every breakthrough.",
+    source: "Disrupt Africa",
+    date: "2024-09-14",
+    link: "https://disrupt-africa.com",
+    category: "Ethiopia",
   },
   {
     id: 3,
-    image: "/assets/blog-3.webp",
-    title: "Cybersecurity Trends Every Developer Should Know in 2025",
+    image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80",
+    title: "Hotel Technology Revolution: How Ethiopian Hospitality Is Going Digital",
     description:
-      "With the rise of cloud computing and remote work, cybersecurity has become a critical concern. This article explores key trends like zero-trust architecture and secure authentication.",
-    source: "The Verge",
-    date: "2025-03-10",
-    link: "https://www.theverge.com/23410990/cybersecurity-ransomware-healthcare-data-hipaa-hospitals",
+      "From Addis Ababa's five-star hotels to regional lodges in Hossana and Hawassa, Ethiopian hospitality businesses are adopting smart HMS platforms, AI-powered guest management, and integrated CCTV systems — transforming the guest experience and operational efficiency.",
+    source: "Ethiopian Business Review",
+    date: "2024-07-22",
+    link: "https://ethiopianbusinessreview.net",
+    category: "Ethiopia",
+  },
+  // ── Global Digital & AI News ────────────────────────────────
+  {
+    id: 4,
+    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
+    title: "The Age of Agentic AI: How Autonomous AI Systems Are Reshaping Enterprise Software",
+    description:
+      "Agentic AI — systems that plan, reason, and act autonomously — is moving from research labs into production. From automated code generation to self-healing infrastructure, enterprises are deploying AI agents that work 24/7 without human intervention. Here's what it means for your business.",
+    source: "MIT Technology Review",
+    date: "2024-12-03",
+    link: "https://technologyreview.com",
+    category: "Global",
+  },
+  {
+    id: 5,
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+    title: "Smart Buildings & AI Networks: The Infrastructure Powering the Next Decade",
+    description:
+      "AI-managed networks are no longer a luxury — they're a necessity. From predictive bandwidth allocation to zero-trust security architectures, intelligent network infrastructure is becoming the backbone of every modern hotel, hospital, and enterprise.",
+    source: "Network World",
+    date: "2024-10-17",
+    link: "https://networkworld.com",
+    category: "Global",
+  },
+  {
+    id: 6,
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
+    title: "AI in Surveillance: Computer Vision Is Transforming Security Systems Worldwide",
+    description:
+      "Modern CCTV is no longer passive recording. AI-powered computer vision now enables real-time threat detection, crowd analytics, license plate recognition, and behavioral anomaly alerts. The global smart surveillance market is projected to hit $75B by 2028 — and Africa is catching up fast.",
+    source: "TechCrunch",
+    date: "2024-08-29",
+    link: "https://techcrunch.com",
+    category: "Global",
   },
 ];
 
-// LIFO (Last In First Out) for blogs - fetched blogs come first, then default blogs
-export const Blogs = fetchedBlogs ? fetchedBlogs.concat(defaultBlogs) : defaultBlogs;
-
-// Default Testimonial data
-const defaultTestimonial = [
+export const defaultTestimonials = [
   {
     id: 1,
     name: "Mr. Abraham",
@@ -403,11 +378,7 @@ const defaultTestimonial = [
   },
 ];
 
-// Concatenate fetched testimonials with default testimonials
-export const Testimonial = fetchedTestimonials ? defaultTestimonial.concat(fetchedTestimonials) : defaultTestimonial;
-
-// Default Partner data
-const defaultPartner = [
+export const defaultPartners = [
   {
     id: 1,
     image: "/assets/partner-1.jpg",
@@ -431,202 +402,96 @@ const defaultPartner = [
   },
 ];
 
-// Concatenate fetched partners with default partners
-export const Partner = fetchedPartners ? defaultPartner.concat(fetchedPartners) : defaultPartner;
-
-// Default Team Members data
-const defaultTeamMembers = [
+export const defaultTeamMembers = [
   {
     id: 1,
     image: "/assets/ceo.jpg",
     name: "Atlabachew Tadese",
-    position: "CoFounder and CEO",
+    position: "CoFounder & CEO",
     title: "The Founder",
     description: "Leader of Greatness and Success",
-    facebook: "https://web.facebook.com/atlabachwu.tadesse?rdid=ifJ8ODEsgk9GGUyS&share_url=https%3A%2F%2Fweb.facebook.com%2Fshare%2F18aQKFHDHV%2F%3F_rdc%3D1%26_rdr#",
+    facebook:
+      "https://web.facebook.com/atlabachwu.tadesse?rdid=ifJ8ODEsgk9GGUyS&share_url=https%3A%2F%2Fweb.facebook.com%2Fshare%2F18aQKFHDHV%2F%3F_rdc%3D1%26_rdr#",
     instagram: "https://www.instagram.com/atlawu_/",
     linkedin: "https://www.linkedin.com/in/atile-networkengineer/",
     telegram: "https://t.me/Yodahe_Enat",
+    portfolio: "https://5d9a0d16.mydala.app/",
   },
   {
     id: 2,
     image: "/assets/cto.jpg",
     name: "Abdurehman Ali",
-    position: "CoFounder and CTO",
+    position: "CoFounder & CTO",
     title: "The Invincible",
     description: "Source of Hard working and Passion",
     facebook: "https://github.com/abdurehmanali611",
     instagram: "https://www.instagram.com/abdurehman6252/",
     linkedin: "https://www.linkedin.com/in/abdurehman-ali-592238281/",
     telegram: "https://t.me/AbduWolf",
-  },
-];
-
-// Concatenate fetched team members with default team members
-export const teamMembers = fetchedTeamMembers ? defaultTeamMembers.concat(fetchedTeamMembers) : defaultTeamMembers;
-
-export const footerLink = [
-  {
-    id: 1,
-    icon: "skill-icons:gmail-dark",
-    link: "",
-  },
-  {
-    id: 2,
-    icon: "skill-icons:linkedin",
-    link: "",
+    portfolio: "",
   },
   {
     id: 3,
-    icon: "logos:telegram",
-    link: "",
-  },
-  {
-    id: 4,
-    icon: "skill-icons:github-dark",
-    link: "",
-  },
-  {
-    id: 5,
-    icon: "logos:tiktok-icon",
-    link: "",
-  },
-  {
-    id: 6,
-    icon: "logos:youtube-icon",
-    link: "",
+    image: "/teddy.jpg",
+    name: "Tewodros Million",
+    position: "Technical Project Manager & AI Solutions Lead",
+    title: "The Architect",
+    description: "Bridging strategy and execution through AI-driven solutions and precision project delivery.",
+    facebook: "https://www.facebook.com/tewodros.million",
+    instagram: "https://www.instagram.com/tewodros.million",
+    linkedin: "https://www.linkedin.com/in/tewodros-million",
+    telegram: "https://t.me/tewodrosmillion",
+    portfolio: "https://professional-portfolio-nine-hazel.vercel.app/",
   },
 ];
+
+export const footerLinks = [
+  { id: 1, label: "Email",    link: "mailto:apexsolution@gmail.com",                        icon: "mail" },
+  { id: 2, label: "LinkedIn", link: "https://www.linkedin.com/company/apex-solution-et",    icon: "linkedin" },
+  { id: 3, label: "Telegram", link: "https://t.me/ApexSolutionET",                          icon: "send" },
+  { id: 4, label: "GitHub",   link: "https://github.com/apex-solution",                    icon: "github" },
+  { id: 5, label: "TikTok",   link: "https://www.tiktok.com/@apexsolution",                icon: "music-2" },
+  { id: 6, label: "YouTube",  link: "https://www.youtube.com/@ApexSolution",               icon: "youtube" },
+];
+
+// Keep old name for backward compat
+export const footerLink = footerLinks;
 
 export const AdminList = [
-  {
-    id: 1,
-    name: "Dashboard",
-    icon: "streamline-sharp-color:dashboard-circle",
-  },
-  {
-    id: 2,
-    name: "Update Password",
-    icon: "mdi:lock-outline",
-  },
-  {
-    id: 3,
-    name: "HeroFooter",
-    icon: "fluent-mdl2:completed",
-  },
-  {
-    id: 4,
-    name: "Services",
-    icon: "flat-color-icons:services",
-  },
-  {
-    id: 5,
-    name: "Portfolios",
-    icon: "dashicons:portfolio",
-  },
-  {
-    id: 6,
-    name: "Blogs",
-    icon: "streamline-ultimate-color:blogger-logo",
-  },
-  {
-    id: 7,
-    name: "Team Members",
-    icon: "fluent-color:people-team-48",
-  },
-  {
-    id: 8,
-    name: "Partners",
-    icon: "carbon:partnership",
-  },
-  {
-    id: 9,
-    name: "Contact Messages",
-    icon: "flat-color-icons:contacts",
-  },
-  {
-    id: 10,
-    name: "Testimonials",
-    icon: "dashicons:testimonial",
-  },
+  { id: 1, name: "Dashboard", icon: "streamline-sharp-color:dashboard-circle" },
+  { id: 2, name: "Update Password", icon: "mdi:lock-outline" },
+  { id: 3, name: "HeroFooter", icon: "fluent-mdl2:completed" },
+  { id: 4, name: "Services", icon: "flat-color-icons:services" },
+  { id: 5, name: "Portfolios", icon: "dashicons:portfolio" },
+  { id: 6, name: "Blogs", icon: "streamline-ultimate-color:blogger-logo" },
+  { id: 7, name: "Team Members", icon: "fluent-color:people-team-48" },
+  { id: 8, name: "Partners", icon: "carbon:partnership" },
+  { id: 9, name: "Contact Messages", icon: "flat-color-icons:contacts" },
+  { id: 10, name: "Testimonials", icon: "dashicons:testimonial" },
 ];
 
 export const HeroFooterList = [
-  {
-    id: 1,
-    name: "Experience",
-    icon: "mdi:briefcase-account",
-  },
-  {
-    id: 2,
-    name: "Projects Done",
-    icon: "mdi:flag-checkered",
-  },
-  {
-    id: 3,
-    name: "Happy Clients",
-    icon: "mdi:emoticon-happy-outline",
-  },
+  { id: 1, name: "Experience", icon: "mdi:briefcase-account" },
+  { id: 2, name: "Projects Done", icon: "mdi:flag-checkered" },
+  { id: 3, name: "Happy Clients", icon: "mdi:emoticon-happy-outline" },
 ];
 
 export const portFolioTypes = [
-  {
-    id: 1,
-    name: "Website",
-  },
-  {
-    id: 2,
-    name: "Web App",
-  },
-  {
-    id: 3,
-    name: "Digital System(SaaS)",
-  },
-  {
-    id: 4,
-    name: "Mobile App",
-  },
-  {
-    id: 5,
-    name: "Hotel and Hospitality Technology",
-  },
-  {
-    id: 6,
-    name: "Network and Wi-Fi infrastructure Projects",
-  },
+  { id: 1, name: "Website" },
+  { id: 2, name: "Web App" },
+  { id: 3, name: "Digital System(SaaS)" },
+  { id: 4, name: "Mobile App" },
+  { id: 5, name: "Hotel and Hospitality Technology" },
+  { id: 6, name: "Network and Wi-Fi infrastructure Projects" },
 ];
 
 export const accessibility = [
-  {
-    id: 1,
-    name: "Addis Ababa",
-  },
-  {
-    id: 2,
-    name: "Hossana",
-  },
-  {
-    id: 3,
-    name: "Bahir Dar",
-  },
-  {
-    id: 4,
-    name: "Butajira",
-  },
-  {
-    id: 5,
-    name: "Wolkite",
-  },
-  {
-    id: 6,
-    name: "Jimma",
-  },
-  {
-    id: 7,
-    name: "Gambella",
-  },
-  {
-    id: 8,
-    name: "Hawassa",
-  },
+  { id: 1, name: "Addis Ababa" },
+  { id: 2, name: "Hossana" },
+  { id: 3, name: "Bahir Dar" },
+  { id: 4, name: "Butajira" },
+  { id: 5, name: "Wolkite" },
+  { id: 6, name: "Jimma" },
+  { id: 7, name: "Gambella" },
+  { id: 8, name: "Hawassa" },
 ];

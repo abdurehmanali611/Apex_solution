@@ -1,22 +1,52 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/Components/theme-provider";
 import { Toaster } from "sonner";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Apex Solution",
-  description: "Apex Code Creators and Tech Solutions",
+  title: {
+    default: "Apex Solution — Software & Tech Support",
+    template: "%s | Apex Solution",
+  },
+  description:
+    "Apex Solution delivers reliable software development, hotel technology, networking, CCTV, and IT consulting services across Ethiopia.",
+  keywords: [
+    "Apex Solution",
+    "software development Ethiopia",
+    "hotel management system",
+    "CCTV installation",
+    "IT consulting",
+    "network installation",
+    "Hossana",
+    "Addis Ababa",
+  ],
+  icons: {
+    icon: [
+      { url: "/apex-favicon-32.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apex-icon-amber.svg",
+  },
+  openGraph: {
+    title: "Apex Solution — Software & Tech Support",
+    description:
+      "Reliable software, hotel tech, networking, and IT consulting across Ethiopia.",
+    type: "website",
+    locale: "en_US",
+  },
 };
 
 export default function RootLayout({
@@ -25,14 +55,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${jakarta.variable} ${inter.variable} antialiased bg-[#0A0A0A] text-white`}
+        style={{ fontFamily: "var(--font-inter), sans-serif" }}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          {children}
-          <Toaster richColors position="top-right"/>
-        </ThemeProvider>
+        {children}
+        <Toaster
+          richColors
+          position="top-right"
+          toastOptions={{
+            style: {
+              background: "#111111",
+              border: "1px solid rgba(255,255,255,0.08)",
+              color: "#FAFAFA",
+            },
+          }}
+        />
       </body>
     </html>
   );

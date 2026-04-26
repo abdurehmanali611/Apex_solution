@@ -7,31 +7,27 @@ interface Service {
   description: string;
 }
 
-interface ServiceProps {
-  services: Service[];
-}
-
-export default function ServiceGrid({ services }: ServiceProps) {
+export default function ServiceGrid({ services }: { services: Service[] }) {
   return (
-    <div className="w-full py-5">
-      <div className="px-4 py-5 flex flex-col gap-5">
+    <section className="section-padding px-6">
+      <div className="max-w-7xl mx-auto">
         <SectionHeader
-          subtitle="Services"
-          title="Our Software and Tech Deliverables"
+          subtitle="What We Do"
+          title="Our Services"
+          description="From software to infrastructure — we deliver end-to-end technology solutions that drive real business results."
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-6 md:gap-10 lg:gap-6 mt-8 items-center">
-          {services &&
-            services.length > 0 &&
-            services.map((service: Service, idx: number) => (
-              <ServiceItem
-                key={idx}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-              />
-            ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {services.map((service, idx) => (
+            <ServiceItem
+              key={idx}
+              icon={service.icon}
+              title={service.title}
+              description={service.description}
+              index={idx}
+            />
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

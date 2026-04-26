@@ -1,0 +1,22 @@
+<svg width="320" height="80" viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="80" rx="12" fill="#0D1B30"/>
+  <defs>
+    <linearGradient id="wG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#D0DDED"/>
+    </linearGradient>
+    <linearGradient id="amberG2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F5A623"/>
+      <stop offset="100%" stop-color="#E8940F"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(16,8)">
+    <polygon points="32,0 0,60 14,60 32,22 50,60 64,60" fill="url(#wG)"/>
+    <polygon points="32,30 24,60 40,60" fill="url(#amberG2)" opacity="0.95"/>
+    <rect x="8" y="45" width="48" height="4" rx="2" fill="url(#amberG2)"/>
+    <circle cx="56" cy="9" r="4" fill="url(#amberG2)"/>
+    <line x1="56" y1="9" x2="63" y2="21" stroke="#F5A623" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+  <text x="104" y="44" font-family="'Outfit','Segoe UI',sans-serif" font-weight="800" font-size="34" fill="#FFFFFF" letter-spacing="-0.5">Apex</text>
+  <text x="105" y="62" font-family="'Outfit','Segoe UI',sans-serif" font-weight="400" font-size="13" fill="#F5A623" letter-spacing="4.5">SOLUTION</text>
+</svg>

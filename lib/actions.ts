@@ -63,7 +63,7 @@ async function refreshAccessToken() {
     api.defaults.headers.common["Authorization"] = `Bearer ${access}`;
     return access;
   } catch (error) {
-    console.error("[token refresh failed]", error);
+    void error;
     localStorage.removeItem("token");
     localStorage.removeItem("refresh");
     clearAuthCookie();
@@ -88,10 +88,6 @@ api.interceptors.request.use((config) => {
 
 api.interceptors.response.use(
   (response) => {
-    console.log("[api response]", {
-      status: response.status,
-      url: `${response.config.baseURL}${response.config.url}`,
-    });
     return response;
   },
   async (error) => {
@@ -113,11 +109,6 @@ api.interceptors.response.use(
       }
     }
 
-    console.error("[api error]", {
-      status: error.response?.status,
-      url: `${error.config?.baseURL ?? ""}${error.config?.url ?? ""}`,
-      data: error.response?.data,
-    });
     return Promise.reject(error);
   },
 );
@@ -315,11 +306,6 @@ export async function LoginUser(
     setLoading(true);
     const response = await api.post("/auth/login", values);
     const { token, refresh } = response.data;
-    console.log("[login success]", {
-      username: values?.username,
-      hasToken: Boolean(token),
-      hasRefresh: Boolean(refresh),
-    });
     localStorage.setItem("token", token);
     localStorage.setItem("refresh", refresh);
     setAuthCookie(token);
@@ -333,10 +319,6 @@ export async function LoginUser(
     } else if (error instanceof Error) {
       errorMessage = error.message;
     }
-    console.error("[login failure]", {
-      username: values?.username,
-      errorMessage,
-    });
     toast.error(`${errorMessage}`);
   } finally {
     setLoading(false);
@@ -352,7 +334,7 @@ export async function LogoutUser(router: AppRouterInstance) {
     router.push("/Builder");
     toast.success("Logged out successfully");
   } catch (error) {
-    console.error("[logout error]", error);
+    void error;
     toast.error("Error during logout");
   }
 }

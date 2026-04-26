@@ -1,15 +1,6 @@
 import Image from "next/image";
-import { Avatar } from "./ui/avatar";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
-import { Icon } from "@iconify/react";
 import Link from "next/link";
+import { Github, Facebook, Instagram, Linkedin, Send, ExternalLink } from "lucide-react";
 
 interface TeamItemProps {
   image: string;
@@ -21,65 +12,98 @@ interface TeamItemProps {
   instagram: string;
   linkedin: string;
   telegram: string;
+  portfolio?: string;
+  objectPosition?: string;
 }
 
 export default function TeamItem({
-  image,
-  name,
-  position,
-  title,
-  description,
-  facebook,
-  instagram,
-  linkedin,
-  telegram,
+  image, name, position, title, description,
+  facebook, instagram, linkedin, telegram, portfolio,
+  objectPosition = "center",
 }: TeamItemProps) {
+  const socials = [
+    { href: facebook, icon: facebook.includes("github") ? Github : Facebook, label: "Facebook" },
+    { href: instagram, icon: Instagram, label: "Instagram" },
+    { href: linkedin, icon: Linkedin, label: "LinkedIn" },
+    { href: telegram, icon: Send, label: "Telegram" },
+  ];
+
   return (
-    <Card className="w-80 border-amber-100 dark:border-amber-900/20 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm group hover:-translate-y-2 transition-all duration-300">
-      <CardHeader className="flex flex-col items-center">
-        <div className="relative p-1 rounded-full border-2 border-amber-500/20 group-hover:border-amber-500 transition-colors duration-500">
-          <Avatar className="w-24 h-24">
-            <Image src={image} alt={name} fill className="object-cover" />
-          </Avatar>
+    <div className="group relative rounded-3xl bg-[#111111] border border-white/8 overflow-hidden transition-all duration-300 hover:border-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/5">
+
+      {/* Photo — taller, full bleed */}
+      <div className="relative h-72 overflow-hidden">
+        <Image
+          src={image}
+          alt={name}
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          style={{ objectPosition }}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/40 to-transparent" />
+
+        {/* Title badge — top right */}
+        <div className="absolute top-4 right-4">
+          <span className="px-3 py-1 rounded-full bg-blue-600/80 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-widest">
+            {title}
+          </span>
         </div>
-        <CardTitle className="mt-4 text-lg font-bold">{name}</CardTitle>
-        <CardDescription className="text-amber-600 dark:text-amber-500 font-bold text-xs uppercase tracking-tighter">
-          {position} — {title}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="text-center font-serif text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-        {description}
-      </CardContent>
-      <CardFooter className="flex gap-4 justify-center border-t border-amber-50 dark:border-amber-900/10">
-        <Link
-          href={facebook}
-          className="text-slate-400 hover:text-amber-500 transition-colors"
-        >
-          {facebook.startsWith("https://github.com") ? (
-            <Icon icon="lucide:github" className="w-5 h-5" />
-          ) : (
-            <Icon icon="lucide:facebook" className="w-5 h-5" />
-          )}
-        </Link>
-        <Link
-          href={instagram}
-          className="text-slate-400 hover:text-amber-500 transition-colors"
-        >
-          <Icon icon="lucide:instagram" className="w-5 h-5" />
-        </Link>
-        <Link
-          href={linkedin}
-          className="text-slate-400 hover:text-amber-500 transition-colors"
-        >
-          <Icon icon="lucide:linkedin" className="w-5 h-5" />
-        </Link>
-        <Link
-          href={telegram}
-          className="text-slate-400 hover:text-amber-500 transition-colors"
-        >
-          <Icon icon="lucide:send" className="w-5 h-5" />
-        </Link>
-      </CardFooter>
-    </Card>
+      </div>
+
+      {/* Content */}
+      <div className="p-6 flex flex-col gap-4">
+        {/* Name + position */}
+        <div>
+          <h3
+            className="text-lg font-bold text-white leading-tight"
+            style={{ fontFamily: "var(--font-jakarta), sans-serif" }}
+          >
+            {name}
+          </h3>
+          <p className="text-xs text-blue-400 font-semibold mt-1 leading-snug">{position}</p>
+        </div>
+
+        {/* Description */}
+        <p className="text-xs text-[#71717A] leading-relaxed border-l-2 border-blue-500/30 pl-3">
+          {description}
+        </p>
+
+        {/* Portfolio CTA */}
+        {portfolio ? (
+          <Link
+            href={portfolio}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-300 text-xs font-semibold hover:bg-blue-600 hover:text-white hover:border-blue-500 transition-all duration-200 w-full justify-center group/btn"
+          >
+            <ExternalLink className="w-3.5 h-3.5" />
+            View Portfolio
+            <span className="ml-auto opacity-0 group-hover/btn:opacity-100 transition-opacity">→</span>
+          </Link>
+        ) : (
+          <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/3 border border-white/5 text-[#71717A] text-xs font-medium w-full justify-center">
+            Portfolio coming soon
+          </div>
+        )}
+
+        {/* Social links */}
+        <div className="flex items-center gap-2 pt-1 border-t border-white/5">
+          {socials.map((s, i) => (
+            <Link
+              key={i}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={s.label}
+              className="w-8 h-8 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center text-[#71717A] hover:text-white hover:bg-blue-600/20 hover:border-blue-500/30 transition-all duration-200"
+            >
+              <s.icon className="w-3.5 h-3.5" />
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }

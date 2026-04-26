@@ -1,15 +1,8 @@
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
-import { Badge } from "./ui/badge";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight, Clock } from "lucide-react";
 
-interface PortfolioItem {
+interface PortfolioItemProps {
   link?: string;
   title: string;
   type: string;
@@ -19,73 +12,74 @@ interface PortfolioItem {
   version?: number;
 }
 
-export default function PortfolioItem({
-  link,
-  title,
-  type,
-  description,
-  duration,
-  image,
-  version,
-}: PortfolioItem) {
-  const writtenDuration =
-    duration >= 30 ? `${Math.floor(duration / 30)} months` : `${duration} days`;
+const typeImageMap: Record<string, string> = {
+  Website: "/assets/website.jpg",
+  "Web App": "/assets/webapp.jpg",
+  "Digital System(SaaS)": "/assets/webapp.jpg",
+  "Mobile App": "/assets/mobileapp.jpg",
+  "Hotel and Hospitality Technology": "/assets/hotel.jpg",
+};
 
-  return (
-    <Card className="overflow-hidden border-none shadow-lg bg-white dark:bg-slate-900 group">
-      <div className="relative h-48 w-full overflow-hidden">
+export default function PortfolioItem({ link, title, type, description, duration, image, version }: PortfolioItemProps) {
+  const src = image || typeImageMap[type] || "/assets/network.jpg";
+  const durationLabel = duration >= 30 ? `${Math.floor(duration / 30)}mo` : `${duration}d`;
+
+  const content = (
+    <div className="group relative rounded-2xl overflow-hidden bg-[#111111] border border-white/8 card-hover h-full">
+      {/* Image */}
+      <div className="relative h-48 overflow-hidden">
         <Image
-          src={
-            image ||
-            `${type === "Website" ? "/assets/website.jpg" : type === "Web App" || type === "Digital System(SaaS)" ? "/assets/webapp.jpg" : type === "Mobile App" ? "/assets/mobileapp.jpg" : type === "Hotel and Hospitality Technology" ? "/assets/hotel.jpg" : "/assets/network.jpg"}`
-          }
+          src={src}
           alt={title}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          sizes="(max-width: 640px) 100vw, 50vw"
         />
-        <div className="absolute top-3 left-3 flex items-center justify-between w-full px-5">
-          <Badge className="bg-amber-500 hover:bg-amber-600">{type}</Badge>
-          {version && (
-            <Badge
-              variant="outline"
-              className="bg-amber-500 backdrop-blur-md text-black"
-            >
-              v{version}
-            </Badge>
-          )}
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent" />
+        {/* Type badge */}
+        <div className="absolute top-3 left-3">
+          <span className="px-2.5 py-1 rounded-lg bg-blue-600/90 backdrop-blur-sm text-white text-xs font-semibold">
+            {type}
+          </span>
         </div>
+        {version && (
+          <div className="absolute top-3 right-3">
+            <span className="px-2.5 py-1 rounded-lg bg-white/10 backdrop-blur-sm text-white text-xs font-semibold border border-white/20">
+              v{version}
+            </span>
+          </div>
+        )}
       </div>
 
-      <CardHeader>
-        <CardTitle className="text-xl font-bold text-amber-600 dark:text-amber-500">
-          {title}
-        </CardTitle>
-      </CardHeader>
-
-      <CardContent>
-        <p className="font-serif text-slate-600 dark:text-slate-400 text-lg line-clamp-3">
-          {description}
-        </p>
-      </CardContent>
-
-      <CardFooter className="border-t border-amber-50 dark:border-amber-900/20 pt-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="text-[10px] uppercase tracking-widest font-bold text-slate-400">
-            Project Duration:
-          </span>
-          <span className="text-sm font-bold text-amber-600">
-            {writtenDuration}
-          </span>
-        </div>
-        {link && (
-          <Link
-            href={link}
-            className="text-sm font-bold text-amber-600 underline hover:text-blue-500"
+      {/* Content */}
+      <div className="p-5 flex flex-col gap-3">
+        <div className="flex items-start justify-between gap-2">
+          <h3
+            className="text-base font-semibold text-white group-hover:text-blue-300 transition-colors leading-tight"
+            style={{ fontFamily: "var(--font-jakarta), sans-serif" }}
           >
-            Visit Here
-          </Link>
-        )}
-      </CardFooter>
-    </Card>
+            {title}
+          </h3>
+          {link && (
+            <ArrowUpRight className="w-4 h-4 text-[#71717A] group-hover:text-blue-400 shrink-0 transition-colors" />
+          )}
+        </div>
+        <p className="text-sm text-[#71717A] leading-relaxed line-clamp-2">{description}</p>
+        <div className="flex items-center gap-1.5 text-xs text-[#71717A] pt-1 border-t border-white/5">
+          <Clock className="w-3 h-3" />
+          <span>{durationLabel}</span>
+        </div>
+      </div>
+    </div>
   );
+
+  if (link) {
+    return (
+      <Link href={link} target="_blank" rel="noopener noreferrer" className="block h-full">
+        {content}
+      </Link>
+    );
+  }
+  return <div className="h-full">{content}</div>;
 }

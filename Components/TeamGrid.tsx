@@ -10,36 +10,32 @@ interface Team {
   facebook: string;
   instagram: string;
   linkedin: string;
-  telegram: string
+  telegram: string;
+  portfolio?: string;
+  objectPosition?: string;
 }
 
-interface TeamProp {
-  teams: Team[];
-}
-export default function TeamGrid({ teams }: TeamProp) {
+export default function TeamGrid({ teams }: { teams: Team[] }) {
   return (
-    <div className="w-full py-12">
-      <div className="px-4 py-5 flex flex-col gap-5">
-        <SectionHeader subtitle="Teams" title="The Experts behind our Success" />
-        <div className="flex flex-col sm:flex-row items-center gap-10 justify-center">
-          {teams &&
-            teams.length > 0 &&
-            teams.map((team: Team, idx: number) => (
-              <TeamItem
-                key={idx}
-                image={team.image}
-                name={team.name}
-                position={team.position}
-                facebook={team.facebook}
-                instagram={team.instagram}
-                linkedin={team.linkedin}
-                telegram={team.telegram}
-                title={team.title}
-                description={team.description}
-              />
-            ))}
+    <section className="section-padding px-6 bg-[#0D0D0D]">
+      <div className="max-w-5xl mx-auto">
+        <SectionHeader
+          subtitle="Our Team"
+          title="The Experts Behind Our Success"
+          description="Meet the founders and leaders who make Apex Solution's vision a reality every day."
+        />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {teams.map((team, idx) => (
+            <TeamItem
+              key={idx}
+              {...team}
+              objectPosition={
+                team.name === "Tewodros Million" ? "center 20%" : "center"
+              }
+            />
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

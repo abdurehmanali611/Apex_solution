@@ -3,87 +3,117 @@ import { NavbarComponents } from "@/constants";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { Avatar } from "./ui/avatar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface NavbarProps {
   active: string;
-  setActive: (name: string) => void;
 }
 
-const Navbar = ({ active, setActive }: NavbarProps) => {
+const Navbar = ({ active }: NavbarProps) => {
   const [menuShow, setMenuShow] = useState(false);
-  
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav className="sticky top-0 z-50 w-full bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-amber-100 dark:border-amber-900/20">
-      <div className="max-w-7xl mx-auto flex justify-between items-center p-4 md:px-8">
-        <div className="flex items-center gap-3 group cursor-pointer">
-          <Avatar className="h-10 w-10 border-2 border-amber-500/20 group-hover:border-amber-500 transition-colors">
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+          {/* Logo */}
+          <Link href="/" className="flex items-center group">
             <Image
-              src="/assets/logo.png"
-              alt="Logo"
-              fill
-              className="rounded-full object-cover"
+              src="/apex-logo-dark-bg.svg"
+              alt="Apex Solution"
+              width={160}
+              height={40}
+              className="h-10 w-auto transition-opacity duration-200 group-hover:opacity-90"
+              priority
             />
-          </Avatar>
-          <h3 className="text-xl font-bold tracking-tight">
-            <span className="text-amber-600 dark:text-amber-500">Apex</span> 
-            <span className="text-slate-800 dark:text-slate-200"> Solutions</span>
-          </h3>
+          </Link>
+
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex items-center gap-1">
+            {NavbarComponents.map((item) => (
+              <Link
+                key={item.id}
+                href={item.link}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  item.name === "Contact Us"
+                    ? "bg-blue-600 hover:bg-blue-500 text-white ml-2 btn-shimmer"
+                    : active === item.name
+                    ? "text-white bg-white/5"
+                    : "text-[#A1A1AA] hover:text-white hover:bg-white/5"
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile Toggle */}
+          <button
+            className="lg:hidden p-2 rounded-lg text-[#A1A1AA] hover:text-white hover:bg-white/5 transition-colors"
+            onClick={() => setMenuShow(!menuShow)}
+            aria-label="Toggle menu"
+          >
+            {menuShow ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
+      </nav>
 
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-8">
-          {NavbarComponents.map((item) => (
-            <Link
-              href={item.link}
-              onClick={() => setActive(item.name)}
-              key={item.id}
-              className={`text-sm font-medium transition-all duration-300 hover:text-amber-500 ${
-                active === item.name 
-                  ? "text-amber-600 dark:text-amber-500 underline decoration-2 underline-offset-8" 
-                  : "text-slate-600 dark:text-slate-400"
-              } ${
-                item.name === "Contact Us" &&
-                "bg-amber-500 hover:bg-amber-600 text-white! px-5 py-2.5 rounded-xl shadow-lg shadow-amber-500/20 hover:scale-105 active:scale-95 no-underline!"
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
-
-        {/* Mobile Toggle */}
-        <button className="lg:hidden" onClick={() => setMenuShow(!menuShow)}>
-          {menuShow ? (
-            <X className="w-8 h-8 text-amber-600" />
-          ) : (
-            <Menu className="w-8 h-8 text-slate-700 dark:text-slate-300" />
-          )}
-        </button>
-      </div>
-
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Drawer */}
       {menuShow && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-amber-100 shadow-xl p-6 flex flex-col gap-4 animate-in slide-in-from-top-2">
-          {NavbarComponents.map((item) => (
-            <Link
-              href={item.link}
-              key={item.id}
-              onClick={() => {
-                setMenuShow(false);
-                setActive(item.name);
-              }}
-              className={`text-lg font-semibold ${
-                active === item.name ? "text-amber-500" : "text-slate-700 dark:text-slate-300"
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
+        <div className="fixed inset-0 z-40 lg:hidden">
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setMenuShow(false)}
+          />
+          <div className="absolute top-0 right-0 h-full w-72 bg-[#111111] border-l border-white/8 p-6 flex flex-col gap-2 animate-slide-in-right">
+            <div className="flex items-center justify-between mb-6">
+              <Image
+                src="/apex-logo-dark-bg.svg"
+                alt="Apex Solution"
+                width={130}
+                height={32}
+                className="h-8 w-auto"
+              />
+              <button
+                onClick={() => setMenuShow(false)}
+                className="p-2 rounded-lg text-[#A1A1AA] hover:text-white hover:bg-white/5"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            {NavbarComponents.map((item) => (
+              <Link
+                key={item.id}
+                href={item.link}
+                onClick={() => setMenuShow(false)}
+                className={`px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${
+                  item.name === "Contact Us"
+                    ? "bg-blue-600 hover:bg-blue-500 text-white text-center mt-2"
+                    : active === item.name
+                    ? "text-white bg-white/8 border border-white/10"
+                    : "text-[#A1A1AA] hover:text-white hover:bg-white/5"
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
-    </nav>
+    </>
   );
 };
 
