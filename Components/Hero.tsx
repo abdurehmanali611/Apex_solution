@@ -63,88 +63,127 @@ function TypewriterText() {
 }
 
 const AI_PILLS = [
-  { icon: Brain, text: "AI-Augmented Development" },
-  { icon: Zap,   text: "Intelligent Automation" },
+  { icon: Brain,    text: "AI-Augmented" },
+  { icon: Zap,      text: "Intelligent Automation" },
   { icon: Sparkles, text: "AI as a Service" },
 ];
 
 export default function Hero({ heroFooter }: { heroFooter: HeroFooterItem[] }) {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
-      <div className="absolute inset-0 grid-bg opacity-60" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(37,99,235,0.18),transparent)]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/4 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-20 right-20 w-72 h-72 bg-blue-600/8 rounded-full blur-3xl animate-float pointer-events-none" />
-      <div className="absolute bottom-20 left-20 w-48 h-48 bg-cyan-500/6 rounded-full blur-3xl animate-float delay-300 pointer-events-none" />
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0A0A0A]">
+      {/* Background layers */}
+      <div className="absolute inset-0 grid-bg opacity-40" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_0%_50%,rgba(37,99,235,0.10),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_100%_50%,rgba(245,166,35,0.05),transparent)]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 flex flex-col items-center text-center gap-8">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-28 lg:py-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-        {/* Logo + AI badge */}
-        <div className="flex flex-col items-center gap-4 animate-fade-up">
-          <Image src="/apex-logo-stacked.svg" alt="Apex Solution" width={120} height={83} className="h-20 w-auto opacity-90" priority />
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-blue-500/25 text-xs font-semibold text-blue-300 uppercase tracking-widest">
-            <Sparkles className="w-3 h-3 text-blue-400" />
-            Ethiopia&apos;s AI-First Technology Company
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+          {/* ── Left column — text ─────────────────────────── */}
+          <div className="flex flex-col gap-7 order-2 lg:order-1">
+
+            {/* Badge */}
+            <div className="flex items-center gap-3 animate-fade-up">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-blue-500/25 text-xs font-semibold text-blue-300 uppercase tracking-widest">
+                <Sparkles className="w-3 h-3 text-blue-400" />
+                Ethiopia&apos;s AI-First Technology Company
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+              </div>
+            </div>
+
+            {/* Headline */}
+            <div className="animate-fade-up delay-100">
+              <h1
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.05]"
+                style={{ fontFamily: "var(--font-jakarta), sans-serif", letterSpacing: "-0.03em" }}
+              >
+                We Don&apos;t Just Build.
+                <br />
+                <span className="gradient-text">We Intelligently</span>
+                <br />
+                <span className="gradient-text">Engineer.</span>
+              </h1>
+            </div>
+
+            {/* Typewriter */}
+            <p className="text-base md:text-lg text-[#A1A1AA] animate-fade-up delay-200">
+              World-class <TypewriterText />
+            </p>
+
+            {/* AI pills */}
+            <div className="flex flex-wrap gap-2 animate-fade-up delay-300">
+              {AI_PILLS.map((p, i) => (
+                <div key={i} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#111111] border border-white/8 text-xs text-[#A1A1AA]">
+                  <p.icon className="w-3 h-3 text-blue-400" />
+                  {p.text}
+                </div>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up delay-400">
+              <Link
+                href="/Portfolio"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all duration-200 btn-shimmer glow-blue-sm hover:scale-105 active:scale-95"
+              >
+                Explore Our Work <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/Contact"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl glass border border-white/10 hover:border-blue-500/40 text-white font-semibold text-sm transition-all duration-200 hover:bg-white/5"
+              >
+                <Calendar className="w-4 h-4 text-blue-400" />
+                Book a Consultation
+              </Link>
+            </div>
+
+            {/* Stats */}
+            <div className="flex flex-wrap gap-8 pt-6 border-t border-white/5 animate-fade-up delay-500">
+              {heroFooter.map((item) => (
+                <div key={item.id} className="flex flex-col gap-0.5">
+                  <span
+                    className="text-2xl md:text-3xl font-bold text-white"
+                    style={{ fontFamily: "var(--font-jakarta), sans-serif" }}
+                  >
+                    <AnimatedCounter target={item.amount} />
+                  </span>
+                  <span className="text-[10px] uppercase tracking-widest text-[#71717A] font-medium">
+                    {item.name}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Headline */}
-        <h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] animate-fade-up delay-100"
-          style={{ fontFamily: "var(--font-jakarta), sans-serif", letterSpacing: "-0.03em" }}
-        >
-          We Don&apos;t Just Build.
-          <br />
-          <span className="gradient-text">We Intelligently Engineer.</span>
-        </h1>
+          {/* ── Right column — SVG poster ──────────────────── */}
+          <div className="relative order-1 lg:order-2 flex items-center justify-center animate-fade-up delay-200">
+            {/* Outer glow ring */}
+            <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,rgba(245,166,35,0.08),transparent)] pointer-events-none" />
+            <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_60%_60%_at_50%_50%,rgba(37,99,235,0.06),transparent)] pointer-events-none" />
 
-        {/* Typewriter */}
-        <p className="text-lg md:text-xl text-[#A1A1AA] max-w-xl animate-fade-up delay-200">
-          World-class <TypewriterText />
-        </p>
+            {/* Poster container */}
+            <div className="relative w-full max-w-[520px] lg:max-w-full animate-float">
+              {/* Subtle glow behind the SVG */}
+              <div className="absolute inset-4 rounded-2xl bg-[#F5A623]/5 blur-3xl pointer-events-none" />
+              <div className="absolute inset-8 rounded-2xl bg-blue-600/5 blur-2xl pointer-events-none" />
 
-        {/* AI capability pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 animate-fade-up delay-300">
-          {AI_PILLS.map((p, i) => (
-            <div key={i} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#111111] border border-white/8 text-xs text-[#A1A1AA]">
-              <p.icon className="w-3 h-3 text-blue-400" />
-              {p.text}
+              <Image
+                src="/apex-hero-poster.svg"
+                alt="Apex Solution — AI-powered circuit topology connecting Software, Hotel Tech, Networking, CCTV, Consulting and AI Systems"
+                width={680}
+                height={680}
+                priority
+                className="relative w-full h-auto drop-shadow-2xl"
+                style={{ filter: "drop-shadow(0 0 40px rgba(245,166,35,0.12)) drop-shadow(0 0 80px rgba(37,99,235,0.08))" }}
+              />
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 animate-fade-up delay-400">
-          <Link
-            href="/Portfolio"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all duration-200 btn-shimmer glow-blue-sm hover:scale-105 active:scale-95"
-          >
-            Explore Our Work <ArrowRight className="w-4 h-4" />
-          </Link>
-          <Link
-            href="/Contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl glass border border-white/10 hover:border-blue-500/40 text-white font-semibold text-sm transition-all duration-200 hover:bg-white/5"
-          >
-            <Calendar className="w-4 h-4 text-blue-400" />
-            Book a Consultation
-          </Link>
-        </div>
-
-        {/* Stats */}
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 pt-8 mt-4 border-t border-white/5 w-full max-w-2xl animate-fade-up delay-500">
-          {heroFooter.map((item) => (
-            <div key={item.id} className="flex flex-col items-center gap-1">
-              <span className="text-3xl md:text-4xl font-bold text-white" style={{ fontFamily: "var(--font-jakarta), sans-serif" }}>
-                <AnimatedCounter target={item.amount} />
-              </span>
-              <span className="text-xs uppercase tracking-widest text-[#71717A] font-medium">{item.name}</span>
-            </div>
-          ))}
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0A0A0A] to-transparent pointer-events-none" />
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0A0A0A] to-transparent pointer-events-none" />
     </section>
   );
 }
