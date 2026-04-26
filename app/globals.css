@@ -111,7 +111,19 @@ html {
     @apply bg-background text-foreground antialiased;
     background-color: #0A0A0A;
     color: #FAFAFA;
+    font-size: 16px;
+    line-height: 1.75;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-jakarta), sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  p {
+    color: #D4D4D8;
+    line-height: 1.75;
   }
   ::selection {
     background: rgba(37, 99, 235, 0.3);
@@ -371,4 +383,37 @@ html {
   outline: 2px solid #2563EB;
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* ─── Eyebrow Label ──────────────────────────────────────────── */
+.eyebrow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #F5A623;
+  padding-left: 16px;
+}
+.eyebrow::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 16px;
+  background: #F5A623;
+  border-radius: 1px;
+}
+
+/* ─── Section heading size cap ───────────────────────────────── */
+.section-heading {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  font-family: var(--font-jakarta), sans-serif;
 }

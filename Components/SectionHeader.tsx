@@ -13,27 +13,20 @@ export default function SectionHeader({
   className = "",
   align = "center",
 }: SectionHeaderProps) {
-  const alignClass = align === "left" ? "text-left items-start" : "text-center items-center";
+  const alignClass = align === "left" ? "items-start text-left" : "items-center text-center";
   return (
-    <div className={`flex flex-col gap-3 mb-12 ${alignClass} ${className}`}>
+    <div className={`flex flex-col gap-4 mb-12 ${alignClass} ${className}`}>
       {subtitle && (
-        <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-400">
-          <span className="w-6 h-px bg-blue-500" />
-          {subtitle}
-          <span className="w-6 h-px bg-blue-500" />
-        </span>
+        <span className="eyebrow">{subtitle}</span>
       )}
       {title && (
-        <h2
-          className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight"
-          style={{ fontFamily: "var(--font-jakarta), sans-serif", letterSpacing: "-0.02em" }}
-        >
+        <h2 className="section-heading text-white max-w-3xl">
           {title}
         </h2>
       )}
       {description && (
         <p
-          className="text-[#A1A1AA] text-base leading-relaxed max-w-2xl"
+          className="text-[#A1A1AA] text-base leading-[1.75] max-w-2xl"
           dangerouslySetInnerHTML={{ __html: description }}
         />
       )}
