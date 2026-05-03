@@ -62,7 +62,7 @@ const Footer = ({ active }: FooterProps) => {
         {/* Brand */}
         <div className="flex flex-col gap-5">
           <Link href="/" className="group w-fit">
-            <Image src="/apex-logo-dark-bg.svg" alt="Apex Solution" width={160} height={40} className="h-10 w-auto transition-opacity duration-200 group-hover:opacity-80" />
+            <Image src="/apex-logo-primary.svg" alt="Apex Solution" width={160} height={40} className="h-10 w-auto transition-opacity duration-200 group-hover:opacity-80" />
           </Link>
           <p className="text-[#71717A] text-sm leading-[1.75]">
             Building Ethiopia&apos;s AI-powered digital future — software, hotel tech, networking, and intelligent IT solutions.
@@ -193,7 +193,7 @@ const Footer = ({ active }: FooterProps) => {
             </p>
             <p className="text-xs text-[#71717A] flex items-center gap-1">
               <MapPin className="w-3 h-3 text-[#F5A623]" />
-              Registered in Ethiopia · Hossana, SNNPR
+              Registered in Ethiopia · Addis Ababa.
             </p>
           </div>
           <p className="text-xs text-[#71717A] flex items-center gap-1.5">

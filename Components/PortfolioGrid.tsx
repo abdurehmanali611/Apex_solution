@@ -25,7 +25,13 @@ export default function PortfolioGrid({ portfolios }: { portfolios: Portfolio[] 
         {portfolios.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {portfolios.map((p, idx) => (
-              <PortfolioItem key={idx} {...p} />
+              <div
+                key={idx}
+                className="animate-fade-up"
+                style={{ animationDelay: `${idx * 80}ms`, animationFillMode: "both", opacity: 0 }}
+              >
+                <PortfolioItem {...p} />
+              </div>
             ))}
           </div>
         ) : (

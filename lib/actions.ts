@@ -13,6 +13,7 @@ interface cloudinarySuccessResult {
 
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL || "https://apex-backend-tdth.vercel.app/api",
+  timeout: 3000,
 });
 
 const AUTH_COOKIE_NAME = "apex_admin_token";
@@ -20,7 +21,6 @@ const AUTH_COOKIE_NAME = "apex_admin_token";
 const toast = {
   error: (message: string) => {
     if (typeof window === "undefined") {
-      console.error(message);
       return;
     }
     import("sonner")

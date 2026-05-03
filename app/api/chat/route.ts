@@ -1,41 +1,49 @@
 import { NextRequest, NextResponse } from "next/server";
+import { buildSystemPrompt } from "@/lib/systemPrompt";
 
 export async function POST(req: NextRequest) {
   try {
-    const { system, messages } = await req.json();
+    const { messages } = await req.json();
 
-    const apiKey = process.env.ANTHROPIC_API_KEY;
+    const apiKey = process.env.GROQ_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
-        { content: [{ text: "AI assistant is not configured yet. Please contact us directly at +251 930 272 975." }] },
+        { message: "AI assistant is not configured yet. Please contact us directly at +251 930 272 975." },
         { status: 200 }
       );
     }
 
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
+    const systemPrompt = buildSystemPrompt();
+
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
+        "Authorization": `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "claude-3-haiku-20240307",
+        model: "llama-3.3-70b-versatile",
         max_tokens: 512,
-        system,
-        messages,
+        temperature: 0.6,
+        messages: [
+          { role: "system", content: systemPrompt },
+          ...messages,
+        ],
       }),
     });
 
     if (!response.ok) {
-      throw new Error(`Anthropic API error: ${response.status}`);
+      const err = await response.text();
+      throw new Error(`Groq API error ${response.status}: ${err}`);
     }
 
     const data = await response.json();
-    return NextResponse.json(data);
+    const reply = data.choices?.[0]?.message?.content ?? "I couldn't process that. Please try again.";
+
+    return NextResponse.json({ message: reply });
   } catch {
     return NextResponse.json(
-      { content: [{ text: "Connection issue — please try again or contact us directly." }] },
+      { message: "Connection issue — please try again or contact us directly at +251 930 272 975." },
       { status: 200 }
     );
   }

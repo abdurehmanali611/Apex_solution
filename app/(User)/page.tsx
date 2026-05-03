@@ -11,8 +11,8 @@ import {
   defaultServices, defaultTestimonials, defaultHeroFooter,
 } from "@/constants";
 import {
-  GetService, GetPortFolio, GetBlog, GetTestimonial, GetPartner, HeroFooterFetch,
-} from "@/lib/actions";
+  fetchServices, fetchPortfolios, fetchBlogs, fetchTestimonials, fetchPartners, fetchHeroFooter,
+} from "@/lib/fetch";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -35,7 +35,7 @@ const AI_FEATURES = [
 
 export default async function UserHome() {
   const [fs, fp, fb, ft, fpa, fh] = await Promise.allSettled([
-    GetService(), GetPortFolio(), GetBlog(), GetTestimonial(), GetPartner(), HeroFooterFetch(),
+    fetchServices(), fetchPortfolios(), fetchBlogs(), fetchTestimonials(), fetchPartners(), fetchHeroFooter(),
   ]);
 
   const services     = fs.status  === "fulfilled" && fs.value  ? defaultServices.concat(fs.value)     : defaultServices;

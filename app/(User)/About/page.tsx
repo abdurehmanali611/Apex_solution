@@ -1,12 +1,13 @@
 import TeamGrid from "@/Components/TeamGrid";
 import TestimonialsCarousel from "@/Components/TestimonialCarousel";
 import { defaultTeamMembers, defaultTestimonials } from "@/constants";
-import { GetTeam, GetTestimonial } from "@/lib/actions";
+import { fetchTeam, fetchTestimonials } from "@/lib/fetch";
 import { Metadata } from "next";
 import {
   Target, Eye, Layers, Award, MapPin, Users, Briefcase, TrendingUp,
-  CheckCircle, ArrowRight,
+  CheckCircle, ArrowRight, FileDown,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -73,8 +74,8 @@ const commitments = [
 
 export default async function About() {
   const [fetchedTeam, fetchedTestimonials] = await Promise.allSettled([
-    GetTeam(),
-    GetTestimonial(),
+    fetchTeam(),
+    fetchTestimonials(),
   ]);
 
   const teams =
@@ -102,13 +103,14 @@ export default async function About() {
             <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
             Our Story
           </span>
+          {/* Cinematic opening statement */}
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.05]"
-            style={{ fontFamily: "var(--font-jakarta), sans-serif", letterSpacing: "-0.03em" }}
+            className="text-4xl sm:text-5xl md:text-[64px] font-bold text-white leading-[1.0] animate-fade-up"
+            style={{ fontFamily: "var(--font-jakarta), sans-serif", letterSpacing: "-0.04em" }}
           >
-            Built on Trust.
+            Born in Ethiopia.
             <br />
-            <span className="gradient-text">Driven by Results.</span>
+            <span className="gradient-text">Built for the World.</span>
           </h1>
           <p className="text-[#A1A1AA] text-base md:text-lg leading-relaxed max-w-2xl">
             Apex Solution is an Ethiopian IT company with over a decade of real-world experience. We don&apos;t just deploy systems — we build the digital foundations that businesses rely on every day.
@@ -119,6 +121,27 @@ export default async function About() {
           >
             Work With Us <ArrowRight className="w-4 h-4" />
           </Link>
+        </div>
+      </section>
+
+      {/* Co-founders banner */}
+      <section className="relative w-full overflow-hidden">
+        <Image
+          src="/assets/apex.png"
+          alt="Apex Solution Co-founders — Atlabachew Tadese & Abdurehman Ali"
+          width={1536}
+          height={1024}
+          className="w-full h-auto object-cover"
+          priority
+          sizes="100vw"
+        />
+        {/* Dark gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/40 via-transparent to-[#0A0A0A]/40" />
+        {/* Caption */}
+        <div className="absolute bottom-6 left-0 right-0 flex flex-col items-center gap-1.5">
+          <span className="eyebrow">The Founders</span>
+          <p className="text-white/60 text-sm">Atlabachew Tadese &amp; Abdurehman Ali — Co-founders of Apex Solution</p>
         </div>
       </section>
 
@@ -147,7 +170,26 @@ export default async function About() {
         </div>
       </section>
 
-      {/* ── Values ───────────────────────────────────────────── */}
+      {/* Trust signals row */}
+      <section className="px-6 py-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {[
+              "🏨 Trusted by 20+ Hotels",
+              "⚡ 8+ Years Active",
+              "📍 Addis Ababa · Hossana · Remote",
+              "🤝 Gov & Enterprise Clients",
+              "🌍 Built for Africa",
+            ].map((signal, i) => (
+              <span key={i} className="px-4 py-2 rounded-full bg-[#111111] border border-white/8 text-xs font-medium text-[#A1A1AA] hover:border-[#F5A623]/30 hover:text-white transition-all duration-200">
+                {signal}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
       <section className="section-padding px-6">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col gap-3 mb-12 text-center items-center">
@@ -167,9 +209,16 @@ export default async function About() {
             {values.map((v, i) => (
               <div
                 key={i}
-                className={`p-7 rounded-2xl bg-gradient-to-br ${v.accent} border flex flex-col gap-4 hover:shadow-lg transition-all duration-200`}
+                className={`relative p-7 rounded-2xl bg-gradient-to-br ${v.accent} border flex flex-col gap-4 hover:shadow-lg transition-all duration-200 overflow-hidden`}
               >
-                <div className="flex items-center gap-3">
+                {/* Large number background */}
+                <span
+                  className="absolute -top-3 -right-2 text-[80px] font-black text-white/4 select-none pointer-events-none leading-none"
+                  style={{ fontFamily: "var(--font-jakarta), sans-serif" }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="relative flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
                     <v.icon className={`w-5 h-5 ${v.iconColor}`} />
                   </div>
@@ -180,14 +229,43 @@ export default async function About() {
                     {v.title}
                   </h3>
                 </div>
-                <p className="text-sm text-[#A1A1AA] leading-relaxed">{v.text}</p>
+                <p className="relative text-sm text-[#A1A1AA] leading-relaxed">{v.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Story + Commitments ──────────────────────────────── */}
+      {/* Company profile download — after values */}
+      <section className="px-6 pb-4">
+        <div className="max-w-7xl mx-auto flex justify-center">
+          <div className="flex flex-col items-center gap-3">
+            <p className="eyebrow">Company Profile</p>
+            {/* Raw PDF first page — no frame, no scroll */}
+            <div className="relative overflow-hidden rounded-xl shadow-2xl shadow-black/50" style={{ width: 240, height: 339 }}>
+              <iframe
+                src="/apex-company-profile.pdf#page=1&toolbar=0&navpanes=0&scrollbar=0&view=FitV"
+                className="absolute top-0 left-0 border-0 pointer-events-none"
+                style={{ width: 320, height: 452, transformOrigin: "top left", transform: "scale(0.75)" }}
+                title="Company Profile"
+                loading="lazy"
+                scrolling="no"
+              />
+            </div>
+            <a
+              href="/apex-company-profile.pdf"
+              download
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-[#0A0A0A] transition-all duration-200 hover:scale-105 active:scale-95 btn-shimmer"
+              style={{ background: "linear-gradient(135deg, #F5A623 0%, #E8940F 100%)" }}
+            >
+              <FileDown className="w-4 h-4" />
+              Download PDF
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Story + Commitments */}
       <section className="section-padding px-6 bg-[#0D0D0D]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left — story */}

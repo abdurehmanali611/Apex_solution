@@ -428,7 +428,7 @@ export const defaultTeamMembers = [
     instagram: "https://www.instagram.com/abdurehman6252/",
     linkedin: "https://www.linkedin.com/in/abdurehman-ali-592238281/",
     telegram: "https://t.me/AbduWolf",
-    portfolio: "",
+    portfolio: "https://apex-abdu-portfolio.vercel.app",
   },
   {
     id: 3,

@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { HeroFooterItem } from "@/constants";
-import { ArrowRight, Calendar, Sparkles, Brain, Zap } from "lucide-react";
+import { ArrowRight, Calendar, Sparkles, Brain, Zap, FileDown } from "lucide-react";
+import CompanyProfileCard from "./CompanyProfileCard";
 
 const TYPEWRITER_WORDS = [
   "AI-Powered Software.",
@@ -136,6 +137,19 @@ export default function Hero({ heroFooter }: { heroFooter: HeroFooterItem[] }) {
                 Book a Consultation
               </Link>
             </div>
+
+            {/* Company profile download */}
+            <a
+              href="/apex-company-profile.pdf"
+              download
+              className="group flex items-center gap-2 text-sm text-[#71717A] hover:text-[#F5A623] transition-colors w-fit animate-fade-up delay-400"
+            >
+              <span className="w-8 h-8 rounded-lg bg-[#1A1A1A] border border-white/8 flex items-center justify-center group-hover:border-[#F5A623]/50 transition-colors">
+                <FileDown className="w-4 h-4" />
+              </span>
+              Download Company Profile
+              <span className="text-xs text-[#3F3F46]">PDF · 17KB</span>
+            </a>
 
             {/* Stats */}
             <div className="flex flex-wrap gap-8 pt-6 border-t border-white/5 animate-fade-up delay-500">

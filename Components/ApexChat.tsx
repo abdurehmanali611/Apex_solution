@@ -8,8 +8,6 @@ interface Message {
   content: string;
 }
 
-const SYSTEM_PROMPT = `You are the Apex Solution AI assistant. Apex is Ethiopia's AI-first technology company offering AI-powered software development, intelligent hotel technology solutions (AI CCTV, smart door locks, AI-enhanced Hotel Management Systems), smart networking infrastructure, and AI strategy consulting. Every solution Apex builds is augmented with artificial intelligence — from predictive analytics to intelligent automation to computer vision. Answer visitor questions about services, AI capabilities, pricing guidance, project process, team, and how to get started. Keep responses concise, professional, and warm. If asked about pricing, say rates depend on project scope and encourage booking a consultation. Always highlight the AI-first approach and offer to connect them with the team.`;
-
 const QUICK_PROMPTS = [
   "What AI services do you offer?",
   "How does AI improve hotel systems?",
@@ -97,14 +95,11 @@ export default function ApexChat() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          system: SYSTEM_PROMPT,
-          messages: newMessages.map((m) => ({ role: m.role, content: m.content })),
-        }),
+      body: JSON.stringify({ messages: newMessages.map((m) => ({ role: m.role, content: m.content })) }),
       });
       if (!res.ok) throw new Error("Request failed");
       const data = await res.json();
-      const reply = data.content?.[0]?.text ?? data.message ?? "I couldn't process that. Please try again.";
+      const reply = data.message ?? "I couldn't process that. Please try again.";
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
       if (!open || minimized) setUnread((n) => n + 1);
     } catch {
