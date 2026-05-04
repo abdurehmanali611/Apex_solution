@@ -17,7 +17,7 @@ interface Team {
 
 export default function TeamGrid({ teams }: { teams: Team[] }) {
   return (
-    <section className="section-padding px-6 bg-[#0D0D0D]">
+    <section className="section-padding px-4 sm:px-6 bg-[#0D0D0D]">
       <div className="max-w-5xl mx-auto">
         <SectionHeader
           subtitle="Our Team"

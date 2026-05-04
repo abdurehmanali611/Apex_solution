@@ -102,14 +102,21 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
+        {/* Prevent theme flash on load */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function(){
+            var t = localStorage.getItem('apex-theme') || 'dark';
+            document.documentElement.classList.add(t);
+          })()
+        `}} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body
-        className={`${jakarta.variable} ${inter.variable} antialiased bg-[#0A0A0A] text-white`}
-        style={{ fontFamily: "var(--font-inter), sans-serif" }}
+        className={`${jakarta.variable} ${inter.variable} antialiased`}
+        style={{ fontFamily: "var(--font-inter), sans-serif", backgroundColor: "var(--apex-bg)", color: "var(--apex-text-primary)" }}
       >
         {children}
         <Toaster

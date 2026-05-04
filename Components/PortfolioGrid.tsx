@@ -15,7 +15,7 @@ interface Portfolio {
 
 export default function PortfolioGrid({ portfolios }: { portfolios: Portfolio[] }) {
   return (
-    <section className="section-padding px-6">
+    <section className="section-padding px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           subtitle="Our Work"

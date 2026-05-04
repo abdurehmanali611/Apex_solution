@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { toast } from "sonner";
 import { ChangePassword } from "@/lib/actions";
@@ -14,6 +15,7 @@ export default function AdminPasswordSection() {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const router = useRouter();
 
   const handlePasswordChange = async () => {
     if (!oldPassword || !newPassword || !confirmPassword) {
@@ -31,7 +33,7 @@ export default function AdminPasswordSection() {
       return;
     }
 
-    await ChangePassword(oldPassword, newPassword, setSubmitting);
+    await ChangePassword(oldPassword, newPassword, setSubmitting, router);
     setOldPassword("");
     setNewPassword("");
     setConfirmPassword("");

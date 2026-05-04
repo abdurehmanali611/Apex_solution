@@ -18,7 +18,7 @@ export default function ClientRoot({ children }: Props) {
     )?.name ?? "Home";
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-screen" style={{ backgroundColor: "var(--apex-bg)" }}>
       <Navbar active={active} />
       <main className="pt-16">{children}</main>
       <Toaster richColors position="top-right" />

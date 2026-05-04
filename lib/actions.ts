@@ -13,7 +13,7 @@ interface cloudinarySuccessResult {
 
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL || "https://apex-backend-tdth.vercel.app/api",
-  timeout: 3000,
+  timeout: 15000,
 });
 
 const AUTH_COOKIE_NAME = "apex_admin_token";
@@ -932,6 +932,7 @@ export async function ChangePassword(
   oldPassword: string,
   newPassword: string,
   setLoading: (value: boolean) => void,
+  router: AppRouterInstance,
 ) {
   try {
     setLoading(true);
@@ -940,7 +941,12 @@ export async function ChangePassword(
       new_password: newPassword,
     });
     const data = response.data;
-    toast.success("Password changed successfully");
+    toast.success("Password changed. Please log in again.");
+    localStorage.removeItem("token");
+    localStorage.removeItem("refresh");
+    clearAuthCookie();
+    delete api.defaults.headers.common["Authorization"];
+    router.push("/Builder");
     return data;
   } catch (error: unknown) {
     let errorMessage = "An Unknown Error happened";

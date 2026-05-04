@@ -44,7 +44,7 @@ export default function ContactForm() {
     }`;
 
   return (
-    <section className="section-padding px-6">
+    <section className="section-padding px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col gap-3 mb-12 text-center items-center">
@@ -146,7 +146,7 @@ export default function ContactForm() {
 
           {/* Form */}
           <div className="lg:col-span-3">
-            <div className="p-8 rounded-2xl bg-[#111111] border border-white/8">
+            <div className="p-5 sm:p-8 rounded-2xl bg-[#111111] border border-white/8">
               {success ? (
                 <div className="flex flex-col items-center justify-center gap-5 py-16 text-center animate-fade-up">
                   <div className="w-16 h-16 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center">

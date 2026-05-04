@@ -77,11 +77,11 @@ export default function Hero({ heroFooter }: { heroFooter: HeroFooterItem[] }) {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_0%_50%,rgba(37,99,235,0.10),transparent)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_100%_50%,rgba(245,166,35,0.05),transparent)]" />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-28 lg:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-16 sm:pt-28 lg:pt-32 lg:pb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
           {/* ── Left column — text ─────────────────────────── */}
-          <div className="flex flex-col gap-7 order-2 lg:order-1">
+          <div className="flex flex-col gap-5 sm:gap-7 order-2 lg:order-1">
 
             {/* Badge */}
             <div className="flex items-center gap-3 animate-fade-up">
@@ -152,7 +152,7 @@ export default function Hero({ heroFooter }: { heroFooter: HeroFooterItem[] }) {
             </a>
 
             {/* Stats */}
-            <div className="flex flex-wrap gap-8 pt-6 border-t border-white/5 animate-fade-up delay-500">
+            <div className="flex flex-wrap gap-6 sm:gap-8 pt-6 border-t border-white/5 animate-fade-up delay-500">
               {heroFooter.map((item) => (
                 <div key={item.id} className="flex flex-col gap-0.5">
                   <span

@@ -3,7 +3,7 @@ const BASE = process.env.NEXT_PUBLIC_API_URL || "https://apex-backend-tdth.verce
 // Cached fetch with 60s revalidation + 3s timeout
 async function cachedGet(path: string) {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 3000);
+  const timer = setTimeout(() => controller.abort(), 15000);
   try {
     const res = await fetch(`${BASE}${path}`, {
       signal: controller.signal,

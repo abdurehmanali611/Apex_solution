@@ -1,15 +1,17 @@
 "use client";
 import { NavbarComponents } from "@/constants";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useTheme } from "@/hooks/useTheme";
 
 interface NavbarProps { active: string; }
 
 const Navbar = ({ active }: NavbarProps) => {
   const [menuShow, setMenuShow] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
@@ -26,11 +28,17 @@ const Navbar = ({ active }: NavbarProps) => {
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
           background: scrolled
-            ? `rgba(10,10,10,${Math.min(0.97, 0.6 + scrollY / 400)})`
+            ? theme === "light"
+              ? `rgba(255,255,255,${Math.min(0.97, 0.6 + scrollY / 400)})`
+              : `rgba(10,10,10,${Math.min(0.97, 0.6 + scrollY / 400)})`
             : "transparent",
           backdropFilter: scrolled ? "blur(20px)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.05)" : "none",
-          boxShadow: scrolled ? "0 4px 32px rgba(0,0,0,0.3)" : "none",
+          borderBottom: scrolled
+            ? theme === "light"
+              ? "1px solid rgba(0,0,0,0.08)"
+              : "1px solid rgba(255,255,255,0.05)"
+            : "none",
+          boxShadow: scrolled ? "0 4px 32px rgba(0,0,0,0.15)" : "none",
         }}
       >
         <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
@@ -56,7 +64,9 @@ const Navbar = ({ active }: NavbarProps) => {
               >
                 <span className={`transition-colors duration-200 ${
                   active === item.name
-                    ? "text-white"
+                    ? theme === "light" && scrolled ? "text-[#0A0A0A]" : "text-white"
+                    : theme === "light" && scrolled
+                    ? "text-[#52525B] group-hover:text-[#0A0A0A]"
                     : "text-[#A1A1AA] group-hover:text-white"
                 }`}>
                   {item.name}
@@ -67,6 +77,21 @@ const Navbar = ({ active }: NavbarProps) => {
                 }`} />
               </Link>
             ))}
+
+            {/* Theme toggle */}
+            <button
+              onClick={toggle}
+              aria-label="Toggle theme"
+              className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-all duration-200 hover:scale-105 ${
+                theme === "light" && scrolled
+                  ? "bg-black/5 border-black/10 text-[#52525B] hover:text-[#0A0A0A] hover:bg-black/10"
+                  : "bg-white/5 border-white/8 text-[#A1A1AA] hover:text-white hover:bg-white/10"
+              }`}
+            >
+              {theme === "dark"
+                ? <Sun className="w-4 h-4" />
+                : <Moon className="w-4 h-4" />}
+            </button>
 
             {/* Get a Quote pill */}
             <Link
@@ -80,7 +105,8 @@ const Navbar = ({ active }: NavbarProps) => {
 
           {/* Mobile Toggle */}
           <button
-            className="lg:hidden p-2 rounded-lg text-[#A1A1AA] hover:text-white hover:bg-white/5 transition-colors"
+            className="lg:hidden p-2 rounded-lg transition-colors"
+            style={{ color: theme === 'light' && scrolled ? '#52525B' : '#A1A1AA' }}
             onClick={() => setMenuShow(!menuShow)}
             aria-label="Toggle menu"
           >
@@ -96,9 +122,18 @@ const Navbar = ({ active }: NavbarProps) => {
           <div className="absolute top-0 right-0 h-full w-72 bg-[#0D0D0D] border-l border-white/8 p-6 flex flex-col gap-2 animate-slide-in-right">
             <div className="flex items-center justify-between mb-6">
               <Image src="/apex-logo-dark-bg.svg" alt="Apex Solution" width={130} height={32} className="h-8 w-auto" />
-              <button onClick={() => setMenuShow(false)} className="p-2 rounded-lg text-[#A1A1AA] hover:text-white hover:bg-white/5">
-                <X className="w-5 h-5" />
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={toggle}
+                  aria-label="Toggle theme"
+                  className="w-8 h-8 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center text-[#A1A1AA] hover:text-white transition-colors"
+                >
+                  {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                </button>
+                <button onClick={() => setMenuShow(false)} className="p-2 rounded-lg text-[#A1A1AA] hover:text-white hover:bg-white/5">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
             </div>
 
             {NavbarComponents.map((item) => (

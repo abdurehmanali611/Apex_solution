@@ -20,7 +20,7 @@ export default function TestimonialsCarousel({ testimonials }: { testimonials: T
   if (!testimonials || testimonials.length === 0) return null;
 
   return (
-    <section className="section-padding px-6 bg-[#0D0D0D]">
+    <section className="section-padding px-4 sm:px-6 bg-[#0D0D0D]">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           subtitle="Testimonials"
@@ -50,10 +50,10 @@ export default function TestimonialsCarousel({ testimonials }: { testimonials: T
             ))}
           </Swiper>
 
-          <button className="t-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/8 flex items-center justify-center text-white hover:bg-blue-600 hover:border-blue-500 transition-all duration-200 cursor-pointer">
+          <button className="t-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/8 flex items-center justify-center text-white hover:bg-blue-600 hover:border-blue-500 transition-all duration-200 cursor-pointer hidden sm:flex">
             <ChevronLeft className="w-4 h-4" />
           </button>
-          <button className="t-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/8 flex items-center justify-center text-white hover:bg-blue-600 hover:border-blue-500 transition-all duration-200 cursor-pointer">
+          <button className="t-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/8 flex items-center justify-center text-white hover:bg-blue-600 hover:border-blue-500 transition-all duration-200 cursor-pointer hidden sm:flex">
             <ChevronRight className="w-4 h-4" />
           </button>
 

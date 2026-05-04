@@ -122,7 +122,6 @@ export const defaultPortfolios = [
       "With Our one giant Client GebreSadik Hotel & Spa We delivered a bunch of Services that Incorporates CCTV Camera, Digital Lock Configuration(Degi digital lock) and also Network Setups.",
     type: "Hotel and Hospitality Technology",
     duration: 15,
-    image: "/assets/gebresadik.jpg",
   },
   {
     id: 4,
@@ -131,7 +130,6 @@ export const defaultPortfolios = [
       "Awesome Digital Door Lock System Installation and Configuration for our great client Victory Hotel, Hossana with modern and reliable technologies that escalate Victory to the true form of victory.",
     type: "Hotel and Hospitality Technology",
     duration: 7,
-    image: "/assets/victory.jpg",
   },
   {
     id: 5,
@@ -140,7 +138,6 @@ export const defaultPortfolios = [
       "Here is one our clients with an outstanding performance by the service delivered from us which is an impressive 16-Channel NVR CCTV Camera System Installation and Configuration and Full Wi-Fi design and Installation.",
     type: "Hotel and Hospitality Technology",
     duration: 7,
-    image: "/assets/tinsea.jpg",
   },
   {
     id: 6,
@@ -149,7 +146,6 @@ export const defaultPortfolios = [
       "For Shuferoch Hotel, we installed a 16-channel NVR CCTV system and delivered a complete Wi-Fi network solution, and we continue to support their operations.",
     type: "Hotel and Hospitality Technology",
     duration: 7,
-    image: "/assets/shuferoch.jpg",
   },
   {
     id: 7,
@@ -158,7 +154,6 @@ export const defaultPortfolios = [
       "Alem Hotel trusted us for a HikVision 32-channel NVR CCTV installation, and we remain committed to delivering ongoing value as their technology partner.",
     type: "Hotel and Hospitality Technology",
     duration: 7,
-    image: "/assets/alem.jpg",
   },
   {
     id: 8,
@@ -167,7 +162,6 @@ export const defaultPortfolios = [
       "Sono Hotel received a 16-channel NVR CCTV installation plus a full Wi-Fi design and setup, and we provided support for their future needs.",
     type: "Hotel and Hospitality Technology",
     duration: 7,
-    image: "/assets/sono.jpg",
   },
   {
     id: 9,

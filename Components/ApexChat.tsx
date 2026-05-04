@@ -112,7 +112,13 @@ export default function ApexChat() {
   const lastAssistantMsg = [...messages].reverse().find((m) => m.role === "assistant");
   const followUps = lastAssistantMsg ? getFollowUps(lastAssistantMsg.content) : FOLLOW_UPS.default;
 
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   return (
     <>

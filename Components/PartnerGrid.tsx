@@ -9,22 +9,8 @@ interface Partner {
 
 function PartnerTile({ image, title }: { image: string; title: string }) {
   return (
-    <div className="mx-3 flex-shrink-0 flex items-center gap-4 px-6 py-4 rounded-2xl bg-[#111111] border border-white/8 hover:border-blue-500/30 hover:bg-[#161616] transition-all duration-300 group cursor-default w-52">
-      <div className="relative w-10 h-10 shrink-0">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
-          sizes="40px"
-        />
-      </div>
-      <span
-        className="text-sm font-semibold text-[#71717A] group-hover:text-white transition-colors duration-300 whitespace-nowrap truncate"
-        style={{ fontFamily: "var(--font-jakarta), sans-serif" }}
-      >
-        {title}
-      </span>
+    <div className="mx-3 flex-shrink-0 rounded-2xl border border-white/8 hover:border-blue-500/30 transition-colors duration-300 overflow-hidden w-24 h-24 partner-tile cursor-pointer">
+      <img src={image} alt={title} className="w-full h-full object-cover" />
     </div>
   );
 }
@@ -45,7 +31,7 @@ export default function PartnerGrid({
 
   return (
     <section className="section-padding px-0 overflow-hidden bg-[#0D0D0D]">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <SectionHeader
           subtitle="Partners"
           title="Our Trusted Partners"
@@ -57,10 +43,10 @@ export default function PartnerGrid({
         <div className="flex flex-col gap-4 mt-4">
           {/* Row 1 — left to right */}
           <div
-            className="relative overflow-hidden"
+            className="relative overflow-hidden group"
             style={{ maskImage: MASK, WebkitMaskImage: MASK }}
           >
-            <div className="flex animate-marquee">
+            <div className="flex animate-marquee group-hover:[animation-play-state:paused]">
               {forward.map((p, i) => (
                 <PartnerTile key={i} image={p.image} title={p.title} />
               ))}
@@ -69,10 +55,10 @@ export default function PartnerGrid({
 
           {/* Row 2 — right to left */}
           <div
-            className="relative overflow-hidden"
+            className="relative overflow-hidden group"
             style={{ maskImage: MASK, WebkitMaskImage: MASK }}
           >
-            <div className="flex animate-marquee-reverse">
+            <div className="flex animate-marquee-reverse group-hover:[animation-play-state:paused]">
               {reverse.map((p, i) => (
                 <PartnerTile key={i} image={p.image} title={p.title} />
               ))}
@@ -88,14 +74,12 @@ export default function PartnerGrid({
               key={idx}
               className="group rounded-2xl bg-[#111111] border border-white/8 card-hover overflow-hidden"
             >
-              <div className="relative h-40 overflow-hidden">
-                <Image
+              <div className="aspect-square overflow-hidden">
+                <img
                   src={p.image}
                   alt={p.title}
-                  fill
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-cover transition-all duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#111111] to-transparent" />
               </div>
               <div className="p-5 flex flex-col gap-2">
                 <h3

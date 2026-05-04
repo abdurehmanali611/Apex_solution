@@ -26,7 +26,7 @@ const values = [
 
 export default function AboutComponent({ show }: { show: boolean }) {
   return (
-    <section className="section-padding px-6">
+    <section className="section-padding px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col gap-4 mb-14">

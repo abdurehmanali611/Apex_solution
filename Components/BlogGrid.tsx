@@ -13,7 +13,7 @@ interface Blog {
 
 export default function BlogGrid({ blogs }: { blogs: Blog[] }) {
   return (
-    <section className="section-padding px-6">
+    <section className="section-padding px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           subtitle="Insights"
