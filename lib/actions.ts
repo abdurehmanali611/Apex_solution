@@ -12,7 +12,7 @@ interface cloudinarySuccessResult {
 }
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "https://apex-backend-tdth.vercel.app/api",
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "https://apex-backend-taupe.vercel.app/api",
   timeout: 15000,
 });
 
