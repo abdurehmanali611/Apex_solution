@@ -1,0 +1,20 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/abdur/public_html/
+
+    # Install dependencies
+    - /usr/local/bin/npm install
+
+    # Build & export static site
+    - /usr/local/bin/npm run build
+
+    # Create deploy folder if not exists
+    - /bin/mkdir -p $DEPLOYPATH
+
+    # Copy exported files (from /out folder)
+    - /usr/bin/rsync -av --delete ./out/ $DEPLOYPATH
+
+    # Clean unnecessary files
+    - /bin/rm -rf $DEPLOYPATH/.git
+    - /bin/rm -f $DEPLOYPATH/.cpanel.yml
