@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/abdur/public_html/
+    - export DEPLOYPATH=/home/apexsoqh/public_html/
 
     # Install dependencies
     - /usr/local/bin/npm install
