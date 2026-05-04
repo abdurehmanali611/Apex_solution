@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 import AdminBlogs from "@/Components/AdminBlogs";
 import AdminContact from "@/Components/AdminContact";
@@ -9,7 +10,6 @@ import AdminPasswordSection from "@/Components/AdminPasswordSection";
 import AdminServices from "@/Components/AdminServices";
 import AdminTeams from "@/Components/AdminTeams";
 import AdminTestimonial from "@/Components/AdminTestimonial";
-import { Avatar } from "@/Components/ui/avatar";
 import {
   Breadcrumb,
   BreadcrumbItem,

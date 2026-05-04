@@ -78,7 +78,7 @@ const AdminBlogs = () => {
     (async () => {
       await loadData();
     })();
-  }, [currentData]);
+  }, []);
 
   return (
     <div className="space-y-10 text-slate-100">

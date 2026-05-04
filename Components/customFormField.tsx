@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
 import React from "react";
-import { Control } from "react-hook-form";
+import { Control, FieldPath, FieldValues } from "react-hook-form";
 import {
   FormControl,
   FormField,
@@ -108,9 +108,9 @@ interface BaseProps {
   autoComplete?: string;
 }
 
-interface FormConnectedProps extends BaseProps {
-  control: Control<any>;
-  name: string;
+interface FormConnectedProps<T extends FieldValues = any> extends BaseProps {
+  control: Control<T>;
+  name: FieldPath<T>;
   fieldType:
     | formFieldTypes.INPUT
     | formFieldTypes.TEXTAREA
@@ -133,9 +133,12 @@ interface AlertDialogProps extends BaseProps {
   dialogError?: string | null;
 }
 
-type customProps = FormConnectedProps | AlertDialogProps;
+type customProps<T extends FieldValues = any> = FormConnectedProps<T> | AlertDialogProps;
 
-const RenderInput = ({ field, props }: { field: any; props: customProps }) => {
+const RenderInput = <T extends FieldValues>({
+  field,
+  props,
+}: { field: any; props: customProps<T> }) => {
   const [open, setOpen] = React.useState(false);
   const [localValue, setLocalValue] = React.useState("");
 
@@ -500,7 +503,7 @@ const RenderInput = ({ field, props }: { field: any; props: customProps }) => {
   }
 };
 
-const CustomFormField = (props: customProps) => {
+const CustomFormField = <T extends FieldValues = any>(props: customProps<T>) => {
   if (props.fieldType === formFieldTypes.ALERTDIALOG) {
     return (
       <>
@@ -607,12 +610,12 @@ const CustomFormField = (props: customProps) => {
     );
   }
 
-  const { control, name, label } = props;
+  const { control, name, label } = props as FormConnectedProps<T>;
   return (
     <FormField
       control={control}
       name={name}
-      render={({ field }) => (
+      render={({ field }: { field: any }) => (
         <FormItem
           className={clsx(props.formItemClassName, {
             "flex flex-col items-center gap-3":
