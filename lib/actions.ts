@@ -53,7 +53,7 @@ async function refreshAccessToken() {
     }
 
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL || "https://apex-backend-tdth.vercel.app/api"}/auth/token/refresh`,
+      `${process.env.NEXT_PUBLIC_API_URL || "https://apex-backend-taupe.vercel.app/api"}/auth/token/refresh`,
       { refresh: refreshToken }
     );
 

@@ -93,8 +93,8 @@ Open [http://localhost:3000](http://localhost:3000)
 cd BackEnd
 
 # Create and activate virtual environment
-python -m venv venv
-venv\Scripts\activate        # Windows
+python -m venv .venv
+.venv\Scripts\activate        # Windows
 # source venv/bin/activate   # macOS/Linux
 
 # Install dependencies
