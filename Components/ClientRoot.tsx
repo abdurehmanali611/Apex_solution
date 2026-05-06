@@ -20,7 +20,7 @@ export default function ClientRoot({ children }: Props) {
   return (
     <div className="min-h-screen" style={{ backgroundColor: "var(--apex-bg)" }}>
       <Navbar active={active} />
-      <main className="pt-16">{children}</main>
+      <main className="pt-16 pb-6 sm:pb-8 min-w-0">{children}</main>
       <Toaster richColors position="top-right" />
       <Footer active={active} />
     </div>

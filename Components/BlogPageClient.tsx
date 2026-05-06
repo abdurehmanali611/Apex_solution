@@ -40,10 +40,10 @@ function FeaturedCard({ blog }: { blog: Blog }) {
             className="object-cover transition-transform duration-700 group-hover:scale-105"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/50 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-[#111111] via-[#111111]/50 to-transparent" />
 
           {/* Category + source badges */}
-          <div className="absolute top-5 left-5 flex gap-2">
+          <div className="absolute top-5 left-5 flex flex-wrap gap-2 max-w-[calc(100%-2.5rem)]">
             {blog.category && (
               <span className={`px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest backdrop-blur-sm ${
                 blog.category === "Ethiopia"
@@ -111,7 +111,7 @@ function BlogCard({ blog }: { blog: Blog }) {
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/90 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-[#111111]/90 via-transparent to-transparent" />
 
           {/* Category badge */}
           <div className="absolute top-3 left-3">
@@ -187,7 +187,7 @@ export default function BlogPageClient({ blogs }: { blogs: Blog[] }) {
   return (
     <div className="min-h-screen bg-[#0A0A0A]">
       {/* Page header */}
-      <section className="relative pt-24 pb-12 px-6 overflow-hidden">
+      <section className="relative pt-24 pb-12 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(37,99,235,0.10),transparent)]" />
         <div className="relative max-w-7xl mx-auto flex flex-col gap-4">
@@ -234,7 +234,7 @@ export default function BlogPageClient({ blogs }: { blogs: Blog[] }) {
       </section>
 
       {/* Content */}
-      <section className="px-6 pb-24">
+      <section className="px-4 sm:px-6 pb-16 sm:pb-24">
         <div className="max-w-7xl mx-auto flex flex-col gap-8">
           {filtered.length === 0 ? (
             <div className="text-center py-20 text-[#71717A]">

@@ -45,7 +45,7 @@ export default function PortfolioItem({ link, title, type, description, duration
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, 50vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#111111] via-transparent to-transparent" />
         <div className="absolute top-3 left-3">
           <span className={`px-2.5 py-1 rounded-lg backdrop-blur-sm text-xs font-semibold ${TYPE_COLORS[type] ?? DEFAULT_COLOR}`}>
             {type}

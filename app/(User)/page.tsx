@@ -57,7 +57,7 @@ export default async function UserHome() {
       <AboutComponent show={true} />
 
       {/* ── AI Showcase Section ─────────────────────────────── */}
-      <section className="section-padding px-6 bg-[#0D0D0D] relative overflow-hidden">
+      <section className="section-padding px-4 sm:px-6 bg-[#0D0D0D] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(37,99,235,0.07),transparent)]" />
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="relative max-w-7xl mx-auto">
@@ -132,7 +132,7 @@ export default async function UserHome() {
 
       {/* Featured project */}
       {featuredPortfolios.length > 0 && (
-        <section className="section-padding px-6">
+        <section className="section-padding px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
             <SectionHeader subtitle="Featured Project" title="Our Flagship Innovation" />
             {featuredPortfolios.map((portfolio, idx) => (
@@ -140,15 +140,15 @@ export default async function UserHome() {
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   <div className="relative h-64 lg:h-auto min-h-80">
                     <Image src={portfolio.image || "/assets/webapp.jpg"} alt={portfolio.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#111111]/50 lg:block hidden" />
-                    <div className="absolute top-5 left-5 flex gap-2">
+                    <div className="absolute inset-0 bg-linear-to-r from-transparent to-[#111111]/50 lg:block hidden" />
+                    <div className="absolute top-5 left-5 flex flex-wrap gap-2 max-w-[calc(100%-2.5rem)]">
                       <span className="px-3 py-1.5 rounded-lg bg-blue-600/90 backdrop-blur-sm text-white text-xs font-semibold">Special Edition</span>
                       <span className="px-3 py-1.5 rounded-lg bg-[#111111]/80 backdrop-blur-sm text-blue-300 text-xs font-semibold border border-blue-500/30 flex items-center gap-1">
                         <Sparkles className="w-3 h-3" /> AI-Powered
                       </span>
                     </div>
                   </div>
-                  <div className="p-8 lg:p-12 flex flex-col justify-center gap-5">
+                  <div className="p-6 sm:p-8 lg:p-12 flex flex-col justify-center gap-5">
                     <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight" style={{ fontFamily: "var(--font-jakarta), sans-serif", letterSpacing: "-0.02em" }}>
                       {portfolio.title}
                     </h3>
@@ -165,7 +165,7 @@ export default async function UserHome() {
                         </div>
                       )}
                     </div>
-                    <Link href={portfolio.link || "/Portfolio"} className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all duration-200 btn-shimmer w-fit hover:scale-105">
+                    <Link href={portfolio.link || "/Portfolio"} className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all duration-200 btn-shimmer w-full sm:w-fit justify-center hover:scale-105">
                       Explore Project <ArrowRight className="w-4 h-4" />
                     </Link>
                   </div>
@@ -177,7 +177,7 @@ export default async function UserHome() {
       )}
 
       {/* AI-first CTA */}
-      <section className="section-padding px-6 bg-[#0D0D0D] relative overflow-hidden">
+      <section className="section-padding px-4 sm:px-6 bg-[#0D0D0D] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_50%,rgba(37,99,235,0.12),transparent)]" />
         <div className="absolute inset-0 grid-bg opacity-40" />
         <div className="relative max-w-3xl mx-auto text-center flex flex-col items-center gap-6">

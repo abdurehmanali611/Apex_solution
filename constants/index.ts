@@ -96,15 +96,6 @@ export const defaultServices = [
 export const defaultPortfolios = [
   {
     id: 1,
-    link: "https://hotel-display-swart.vercel.app/",
-    title: "Hotel Display",
-    description:
-      "Bereket International Hotels' Hotel Display Website is one of our Great and exceptional project that we also as a company experienced a new way of thinking and problem solving skill.",
-    type: "Website",
-    duration: 7,
-  },
-  {
-    id: 2,
     link: "https://hotcol.vercel.app/",
     title: "HotCol",
     description:
@@ -116,7 +107,7 @@ export const defaultPortfolios = [
     image: "/assets/hotcol.png",
   },
   {
-    id: 3,
+    id: 2,
     title: "GebreSadik Hotel & Spa",
     description:
       "With Our one giant Client GebreSadik Hotel & Spa We delivered a bunch of Services that Incorporates CCTV Camera, Digital Lock Configuration(Degi digital lock) and also Network Setups.",
@@ -124,7 +115,7 @@ export const defaultPortfolios = [
     duration: 15,
   },
   {
-    id: 4,
+    id: 3,
     title: "Victory Hotel",
     description:
       "Awesome Digital Door Lock System Installation and Configuration for our great client Victory Hotel, Hossana with modern and reliable technologies that escalate Victory to the true form of victory.",
@@ -132,7 +123,7 @@ export const defaultPortfolios = [
     duration: 7,
   },
   {
-    id: 5,
+    id: 4,
     title: "Tinsea Hotel(G+4)",
     description:
       "Here is one our clients with an outstanding performance by the service delivered from us which is an impressive 16-Channel NVR CCTV Camera System Installation and Configuration and Full Wi-Fi design and Installation.",
@@ -140,7 +131,7 @@ export const defaultPortfolios = [
     duration: 7,
   },
   {
-    id: 6,
+    id: 5,
     title: "Shuferoch Hotel",
     description:
       "For Shuferoch Hotel, we installed a 16-channel NVR CCTV system and delivered a complete Wi-Fi network solution, and we continue to support their operations.",
@@ -148,7 +139,7 @@ export const defaultPortfolios = [
     duration: 7,
   },
   {
-    id: 7,
+    id: 6,
     title: "Alem Hotel",
     description:
       "Alem Hotel trusted us for a HikVision 32-channel NVR CCTV installation, and we remain committed to delivering ongoing value as their technology partner.",
@@ -156,7 +147,7 @@ export const defaultPortfolios = [
     duration: 7,
   },
   {
-    id: 8,
+    id: 7,
     title: "Sono Hotel",
     description:
       "Sono Hotel received a 16-channel NVR CCTV installation plus a full Wi-Fi design and setup, and we provided support for their future needs.",
@@ -164,7 +155,7 @@ export const defaultPortfolios = [
     duration: 7,
   },
   {
-    id: 9,
+    id: 8,
     title: "Handakina Cafe and Pension",
     description:
       "Handakina Cafe and Pension brought us in for a HikVision 4-channel DVR installation, and we completed the project successfully with a very satisfied client.",
@@ -172,7 +163,7 @@ export const defaultPortfolios = [
     duration: 3,
   },
   {
-    id: 10,
+    id: 9,
     title: "Boez Cafe and Restaurant",
     description:
       "Boez Cafe and Restaurant engaged us for a 4-channel NVR CCTV installation, which we delivered successfully and left the client pleased.",
@@ -180,7 +171,7 @@ export const defaultPortfolios = [
     duration: 2,
   },
   {
-    id: 11,
+    id: 10,
     title: "Ela Resort",
     description:
       "Ela Resort contracted us for a digital door lock system and shared network integration, and we delivered a robust solution to meet their needs.",
@@ -188,7 +179,7 @@ export const defaultPortfolios = [
     duration: 2,
   },
   {
-    id: 12,
+    id: 11,
     title: "Ilitro Hotel",
     description:
       "Ilitro Hotel engaged our team for digital access control and shared network resources, and we completed the installation to the client's satisfaction.",
@@ -196,7 +187,7 @@ export const defaultPortfolios = [
     duration: 2,
   },
   {
-    id: 13,
+    id: 12,
     title: "Hiwot Hospital",
     description:
       "Hiwot Hospital chose us for network design and implementation supporting their Hospital Management System (HMS), and we delivered a secure, reliable solution.",
@@ -204,7 +195,7 @@ export const defaultPortfolios = [
     duration: 2,
   },
   {
-    id: 14,
+    id: 13,
     title: "Central Ethiopia President's Home",
     description:
       "We implemented a secure wireless network at the Central Ethiopia President's Home and completed the installation with precision.",
@@ -213,7 +204,7 @@ export const defaultPortfolios = [
     duration: 2,
   },
   {
-    id: 15,
+    id: 14,
     title: "Central Ethiopia Region Plan & Design Office",
     description:
       "For the Central Ethiopia Region Plan & Design Office, we expanded Wi-Fi coverage and upgraded infrastructure with a successful rollout.",
@@ -222,7 +213,7 @@ export const defaultPortfolios = [
     duration: 3,
   },
   {
-    id: 16,
+    id: 15,
     title: "Lechigogo Preparatory Schools",
     description:
       "Lechigogo Preparatory Schools relied on us for LAN design and installation, and we delivered the project on schedule.",
@@ -230,7 +221,7 @@ export const defaultPortfolios = [
     duration: 7,
   },
   {
-    id: 17,
+    id: 16,
     title: "Tesdika Pension(G+3)",
     description:
       "Tesdika Pension asked us to install structured cabling and expand Wi-Fi coverage, and we carried out the upgrade successfully.",
@@ -238,7 +229,7 @@ export const defaultPortfolios = [
     duration: 2,
   },
   {
-    id: 18,
+    id: 17,
     title: "Dani Pension(G+4)",
     description:
       "Dani Pension engaged us for a full wireless network deployment, and we completed the installation with excellent results.",
@@ -246,7 +237,7 @@ export const defaultPortfolios = [
     duration: 2,
   },
   {
-    id: 19,
+    id: 18,
     title: "Shallom Pension(G+4)",
     description:
       "Shallom Pension hired us for network design and installation, and we finished the project successfully with a satisfied client.",
@@ -254,7 +245,7 @@ export const defaultPortfolios = [
     duration: 2,
   },
   {
-    id: 20,
+    id: 19,
     title: "Lopiso Cafe & Pension(G+3)",
     description:
       "Lopiso Cafe & Pension received a complete end-to-end network and Wi-Fi setup from our team, which we delivered successfully.",
@@ -262,7 +253,7 @@ export const defaultPortfolios = [
     duration: 2,
   },
   {
-    id: 21,
+    id: 20,
     title: "Asham Hotel",
     description:
       "Asham Hotel engaged us for wireless network installation, and we completed the work successfully with a happy client.",
@@ -400,7 +391,7 @@ export const defaultTeamMembers = [
   {
     id: 1,
     image: "/assets/ceo.jpg",
-    name: "Atlabachew Tadese",
+    name: "Atlabachew Tadesse",
     position: "CoFounder & CEO",
     title: "The Founder",
     description: "Leader of Greatness and Success",
@@ -427,7 +418,7 @@ export const defaultTeamMembers = [
   {
     id: 3,
     image: "/teddy.jpg",
-    name: "Tewodros Million",
+    name: "Tedros Milion",
     position: "Technical Project Manager & AI Solutions Lead",
     title: "The Architect",
     description: "Bridging strategy and execution through AI-driven solutions and precision project delivery.",
@@ -440,9 +431,9 @@ export const defaultTeamMembers = [
 ];
 
 export const footerLinks = [
-  { id: 1, label: "Email",    link: "mailto:apexsolution@gmail.com",                        icon: "mail" },
+  { id: 1, label: "Email",    link: "mailto:contact@apexsolutionhub.com",                   icon: "mail" },
   { id: 2, label: "LinkedIn", link: "https://www.linkedin.com/company/apex-solution-et",    icon: "linkedin" },
-  { id: 3, label: "Telegram", link: "https://t.me/ApexSolutionET",                          icon: "send" },
+  { id: 3, label: "Telegram", link: "https://t.me/apexsolutionhub",                          icon: "send" },
   { id: 4, label: "GitHub",   link: "https://github.com/apex-solution",                    icon: "github" },
   { id: 5, label: "TikTok",   link: "https://www.tiktok.com/@apexsolution",                icon: "music-2" },
   { id: 6, label: "YouTube",  link: "https://www.youtube.com/@ApexSolution",               icon: "youtube" },
@@ -462,6 +453,7 @@ export const AdminList = [
   { id: 8, name: "Partners", icon: "carbon:partnership" },
   { id: 9, name: "Contact Messages", icon: "flat-color-icons:contacts" },
   { id: 10, name: "Testimonials", icon: "dashicons:testimonial" },
+  { id: 11, name: "Newsletter", icon: "mdi:email-newsletter" },
 ];
 
 export const HeroFooterList = [

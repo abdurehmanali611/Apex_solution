@@ -16,6 +16,8 @@ interface DashboardData {
     partners: number;
     contacts: number;
     testimonials: number;
+    newsletter_subscribers: number;
+    newsletter_issues: number;
   };
   recent_activities: {
     contacts: Array<{
@@ -91,6 +93,20 @@ const statCards: Array<{
     icon: "mdi:comment-quote-outline",
     accent: "bg-orange-400",
   },
+  {
+    key: "newsletter_subscribers",
+    title: "Subscribers",
+    description: "Newsletter subscribers",
+    icon: "mdi:email-newsletter",
+    accent: "bg-indigo-400",
+  },
+  {
+    key: "newsletter_issues",
+    title: "Newsletter Posts",
+    description: "Published newsletters",
+    icon: "mdi:post-outline",
+    accent: "bg-lime-400",
+  },
 ];
 
 const AdminDashboard = () => {
@@ -118,7 +134,9 @@ const AdminDashboard = () => {
       data.counts.teams +
       data.counts.partners +
       data.counts.contacts +
-      data.counts.testimonials
+      data.counts.testimonials +
+      data.counts.newsletter_subscribers +
+      data.counts.newsletter_issues
     );
   }, [data]);
 

@@ -41,7 +41,7 @@ const Navbar = ({ active }: NavbarProps) => {
           boxShadow: scrolled ? "0 4px 32px rgba(0,0,0,0.15)" : "none",
         }}
       >
-        <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+        <div className="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 py-3 sm:py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center group shrink-0">
             <Image
@@ -119,7 +119,7 @@ const Navbar = ({ active }: NavbarProps) => {
       {menuShow && (
         <div className="fixed inset-0 z-40 lg:hidden">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMenuShow(false)} />
-          <div className="absolute top-0 right-0 h-full w-72 bg-[#0D0D0D] border-l border-white/8 p-6 flex flex-col gap-2 animate-slide-in-right">
+          <div className="absolute top-0 right-0 h-full w-[min(18rem,88vw)] bg-[#0D0D0D] border-l border-white/8 p-5 sm:p-6 flex flex-col gap-2 animate-slide-in-right overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
               <Image src="/apex-logo-dark-bg.svg" alt="Apex Solution" width={130} height={32} className="h-8 w-auto" />
               <div className="flex items-center gap-2">

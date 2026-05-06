@@ -38,7 +38,7 @@ export default function Builder() {
   });
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-slate-950 px-4 py-16 text-slate-100">
-      <div className="w-89 max-w-lg rounded-[32px] border border-slate-800/90 bg-slate-900/95 p-8 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.7)] ring-1 ring-slate-700/80 h-fit">
+      <div className="w-full max-w-lg rounded-[32px] border border-slate-800/90 bg-slate-900/95 p-6 sm:p-8 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.7)] ring-1 ring-slate-700/80 h-fit">
         <Card className="bg-transparent border-0 shadow-none">
           <CardHeader className="space-y-3 text-center">
             <div className="flex justify-center mb-2">
@@ -71,7 +71,7 @@ export default function Builder() {
                   fieldType={formFieldTypes.INPUT}
                   label="Username"
                   placeholder="Enter Apex username"
-                  inputClassName="w-full rounded-2xl border border-slate-700/80 bg-slate-950 px-4 py-3 text-slate-100 outline-none focus:border-amber-400 w-56"
+                  inputClassName="w-full rounded-2xl border border-slate-700/80 bg-slate-950 px-4 py-3 text-slate-100 outline-none focus:border-amber-400"
                 />
                 <CustomFormField
                   name="password"
@@ -80,11 +80,11 @@ export default function Builder() {
                   label="Password"
                   placeholder="Enter Apex password"
                   type="password"
-                  inputClassName="w-full rounded-2xl border border-slate-700/80 bg-slate-950 px-4 py-3 text-slate-100 outline-none focus:border-amber-400 w-56"
+                  inputClassName="w-full rounded-2xl border border-slate-700/80 bg-slate-950 px-4 py-3 text-slate-100 outline-none focus:border-amber-400"
                 />
                 <Button
                   type="submit"
-                  className="w-56 rounded-full bg-amber-500 px-6 py-3 text-slate-950 transition hover:bg-amber-400"
+                  className="w-full rounded-full bg-amber-500 px-6 py-3 text-slate-950 transition hover:bg-amber-400"
                 >
                   {loading ? "Logging in..." : "Login"}
                 </Button>

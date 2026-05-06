@@ -92,20 +92,23 @@ Open [http://localhost:3000](http://localhost:3000)
 ```bash
 cd BackEnd
 
-# Create and activate virtual environment
-python -m venv .venv
-.venv\Scripts\activate        # Windows
+# Create and activate virtual environment (Windows: prefer py launcher if `python` fails)
+py -3 -m venv venv
+venv\Scripts\activate
+# python -m venv .venv && .venv\Scripts\activate   # alternative
 # source venv/bin/activate   # macOS/Linux
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Run migrations
+# Run migrations (or double-click BackEnd/migrate.bat on Windows)
 python manage.py migrate
 
 # Start server
 python manage.py runserver
 ```
+
+If Windows reports **No Python at `...\python.exe`**, the bundled `venv` may point to an old install path. Delete the `BackEnd/venv` folder, reinstall Python from [python.org](https://www.python.org/downloads/) (check “Add python.exe to PATH”), then run `py -3 -m venv venv` again inside `BackEnd/`.
 
 Backend runs at [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
@@ -158,7 +161,7 @@ CORS_ALLOWED_ORIGINS=http://localhost:3000
 
 ### Admin Panel (`/Builder`)
 - JWT authentication with auto token refresh
-- Manage: Services, Portfolio, Blogs, Team, Partners, Testimonials, Contacts, Hero Stats
+- Manage: Services, Portfolio, Blogs, Team, Partners, Testimonials, Contacts, Hero Stats, Newsletter (SMTP send)
 - Cloudinary image uploads
 - Password change
 

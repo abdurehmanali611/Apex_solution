@@ -92,7 +92,7 @@ export default async function About() {
     <div className="flex flex-col bg-[#0A0A0A]">
 
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-24 pb-20 px-6">
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-24 pb-20 px-4 sm:px-6">
         <div className="absolute inset-0 grid-bg opacity-40" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(37,99,235,0.12),transparent)]" />
         <div className="absolute top-20 right-10 w-64 h-64 bg-blue-600/6 rounded-full blur-3xl pointer-events-none" />
@@ -105,7 +105,7 @@ export default async function About() {
           </span>
           {/* Cinematic opening statement */}
           <h1
-            className="text-4xl sm:text-5xl md:text-[64px] font-bold text-white leading-[1.0] animate-fade-up"
+            className="text-4xl sm:text-5xl md:text-[64px] font-bold text-white leading-none animate-fade-up"
             style={{ fontFamily: "var(--font-jakarta), sans-serif", letterSpacing: "-0.04em" }}
           >
             Born in Ethiopia.
@@ -124,29 +124,51 @@ export default async function About() {
         </div>
       </section>
 
-      {/* Co-founders banner */}
-      <section className="relative w-full overflow-hidden">
-        <Image
-          src="/assets/apex.png"
-          alt="Apex Solution Co-founders — Atlabachew Tadese & Abdurehman Ali"
-          width={1536}
-          height={1024}
-          className="w-full h-auto object-cover"
-          priority
-          sizes="100vw"
+      {/* Co-founders banner — mobile: tighter crop + bottom-only scrim so faces stay visible */}
+      <section className="relative w-full overflow-hidden bg-[#0A0A0A]">
+        {/* Mobile: fixed viewport-relative height + object-position tuned for group photo */}
+        <div className="relative md:hidden w-full h-[min(72vh,560px)] min-h-[300px]">
+          <Image
+            src="/assets/apex.png"
+            alt="Apex Solution Co-founders — Atlabachew Tadesse & Abdurehman Ali"
+            fill
+            className="object-cover object-[center_18%]"
+            priority
+            sizes="100vw"
+          />
+        </div>
+        {/* Desktop / tablet: full-width natural aspect */}
+        <div className="relative hidden md:block w-full">
+          <Image
+            src="/assets/apex.png"
+            alt="Apex Solution Co-founders — Atlabachew Tadesse & Abdurehman Ali"
+            width={1536}
+            height={1024}
+            className="w-full h-auto object-cover"
+            priority
+            sizes="100vw"
+          />
+        </div>
+        {/* Readability: strong fade only at bottom (caption); light side vignette on larger screens */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-1 h-[42%] max-md:h-[48%] bg-linear-to-t from-[#0A0A0A] via-[#0A0A0A]/85 to-transparent md:via-[#0A0A0A]/50"
+          aria-hidden
         />
-        {/* Dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/40 via-transparent to-[#0A0A0A]/40" />
+        <div
+          className="pointer-events-none absolute inset-0 z-1 hidden md:block bg-linear-to-r from-[#0A0A0A]/35 via-transparent to-[#0A0A0A]/35"
+          aria-hidden
+        />
         {/* Caption */}
-        <div className="absolute bottom-6 left-0 right-0 flex flex-col items-center gap-1.5">
-          <span className="eyebrow">The Founders</span>
-          <p className="text-white/60 text-sm">Atlabachew Tadese &amp; Abdurehman Ali — Co-founders of Apex Solution</p>
+        <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col items-center gap-2 px-4 pb-8 pt-10 md:bottom-6 md:px-6 md:pb-6 md:pt-0">
+          <span className="eyebrow drop-shadow-md">The Founders</span>
+          <p className="text-center text-sm font-medium text-white/95 max-w-md leading-snug drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] md:text-white/60 md:font-normal md:max-w-none md:drop-shadow-none">
+            Atlabachew Tadesse &amp; Abdurehman Ali — Co-founders of Apex Solution
+          </p>
         </div>
       </section>
 
       {/* ── Stats bar ────────────────────────────────────────── */}
-      <section className="px-6 py-0">
+      <section className="px-4 sm:px-6 py-0">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {stats.map((s, i) => (
@@ -171,7 +193,7 @@ export default async function About() {
       </section>
 
       {/* Trust signals row */}
-      <section className="px-6 py-8">
+      <section className="px-4 sm:px-6 py-8">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-wrap items-center justify-center gap-3">
             {[
@@ -190,7 +212,7 @@ export default async function About() {
       </section>
 
       {/* Values */}
-      <section className="section-padding px-6">
+      <section className="section-padding px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col gap-3 mb-12 text-center items-center">
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-400">
@@ -209,7 +231,7 @@ export default async function About() {
             {values.map((v, i) => (
               <div
                 key={i}
-                className={`relative p-7 rounded-2xl bg-gradient-to-br ${v.accent} border flex flex-col gap-4 hover:shadow-lg transition-all duration-200 overflow-hidden`}
+                className={`relative p-7 rounded-2xl bg-linear-to-br ${v.accent} border flex flex-col gap-4 hover:shadow-lg transition-all duration-200 overflow-hidden`}
               >
                 {/* Large number background */}
                 <span
@@ -237,7 +259,7 @@ export default async function About() {
       </section>
 
       {/* Company profile download — after values */}
-      <section className="px-6 pb-4">
+      <section className="px-4 sm:px-6 pb-4">
         <div className="max-w-7xl mx-auto flex justify-center">
           <div className="flex flex-col items-center gap-3">
             <p className="eyebrow">Company Profile</p>
@@ -266,7 +288,7 @@ export default async function About() {
       </section>
 
       {/* Story + Commitments */}
-      <section className="section-padding px-6 bg-[#0D0D0D]">
+      <section className="section-padding px-4 sm:px-6 bg-[#0D0D0D]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left — story */}
           <div className="flex flex-col gap-6">
@@ -322,7 +344,7 @@ export default async function About() {
       </section>
 
       {/* ── Timeline ─────────────────────────────────────────── */}
-      <section className="section-padding px-6">
+      <section className="section-padding px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col gap-3 mb-12 text-center items-center">
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-400">
@@ -340,7 +362,7 @@ export default async function About() {
 
           <div className="relative flex flex-col gap-0">
             {/* Vertical line */}
-            <div className="absolute left-[19px] top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/60 via-blue-500/20 to-transparent" />
+            <div className="absolute left-[19px] top-0 bottom-0 w-px bg-linear-to-b from-blue-500/60 via-blue-500/20 to-transparent" />
 
             {timeline.map((item, i) => (
               <div key={i} className="relative flex gap-6 pb-10 last:pb-0">
@@ -376,7 +398,7 @@ export default async function About() {
       <TestimonialsCarousel testimonials={testimonials} />
 
       {/* ── CTA ──────────────────────────────────────────────── */}
-      <section className="section-padding px-6 relative overflow-hidden">
+      <section className="section-padding px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_50%,rgba(37,99,235,0.10),transparent)]" />
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="relative max-w-2xl mx-auto text-center flex flex-col items-center gap-6">

@@ -4,4 +4,4 @@ Disallow: /Builder
 Disallow: /BuilderDashboard
 Disallow: /api/
 
-Sitemap: https://apex-solution.vercel.app/sitemap.xml
+Sitemap: https://www.apexsolutionhub.com/sitemap.xml

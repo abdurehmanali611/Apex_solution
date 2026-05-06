@@ -7,6 +7,7 @@ import {
   Mail, Linkedin, Send, Github, Music2, Youtube,
   Phone, MapPin, Sparkles, Brain, LucideIcon, ArrowRight,
 } from "lucide-react";
+import { CreateNewsletterSubscriber } from "@/lib/actions";
 
 const ICON_MAP: Record<string, LucideIcon> = {
   mail: Mail, linkedin: Linkedin, send: Send,
@@ -30,15 +31,21 @@ interface FooterProps { active: string; }
 const Footer = ({ active }: FooterProps) => {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const services = [
     "AI-Powered Software", "Hotel Technology", "Networking & Wi-Fi",
     "IT Consulting", "CCTV Systems", "Mobile Apps",
   ];
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) { setSubscribed(true); setEmail(""); }
+    if (!email.trim()) return;
+    const result = await CreateNewsletterSubscriber({ email }, setLoading);
+    if (result) {
+      setSubscribed(true);
+      setEmail("");
+    }
   };
 
   return (
@@ -57,7 +64,7 @@ const Footer = ({ active }: FooterProps) => {
       </div>
 
       {/* Main grid */}
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
         {/* Brand */}
         <div className="flex flex-col gap-5">
@@ -134,11 +141,11 @@ const Footer = ({ active }: FooterProps) => {
               </div>
               +251 930 272 975
             </Link>
-            <Link href="mailto:apexsolution@gmail.com" className="flex items-center gap-2.5 text-sm text-[#71717A] hover:text-white transition-colors group/c">
+            <Link href="mailto:contact@apexsolutionhub.com" className="flex items-center gap-2.5 text-sm text-[#71717A] hover:text-white transition-colors group/c break-all">
               <div className="w-7 h-7 rounded-lg bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover/c:bg-blue-600/20 transition-colors">
                 <Mail className="w-3.5 h-3.5 text-blue-400" />
               </div>
-              apexsolution@gmail.com
+              contact@apexsolutionhub.com
             </Link>
             <div className="flex flex-wrap gap-1.5 mt-1">
               {accessibility.slice(0, 3).map((loc) => (
@@ -163,7 +170,7 @@ const Footer = ({ active }: FooterProps) => {
                 You&apos;re subscribed!
               </div>
             ) : (
-              <form onSubmit={handleSubscribe} className="flex gap-2">
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
                 <input
                   type="email"
                   value={email}
@@ -174,9 +181,10 @@ const Footer = ({ active }: FooterProps) => {
                 />
                 <button
                   type="submit"
+                  disabled={loading}
                   className="w-8 h-8 rounded-lg bg-blue-600 hover:bg-blue-500 flex items-center justify-center text-white transition-colors shrink-0"
                 >
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  {loading ? <span className="w-3.5 h-3.5 border border-white/40 border-t-white rounded-full animate-spin" /> : <ArrowRight className="w-3.5 h-3.5" />}
                 </button>
               </form>
             )}

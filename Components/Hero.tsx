@@ -84,8 +84,8 @@ export default function Hero({ heroFooter }: { heroFooter: HeroFooterItem[] }) {
           <div className="flex flex-col gap-5 sm:gap-7 order-2 lg:order-1">
 
             {/* Badge */}
-            <div className="flex items-center gap-3 animate-fade-up">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-blue-500/25 text-xs font-semibold text-blue-300 uppercase tracking-widest">
+            <div className="flex flex-wrap items-center gap-3 animate-fade-up">
+              <div className="inline-flex flex-wrap items-center gap-2 px-3 sm:px-4 py-2 rounded-full glass border border-blue-500/25 text-[10px] sm:text-xs font-semibold text-blue-300 uppercase tracking-widest max-w-full">
                 <Sparkles className="w-3 h-3 text-blue-400" />
                 Ethiopia&apos;s AI-First Technology Company
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
@@ -197,7 +197,7 @@ export default function Hero({ heroFooter }: { heroFooter: HeroFooterItem[] }) {
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0A0A0A] to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-[#0A0A0A] to-transparent pointer-events-none" />
     </section>
   );
 }

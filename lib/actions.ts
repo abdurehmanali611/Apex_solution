@@ -245,6 +245,33 @@ export interface UpdateContacts extends createContacts {
   id: number;
 }
 
+export interface newsletterSubscriber {
+  id: number;
+  email: string;
+  is_active: boolean;
+  created_at: string;
+}
+
+export interface createNewsletterSubscriber {
+  email: string;
+}
+
+export interface newsletterIssue {
+  id: number;
+  title: string;
+  subject: string;
+  content: string;
+  recipients_count: number;
+  created_at: string;
+  recipient_emails?: string[];
+}
+
+export interface createNewsletterIssue {
+  title: string;
+  subject: string;
+  content: string;
+}
+
 export interface testimony {
   id: number;
   name: string;
@@ -821,6 +848,117 @@ export async function DeleteContact(id: number) {
     const response = await api.delete(`/contacts/${id}`);
     const data = response.data;
     toast.success("Message deleted successfully");
+    return data;
+  } catch (error: unknown) {
+    let errorMessage = "An Unknown Error happened";
+    if (axios.isAxiosError(error)) {
+      errorMessage = error.response?.data?.message || error.message;
+    } else if (error instanceof Error) {
+      errorMessage = error.message;
+    }
+    toast.error(`${errorMessage}`);
+  }
+}
+
+export async function CreateNewsletterSubscriber(
+  values: createNewsletterSubscriber,
+  setLoading?: (value: boolean) => void,
+) {
+  try {
+    setLoading?.(true);
+    const response = await api.post("/newsletter/subscribers", values);
+    const data = response.data;
+    toast.success("Subscribed to newsletter successfully");
+    return data;
+  } catch (error: unknown) {
+    let errorMessage = "An Unknown Error happened";
+    if (axios.isAxiosError(error)) {
+      errorMessage = error.response?.data?.email?.[0] || error.response?.data?.message || error.message;
+    } else if (error instanceof Error) {
+      errorMessage = error.message;
+    }
+    toast.error(`${errorMessage}`);
+  } finally {
+    setLoading?.(false);
+  }
+}
+
+export async function GetNewsletterSubscribers() {
+  try {
+    const response = await api.get("/newsletter/subscribers");
+    const data = response.data;
+    return data;
+  } catch (error: unknown) {
+    let errorMessage = "An Unknown Error happened";
+    if (axios.isAxiosError(error)) {
+      errorMessage = error.response?.data?.message || error.message;
+    } else if (error instanceof Error) {
+      errorMessage = error.message;
+    }
+    toast.error(`${errorMessage}`);
+  }
+}
+
+export async function DeleteNewsletterSubscriber(id: number) {
+  try {
+    const response = await api.delete(`/newsletter/subscribers/${id}`);
+    const data = response.data;
+    toast.success("Subscriber removed successfully");
+    return data;
+  } catch (error: unknown) {
+    let errorMessage = "An Unknown Error happened";
+    if (axios.isAxiosError(error)) {
+      errorMessage = error.response?.data?.message || error.message;
+    } else if (error instanceof Error) {
+      errorMessage = error.message;
+    }
+    toast.error(`${errorMessage}`);
+  }
+}
+
+export async function CreateNewsletterIssue(
+  values: createNewsletterIssue,
+  setLoading: (value: boolean) => void,
+) {
+  try {
+    setLoading(true);
+    const response = await api.post("/newsletter/issues", values);
+    const data = response.data;
+    const delivery = data?.email_delivery as
+      | { sent?: number; total?: number; skipped?: boolean; success?: boolean; error?: string; failed?: number }
+      | undefined;
+    if (delivery?.skipped) {
+      toast.success("Newsletter saved. Email sending skipped (see backend NEWSLETTER_SEND_EMAILS).");
+    } else if (delivery?.success === false && delivery?.error) {
+      toast.error(`Newsletter saved, but SMTP failed: ${delivery.error}`);
+    } else if (delivery && typeof delivery.sent === "number" && typeof delivery.total === "number") {
+      const failed = delivery.failed ?? 0;
+      toast.success(
+        failed > 0
+          ? `Newsletter posted. Sent ${delivery.sent}/${delivery.total} (${failed} failed — check server logs).`
+          : `Newsletter posted. Sent ${delivery.sent}/${delivery.total} emails.`,
+      );
+    } else {
+      toast.success("Newsletter posted successfully.");
+    }
+    return data;
+  } catch (error: unknown) {
+    let errorMessage = "An Unknown Error happened";
+    if (axios.isAxiosError(error)) {
+      errorMessage = error.response?.data?.message || error.message;
+    } else if (error instanceof Error) {
+      errorMessage = error.message;
+    }
+    toast.error(`${errorMessage}`);
+  } finally {
+    setLoading(false);
+  }
+}
+
+export async function GetNewsletterIssues() {
+  try {
+    const response = await api.get("/newsletter/issues");
+    const data = response.data;
     return data;
   } catch (error: unknown) {
     let errorMessage = "An Unknown Error happened";

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Facebook, Instagram, Linkedin, Send, ExternalLink } from "lucide-react";
+import { Github, Facebook, Instagram, Linkedin, Send, ExternalLink, Mail } from "lucide-react";
 
 interface TeamItemProps {
   image: string;
@@ -21,6 +21,13 @@ export default function TeamItem({
   facebook, instagram, linkedin, telegram, portfolio,
   objectPosition = "center",
 }: TeamItemProps) {
+  const teamEmailMap: Record<string, string> = {
+    "Atlabachew Tadesse": "atlabachew.t@apexsolutionhub.com",
+    "Abdurehman Ali": "abdurehman.a@apexsolutionhub.com",
+    "Tedros Milion": "tedros.m@apexsolutionhub.com",
+  };
+  const workEmail = teamEmailMap[name];
+
   const socials = [
     { href: facebook, icon: facebook.includes("github") ? Github : Facebook, label: "Facebook" },
     { href: instagram, icon: Instagram, label: "Instagram" },
@@ -42,7 +49,7 @@ export default function TeamItem({
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/40 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#111111] via-[#111111]/40 to-transparent" />
 
         {/* Title badge — top right */}
         <div className="absolute top-4 right-4">
@@ -69,6 +76,15 @@ export default function TeamItem({
         <p className="text-xs text-[#71717A] leading-relaxed border-l-2 border-blue-500/30 pl-3">
           {description}
         </p>
+        {workEmail && (
+          <Link
+            href={`mailto:${workEmail}`}
+            className="inline-flex items-center gap-2 text-xs text-blue-300 hover:text-white transition-colors break-all"
+          >
+            <Mail className="w-3.5 h-3.5" />
+            {workEmail}
+          </Link>
+        )}
 
         {/* Portfolio CTA */}
         {portfolio ? (

@@ -90,7 +90,7 @@ export default function ContactForm() {
               </h3>
               {[
                 { icon: Phone, label: "Phone", values: ["+251 930 272 975", "+251 935 000 642"], href: "tel:+251930272975" },
-                { icon: Mail, label: "Email", values: ["apexsolution@gmail.com"], href: "mailto:apexsolution@gmail.com" },
+                { icon: Mail, label: "Email", values: ["contact@apexsolutionhub.com"], href: "mailto:contact@apexsolutionhub.com" },
                 { icon: MapPin, label: "Locations", values: ["Hossana, Addis Ababa", "& 6 more cities"], href: null },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
@@ -126,7 +126,7 @@ export default function ContactForm() {
               <div className="flex gap-2">
                 {[
                   { icon: Linkedin, href: "https://www.linkedin.com/company/apex-solution-et", label: "LinkedIn" },
-                  { icon: Send, href: "https://t.me/ApexSolutionET", label: "Telegram" },
+                  { icon: Send, href: "https://t.me/apexsolutionhub", label: "Telegram" },
                   { icon: Github, href: "https://github.com/apex-solution", label: "GitHub" },
                 ].map((s, i) => (
                   <a

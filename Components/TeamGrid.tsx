@@ -30,7 +30,7 @@ export default function TeamGrid({ teams }: { teams: Team[] }) {
               key={idx}
               {...team}
               objectPosition={
-                team.name === "Tewodros Million" ? "center 20%" : "center"
+                team.name === "Tedros Milion" ? "center 20%" : "center"
               }
             />
           ))}

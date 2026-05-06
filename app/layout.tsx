@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     siteName: "Apex Solution",
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://apex-solution.vercel.app" },
+  alternates: { canonical: "https://www.apexsolutionhub.com" },
 };
 
 const jsonLd = {
@@ -48,10 +48,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://apex-solution.vercel.app/#organization",
+      "@id": "https://www.apexsolutionhub.com/#organization",
       name: "Apex Solution",
-      url: "https://apex-solution.vercel.app",
-      logo: "https://apex-solution.vercel.app/apex-logo-dark-bg.svg",
+      url: "https://www.apexsolutionhub.com",
+      logo: "https://www.apexsolutionhub.com/apex-logo-dark-bg.svg",
       description: "Ethiopia's AI-first technology company delivering intelligent software, hotel technology, networking infrastructure, and IT consulting services.",
       foundingDate: "2015",
       areaServed: "ET",
@@ -63,17 +63,17 @@ const jsonLd = {
       },
       sameAs: [
         "https://www.linkedin.com/company/apex-solution-et",
-        "https://t.me/ApexSolutionET",
+        "https://t.me/apexsolutionhub",
         "https://github.com/apex-solution",
       ],
     },
     {
       "@type": "LocalBusiness",
-      "@id": "https://apex-solution.vercel.app/#localbusiness",
+      "@id": "https://www.apexsolutionhub.com/#localbusiness",
       name: "Apex Solution",
-      image: "https://apex-solution.vercel.app/apex-logo-dark-bg.svg",
+      image: "https://www.apexsolutionhub.com/apex-logo-dark-bg.svg",
       telephone: "+251-930-272-975",
-      email: "apexsolution@gmail.com",
+      email: "contact@apexsolutionhub.com",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Hossana",
@@ -90,10 +90,10 @@ const jsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://apex-solution.vercel.app/#website",
-      url: "https://apex-solution.vercel.app",
+      "@id": "https://www.apexsolutionhub.com/#website",
+      url: "https://www.apexsolutionhub.com",
       name: "Apex Solution",
-      publisher: { "@id": "https://apex-solution.vercel.app/#organization" },
+      publisher: { "@id": "https://www.apexsolutionhub.com/#organization" },
     },
   ],
 };

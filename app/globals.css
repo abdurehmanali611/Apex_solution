@@ -372,6 +372,11 @@ html.light ::-webkit-scrollbar-track { background: var(--apex-bg); }
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(37, 99, 235, 0.1);
 }
 
+/* ─── Global layout (avoid horizontal scroll on small screens) ─ */
+html {
+  overflow-x: clip;
+}
+
 /* ─── Section Spacing ────────────────────────────────────────── */
 .section-padding { padding-top: 120px; padding-bottom: 120px; }
 @media (max-width: 768px) {

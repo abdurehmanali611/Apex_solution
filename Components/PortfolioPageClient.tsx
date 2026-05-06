@@ -34,17 +34,17 @@ export default function PortfolioPageClient({ portfolios }: { portfolios: Portfo
   return (
     <div>
       {/* Filter bar */}
-      <div className="sticky top-16 z-30 bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-white/5 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+      <div className="sticky top-16 z-30 bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-white/5 px-4 sm:px-6 py-3 sm:py-4">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between">
           {/* Search */}
-          <div className="relative">
+          <div className="relative w-full sm:w-auto sm:max-w-md">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#71717A]" />
             <input
               type="text"
               placeholder="Search projects..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-9 pr-8 py-2 rounded-xl bg-[#111111] border border-white/8 text-sm text-white placeholder:text-[#71717A] focus:outline-none focus:border-blue-500/50 w-64 transition-colors"
+              className="pl-9 pr-8 py-2.5 rounded-xl bg-[#111111] border border-white/8 text-sm text-white placeholder:text-[#71717A] focus:outline-none focus:border-blue-500/50 w-full min-w-0 transition-colors"
             />
             {search && (
               <button onClick={() => setSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#71717A] hover:text-white">
@@ -73,7 +73,7 @@ export default function PortfolioPageClient({ portfolios }: { portfolios: Portfo
       </div>
 
       {/* Results count */}
-      <div className="max-w-7xl mx-auto px-6 pt-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 sm:pt-6">
         <p className="text-xs text-[#71717A]">
           {filtered.length} project{filtered.length !== 1 ? "s" : ""} found
         </p>

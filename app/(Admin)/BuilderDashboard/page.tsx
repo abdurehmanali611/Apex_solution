@@ -10,6 +10,7 @@ import AdminPasswordSection from "@/Components/AdminPasswordSection";
 import AdminServices from "@/Components/AdminServices";
 import AdminTeams from "@/Components/AdminTeams";
 import AdminTestimonial from "@/Components/AdminTestimonial";
+import AdminNewsletter from "@/Components/AdminNewsletter";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -93,7 +94,7 @@ export default function BuilderDashboard() {
                     >
                       <Button
                         variant="ghost"
-                        className={`w-full rounded-3xl p-6 transition-all duration-200 flex items-center justify-between cursor-pointer ${
+                        className={`w-full rounded-3xl p-4 sm:p-6 transition-all duration-200 flex items-center justify-between gap-2 cursor-pointer min-h-12 ${
                           link === item.name
                             ? "bg-amber-500 text-slate-950 shadow-[0_24px_64px_-32px_rgba(245,158,11,0.55)]"
                             : "bg-slate-900/95 text-slate-200 hover:bg-slate-800/95 hover:text-white"
@@ -111,11 +112,11 @@ export default function BuilderDashboard() {
                                 : "text-amber-300"
                             }
                           />
-                          <span className="text-base font-medium font-serif">
+                          <span className="text-sm sm:text-base font-medium font-serif text-left truncate">
                             {item.name}
                           </span>
                         </div>
-                        <ChevronRight className="text-amber-500" />
+                        <ChevronRight className="text-amber-500 shrink-0" />
                       </Button>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -125,9 +126,9 @@ export default function BuilderDashboard() {
           </SidebarGroup>
         </SidebarContent>
       </Sidebar>
-      <SidebarInset className="flex flex-col gap-10 p-6 bg-slate-950/95 text-slate-100 rounded-[32px] shadow-[0_30px_80px_-55px_rgba(0,0,0,0.35)] ring-1 ring-slate-800/70">
-        <div className="flex items-center justify-between">
-          <div className="flex gap-2 items-center mt-4">
+      <SidebarInset className="flex flex-col gap-6 sm:gap-10 p-4 sm:p-6 bg-slate-950/95 text-slate-100 rounded-[24px] sm:rounded-[32px] shadow-[0_30px_80px_-55px_rgba(0,0,0,0.35)] ring-1 ring-slate-800/70 min-w-0">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex gap-2 items-center mt-2 sm:mt-4 min-w-0">
             <SidebarTrigger className="cursor-pointer" />
             <Separator
               orientation="vertical"
@@ -168,6 +169,8 @@ export default function BuilderDashboard() {
           <AdminTestimonial />
         ) : link === "Update Password" ? (
           <AdminPasswordSection />
+        ) : link === "Newsletter" ? (
+          <AdminNewsletter />
         ) : (
           "No Such type of screen"
         )}
