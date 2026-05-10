@@ -24,7 +24,10 @@ export default function PortfolioPageClient({ portfolios }: { portfolios: Portfo
 
   const filtered = useMemo(() => {
     return portfolios.filter((p) => {
-      const matchesType = activeType === "All" || p.type === activeType;
+      const matchesType =
+        activeType === "All" ||
+        p.type === activeType ||
+        p.type.toLowerCase() === activeType.toLowerCase();
       const q = search.toLowerCase();
       const matchesSearch = !q || p.title.toLowerCase().includes(q) || p.description.toLowerCase().includes(q);
       return matchesType && matchesSearch;

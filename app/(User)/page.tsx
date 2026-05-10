@@ -13,6 +13,7 @@ import {
 import {
   fetchServices, fetchPortfolios, fetchBlogs, fetchTestimonials, fetchPartners, fetchHeroFooter,
 } from "@/lib/fetch";
+import { getPortfolioImage } from "@/lib/portfolio";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -45,7 +46,7 @@ export default async function UserHome() {
   const partners     = fpa.status === "fulfilled" && fpa.value ? defaultPartners.concat(fpa.value)    : defaultPartners;
   const heroFooter   = fh.status  === "fulfilled" && fh.value  ? fh.value                             : defaultHeroFooter;
 
-  const featuredPortfolios = portfolios.filter((p) => p.special).slice(0, 1);
+  const featuredPortfolios = portfolios.filter((p) => p.special);
 
   return (
     <div className="flex flex-col">
@@ -135,11 +136,17 @@ export default async function UserHome() {
         <section className="section-padding px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
             <SectionHeader subtitle="Featured Project" title="Our Flagship Innovation" />
+            <div className="flex flex-col gap-8 md:gap-10 mt-2">
             {featuredPortfolios.map((portfolio, idx) => (
-              <div key={idx} className="relative group rounded-3xl overflow-hidden border border-white/8 bg-[#111111]">
+              <div key={portfolio.id ?? idx} className="relative group rounded-3xl overflow-hidden border border-white/8 bg-[#111111]">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   <div className="relative h-64 lg:h-auto min-h-80">
-                    <Image src={portfolio.image || "/assets/webapp.jpg"} alt={portfolio.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <Image
+                      src={getPortfolioImage(portfolio.type, portfolio.image)}
+                      alt={portfolio.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                     <div className="absolute inset-0 bg-linear-to-r from-transparent to-[#111111]/50 lg:block hidden" />
                     <div className="absolute top-5 left-5 flex flex-wrap gap-2 max-w-[calc(100%-2.5rem)]">
                       <span className="px-3 py-1.5 rounded-lg bg-blue-600/90 backdrop-blur-sm text-white text-xs font-semibold">Special Edition</span>
@@ -172,6 +179,7 @@ export default async function UserHome() {
                 </div>
               </div>
             ))}
+            </div>
           </div>
         </section>
       )}

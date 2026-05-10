@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Clock } from "lucide-react";
+import { getPortfolioImage } from "@/lib/portfolio";
 
 interface PortfolioItemProps {
   link?: string;
@@ -19,20 +20,11 @@ const TYPE_COLORS: Record<string, string> = {
   "Mobile App":                                 "bg-violet-600/90 text-white",
   "Hotel and Hospitality Technology":           "bg-[#F5A623]/90 text-[#0A0A0A]",
   "Network and Wi-Fi Infrastructure Projects":  "bg-cyan-500/90 text-[#0A0A0A]",
-  "Network and Wi-Fi infrastructure Projects":  "bg-cyan-500/90 text-[#0A0A0A]",
 };
 const DEFAULT_COLOR = "bg-purple-600/90 text-white";
 
-const typeImageMap: Record<string, string> = {
-  Website:                          "/assets/website.jpg",
-  "Web App":                        "/assets/webapp.jpg",
-  "Digital System(SaaS)":           "/assets/webapp.jpg",
-  "Mobile App":                     "/assets/mobileapp.jpg",
-  "Hotel and Hospitality Technology": "/assets/hotel.jpg",
-};
-
 export default function PortfolioItem({ link, title, type, description, duration, image, version }: PortfolioItemProps) {
-  const src = image || typeImageMap[type] || "/assets/network.jpg";
+  const src = getPortfolioImage(type, image);
   const durationLabel = duration >= 30 ? `${Math.floor(duration / 30)}mo` : `${duration}d`;
 
   const content = (

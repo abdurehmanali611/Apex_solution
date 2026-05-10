@@ -263,7 +263,6 @@ export const defaultPortfolios = [
 ];
 
 export const defaultBlogs = [
-  // ── Ethiopian Tech & Digital News ──────────────────────────
   {
     id: 1,
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
@@ -439,7 +438,6 @@ export const footerLinks = [
   { id: 6, label: "YouTube",  link: "https://www.youtube.com/@ApexSolution",               icon: "youtube" },
 ];
 
-// Keep old name for backward compat
 export const footerLink = footerLinks;
 
 export const AdminList = [
@@ -468,7 +466,7 @@ export const portFolioTypes = [
   { id: 3, name: "Digital System(SaaS)" },
   { id: 4, name: "Mobile App" },
   { id: 5, name: "Hotel and Hospitality Technology" },
-  { id: 6, name: "Network and Wi-Fi infrastructure Projects" },
+  { id: 6, name: "Network and Wi-Fi Infrastructure Projects" },
 ];
 
 export const accessibility = [
