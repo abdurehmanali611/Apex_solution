@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/cpanel",
+      "destination": "https://91.204.209.50:2083",
+      "permanent": true
+    },
+    {
+      "source": "/webmail",
+      "destination": "https://91.204.209.50:2096",
+      "permanent": true
+    }
+  ]
+}
