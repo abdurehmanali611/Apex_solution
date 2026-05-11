@@ -4,13 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import {
-  Mail, Linkedin, Send, Github, Music2, Youtube,
+  Mail, Linkedin, Send, Github, Music2, Youtube, Instagram,
   Phone, MapPin, Sparkles, Brain, LucideIcon, ArrowRight,
 } from "lucide-react";
 import { CreateNewsletterSubscriber } from "@/lib/actions";
 
 const ICON_MAP: Record<string, LucideIcon> = {
-  mail: Mail, linkedin: Linkedin, send: Send,
+  mail: Mail, linkedin: Linkedin, send: Send, instagram: Instagram,
   github: Github, "music-2": Music2, youtube: Youtube,
 };
 
