@@ -342,7 +342,14 @@ export async function LoginUser(
   } catch (error: unknown) {
     let errorMessage = "An Unknown Error happened";
     if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
+      const status = error.response?.status;
+      errorMessage =
+        error.response?.data?.message ||
+        (status === 503
+          ? "Login is temporarily unavailable. Please try again shortly."
+          : status === 500
+            ? "The login service hit a server error. Please try again shortly."
+            : error.message);
     } else if (error instanceof Error) {
       errorMessage = error.message;
     }
