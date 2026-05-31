@@ -413,20 +413,7 @@ export const defaultTeamMembers = [
     linkedin: "https://www.linkedin.com/in/abdurehman-ali-592238281/",
     telegram: "https://t.me/AbduWolf",
     portfolio: "https://apex-abdu-portfolio.vercel.app",
-  },
-  {
-    id: 3,
-    image: "/teddy.jpg",
-    name: "Tedros Milion",
-    position: "Technical Project Manager & AI Solutions Lead",
-    title: "The Architect",
-    description: "Bridging strategy and execution through AI-driven solutions and precision project delivery.",
-    facebook: "https://www.facebook.com/tewodros.million",
-    instagram: "https://www.instagram.com/tewodros.million",
-    linkedin: "https://www.linkedin.com/in/tewodros-million",
-    telegram: "https://t.me/tewodrosmillion",
-    portfolio: "https://professional-portfolio-nine-hazel.vercel.app/",
-  },
+  }
 ];
 
 export const footerLinks = [
