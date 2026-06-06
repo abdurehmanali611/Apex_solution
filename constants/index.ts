@@ -418,7 +418,7 @@ export const defaultTeamMembers = [
 
 export const footerLinks = [
   { id: 1, label: "Email",    link: "mailto:contact@apexsolutionhub.com",                   icon: "mail" },
-  { id: 2, label: "LinkedIn", link: "https://www.linkedin.com/company/apex-solution-et",    icon: "linkedin" },
+  { id: 2, label: "LinkedIn", link: "https://www.linkedin.com/company/apex-solutionhub/?viewAsMember=true",    icon: "linkedin" },
   { id: 3, label: "Telegram", link: "https://t.me/apexsolutionhub",                          icon: "send" },
   { id: 4, label: "Instagram", link: "https://www.instagram.com/apex99783?igsh=MTVwc3Q0NzkwOXRiMQ==", icon: "instagram" },
   { id: 5, label: "GitHub",   link: "https://github.com/apexsolutionhub",                    icon: "github" },
