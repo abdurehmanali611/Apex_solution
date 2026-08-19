@@ -85,7 +85,8 @@ const AdminPortFolioUpdate = ({
           ...values,
           id: id
         }
-        await UpdatePortFolio(payload, setLoading)
+        const updated = await UpdatePortFolio(payload, setLoading)
+        if (!updated) return
         closeDialog()
         await loadData()
       })}>

@@ -122,13 +122,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Toaster
           richColors
           position="top-right"
-          toastOptions={{
-            style: {
-              background: "#111111",
-              border: "1px solid rgba(255,255,255,0.08)",
-              color: "#FAFAFA",
-            },
-          }}
         />
       </body>
     </html>

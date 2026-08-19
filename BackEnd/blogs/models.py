@@ -1,8 +1,8 @@
 from django.db import models
 
 class Blog(models.Model):
-    image = models.URLField()
-    link = models.URLField()
+    image = models.URLField(max_length=2048)
+    link = models.URLField(max_length=2048)
     title = models.CharField(max_length=255)
     description = models.TextField()
     source = models.CharField(max_length=255)

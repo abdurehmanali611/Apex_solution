@@ -78,7 +78,8 @@ const AdminTestimonialUpdate = ({
           ...values,
           id: id
         }
-        await UpdateTestimonial(payload, setLoading)
+        const updated = await UpdateTestimonial(payload, setLoading)
+        if (!updated) return
         onClose();
         await loadData();
       })}>

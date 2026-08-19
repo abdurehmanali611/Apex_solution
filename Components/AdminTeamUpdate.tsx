@@ -80,12 +80,13 @@ const AdminTeamUpdate = ({
   };
   return (
     <Form {...form}>
-      <form className="flex flex-col gap-5 items-center" onClick={form.handleSubmit(async(values) => {
+      <form className="flex flex-col gap-5 items-center" onSubmit={form.handleSubmit(async(values) => {
         const payload = {
           ...values,
           id: id
         }
-        await UpdateTeam(payload, setLoading)
+        const updated = await UpdateTeam(payload, setLoading)
+        if (!updated) return
         onClose()
         await loadData()
       })}>

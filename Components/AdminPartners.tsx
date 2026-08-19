@@ -69,7 +69,7 @@ const AdminPartners = () => {
     (async() => {
       await loadData();
     })()
-  }, [currentData]);
+  }, []);
 
   return (
     <div className="space-y-10 text-slate-100">
@@ -85,7 +85,8 @@ const AdminPartners = () => {
             <form
               className="grid gap-6"
               onSubmit={form.handleSubmit(async (values) => {
-                await CreatePartner(values, setLoading);
+                const created = await CreatePartner(values, setLoading);
+                if (!created) return;
                 form.reset();
                 setPreviewUrl(null);
                 await loadData();

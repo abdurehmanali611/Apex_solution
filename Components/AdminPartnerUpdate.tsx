@@ -66,7 +66,8 @@ const AdminPartnerUpdate = ({ id, image, title, desc, loadData, onClose }: any) 
           ...values,
           id: id
         }
-        await UpdatePartner(payload, setLoading)
+        const updated = await UpdatePartner(payload, setLoading)
+        if (!updated) return
         onClose();
         await loadData()
       })}>

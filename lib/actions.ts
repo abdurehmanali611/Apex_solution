@@ -18,6 +18,45 @@ const api = axios.create({
 
 const AUTH_COOKIE_NAME = "apex_admin_token";
 
+function formatApiError(error: unknown, fallback = "An Unknown Error happened") {
+  if (axios.isAxiosError(error)) {
+    const data = error.response?.data as Record<string, unknown> | string | undefined;
+    if (typeof data === "string" && data.trim()) {
+      return data;
+    }
+    if (data && typeof data === "object") {
+      if (typeof data.message === "string" && data.message.trim()) {
+        return data.message;
+      }
+      if (typeof data.detail === "string" && data.detail.trim()) {
+        return data.detail;
+      }
+      const fieldErrors = Object.entries(data)
+        .filter(([key]) => key !== "code")
+        .map(([key, value]) => {
+          const text = Array.isArray(value)
+            ? value.map(String).join(", ")
+            : typeof value === "string"
+              ? value
+              : JSON.stringify(value);
+          return key === "non_field_errors" ? text : `${key}: ${text}`;
+        })
+        .filter(Boolean);
+      if (fieldErrors.length) {
+        return fieldErrors.join("; ");
+      }
+    }
+    if (error.response?.status === 400) {
+      return "The server rejected this form. Check URLs and required fields.";
+    }
+    return error.message || fallback;
+  }
+  if (error instanceof Error) {
+    return error.message;
+  }
+  return fallback;
+}
+
 const toast = {
   error: (message: string) => {
     if (typeof window === "undefined") {
@@ -187,10 +226,10 @@ export interface teams {
   position: string;
   title: string;
   description: string;
-  facebook: string;
-  instagram: string;
-  linkedin: string;
-  telegram: string;
+  facebook?: string;
+  instagram?: string;
+  linkedin?: string;
+  telegram?: string;
 }
 
 export interface createTeams {
@@ -199,10 +238,10 @@ export interface createTeams {
   position: string;
   title: string;
   description: string;
-  facebook: string;
-  instagram: string;
-  linkedin: string;
-  telegram: string;
+  facebook?: string;
+  instagram?: string;
+  linkedin?: string;
+  telegram?: string;
 }
 
 export interface UpdateTeams extends createTeams {
@@ -379,13 +418,7 @@ export async function HeroFooterFetch() {
     const data = response.data;
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -404,13 +437,7 @@ export async function HeroFooterUpdate(
     toast.success(`${name} updated successfully`);
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading(false);
   }
@@ -427,13 +454,7 @@ export async function CreateService(
     toast.success(`${values.title} created successfully`);
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading(false);
   }
@@ -445,13 +466,7 @@ export async function GetService() {
     const data = response.data;
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -466,13 +481,7 @@ export async function UpdateService(
     toast.success(`${values.title} updated successfully`);
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading(false);
   }
@@ -485,13 +494,7 @@ export async function DeleteService(id: number) {
     toast.success("Service deleted successfully");
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -506,13 +509,7 @@ export async function CreatePortFolio(
     toast.success(`${values.title} created successfully`);
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading(false);
   }
@@ -524,13 +521,7 @@ export async function GetPortFolio() {
     const data = response.data;
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -545,13 +536,7 @@ export async function UpdatePortFolio(
     toast.success(`${values.title} updated successfully`);
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading(false);
   }
@@ -564,13 +549,7 @@ export async function DeletePortFolio(id: number) {
     toast.success("Portfolio deleted successfully");
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -585,13 +564,7 @@ export async function CreateBlog(
     toast.success(`${values.title} created successfully`);
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading(false);
   }
@@ -603,13 +576,7 @@ export async function GetBlog() {
     const data = response.data;
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -624,13 +591,7 @@ export async function UpdateBlog(
     toast.success(`${values.title} updated successfully`);
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading(false);
   }
@@ -643,13 +604,7 @@ export async function DeleteBlog(id: number) {
     toast.success("Blog deleted successfully");
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -664,13 +619,7 @@ export async function CreateTeam(
     toast.success(`${values.name} created successfully`);
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading(false);
   }
@@ -682,13 +631,7 @@ export async function GetTeam() {
     const data = response.data;
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -703,13 +646,7 @@ export async function UpdateTeam(
     toast.success(`${values.name} updated successfully`);
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading(false);
   }
@@ -722,13 +659,7 @@ export async function DeleteTeam(id: number) {
     toast.success("Team member deleted successfully");
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -743,13 +674,7 @@ export async function CreatePartner(
     toast.success(`${values.title} created successfully`);
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading(false);
   }
@@ -761,13 +686,7 @@ export async function GetPartner() {
     const data = response.data;
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -782,13 +701,7 @@ export async function UpdatePartner(
     toast.success(`${values.title} updated successfully`);
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading(false);
   }
@@ -801,13 +714,7 @@ export async function DeletePartner(id: number) {
     toast.success("Partner deleted successfully");
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -822,13 +729,7 @@ export async function CreateContact(
     toast.success(`Message Sent successfully`);
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading(false);
   }
@@ -840,13 +741,7 @@ export async function GetContact() {
     const data = response.data;
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -857,13 +752,7 @@ export async function DeleteContact(id: number) {
     toast.success("Message deleted successfully");
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -878,13 +767,7 @@ export async function CreateNewsletterSubscriber(
     toast.success("Subscribed to newsletter successfully");
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.email?.[0] || error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading?.(false);
   }
@@ -896,13 +779,7 @@ export async function GetNewsletterSubscribers() {
     const data = response.data;
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -913,13 +790,7 @@ export async function DeleteNewsletterSubscriber(id: number) {
     toast.success("Subscriber removed successfully");
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -950,13 +821,7 @@ export async function CreateNewsletterIssue(
     }
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading(false);
   }
@@ -968,13 +833,7 @@ export async function GetNewsletterIssues() {
     const data = response.data;
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -989,13 +848,7 @@ export async function CreateTestimonial(
     toast.success(`${values.name} created successfully`);
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading(false);
   }
@@ -1007,13 +860,7 @@ export async function GetTestimonial() {
     const data = response.data;
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -1028,13 +875,7 @@ export async function UpdateTestimonial(
     toast.success(`${values.name} updated successfully`);
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading(false);
   }
@@ -1047,13 +888,7 @@ export async function DeleteTestimonial(id: number) {
     toast.success("Testimony deleted successfully");
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -1063,13 +898,7 @@ export async function GetDashboardData() {
     const data = response.data;
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   }
 }
 
@@ -1094,13 +923,7 @@ export async function ChangePassword(
     router.push("/Builder");
     return data;
   } catch (error: unknown) {
-    let errorMessage = "An Unknown Error happened";
-    if (axios.isAxiosError(error)) {
-      errorMessage = error.response?.data?.message || error.message;
-    } else if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(`${errorMessage}`);
+    toast.error(formatApiError(error));
   } finally {
     setLoading(false);
   }

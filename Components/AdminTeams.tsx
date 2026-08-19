@@ -79,7 +79,7 @@ const AdminTeams = () => {
     (async() => {
       await loadData();
     })()
-  }, [currentData]);
+  }, []);
 
   return (
     <div className="space-y-10 text-slate-100">
@@ -95,7 +95,8 @@ const AdminTeams = () => {
             <form
               className="grid gap-6"
               onSubmit={form.handleSubmit(async (data) => {
-                await CreateTeam(data, setLoading);
+                const created = await CreateTeam(data, setLoading);
+                if (!created) return;
                 form.reset();
                 setPreviewUrl(null);
                 await loadData();
@@ -133,7 +134,7 @@ const AdminTeams = () => {
                   control={form.control}
                   fieldType={formFieldTypes.INPUT}
                   label="Facebook"
-                  placeholder="facebook profile"
+                  placeholder="https://facebook.com/username"
                   inputClassName="w-56 rounded-2xl border border-slate-700/80 bg-slate-950 px-4 py-3 text-slate-100 outline-none focus:border-amber-400"
                 />
                 <CustomFormField
@@ -141,7 +142,7 @@ const AdminTeams = () => {
                   control={form.control}
                   fieldType={formFieldTypes.INPUT}
                   label="Instagram"
-                  placeholder="instagram profile"
+                  placeholder="https://instagram.com/username"
                   inputClassName="w-56 rounded-2xl border border-slate-700/80 bg-slate-950 px-4 py-3 text-slate-100 outline-none focus:border-amber-400"
                 />
                 <CustomFormField
@@ -149,7 +150,7 @@ const AdminTeams = () => {
                   control={form.control}
                   fieldType={formFieldTypes.INPUT}
                   label="LinkedIn"
-                  placeholder="linkedin profile"
+                  placeholder="https://linkedin.com/in/username"
                   inputClassName="w-56 rounded-2xl border border-slate-700/80 bg-slate-950 px-4 py-3 text-slate-100 outline-none focus:border-amber-400"
                 />
               </div>
@@ -159,7 +160,7 @@ const AdminTeams = () => {
                   control={form.control}
                   fieldType={formFieldTypes.INPUT}
                   label="Telegram"
-                  placeholder="telegram profile"
+                  placeholder="https://t.me/username"
                   inputClassName="w-56 rounded-2xl border border-slate-700/80 bg-slate-950 px-4 py-3 text-slate-100 outline-none focus:border-amber-400"
                 />
                 <CustomFormField
@@ -264,18 +265,26 @@ const AdminTeams = () => {
                 {item.description}
               </CardContent>
               <CardFooter className="flex items-center justify-center gap-4 border-t border-slate-800/70 px-6 py-4">
-                <Link href={item.facebook} className="text-slate-400 hover:text-amber-400 transition-colors">
-                  <Icon icon="lucide:facebook" className="w-5 h-5" />
-                </Link>
-                <Link href={item.instagram} className="text-slate-400 hover:text-amber-400 transition-colors">
-                  <Icon icon="lucide:instagram" className="w-5 h-5" />
-                </Link>
-                <Link href={item.linkedin} className="text-slate-400 hover:text-amber-400 transition-colors">
-                  <Icon icon="lucide:linkedin" className="w-5 h-5" />
-                </Link>
-                <Link href={item.telegram} className="text-slate-400 hover:text-amber-400 transition-colors">
-                  <Icon icon="lucide:send" className="w-5 h-5" />
-                </Link>
+                {item.facebook ? (
+                  <Link href={item.facebook} className="text-slate-400 hover:text-amber-400 transition-colors">
+                    <Icon icon="lucide:facebook" className="w-5 h-5" />
+                  </Link>
+                ) : null}
+                {item.instagram ? (
+                  <Link href={item.instagram} className="text-slate-400 hover:text-amber-400 transition-colors">
+                    <Icon icon="lucide:instagram" className="w-5 h-5" />
+                  </Link>
+                ) : null}
+                {item.linkedin ? (
+                  <Link href={item.linkedin} className="text-slate-400 hover:text-amber-400 transition-colors">
+                    <Icon icon="lucide:linkedin" className="w-5 h-5" />
+                  </Link>
+                ) : null}
+                {item.telegram ? (
+                  <Link href={item.telegram} className="text-slate-400 hover:text-amber-400 transition-colors">
+                    <Icon icon="lucide:send" className="w-5 h-5" />
+                  </Link>
+                ) : null}
               </CardFooter>
             </Card>
           </div>

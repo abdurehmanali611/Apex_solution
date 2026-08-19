@@ -103,7 +103,8 @@ const AdminBlogs = () => {
                   ...values,
                   date: formattedDate, // Send as string in YYYY-MM-DD format
                 };
-                await CreateBlog(payload, setLoading);
+                const created = await CreateBlog(payload, setLoading);
+                if (!created) return;
                 form.reset();
                 setPreviewUrl(null);
                 await loadData();

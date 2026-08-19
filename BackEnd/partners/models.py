@@ -1,7 +1,7 @@
 from django.db import models
 
 class Partner(models.Model):
-    image = models.URLField()
+    image = models.URLField(max_length=2048)
     title = models.CharField(max_length=255)
     description = models.TextField()
 

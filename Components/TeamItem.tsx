@@ -8,10 +8,10 @@ interface TeamItemProps {
   position: string;
   title: string;
   description: string;
-  facebook: string;
-  instagram: string;
-  linkedin: string;
-  telegram: string;
+  facebook?: string;
+  instagram?: string;
+  linkedin?: string;
+  telegram?: string;
   portfolio?: string;
   objectPosition?: string;
 }
@@ -29,7 +29,7 @@ export default function TeamItem({
   const workEmail = teamEmailMap[name];
 
   const socials = [
-    { href: facebook, icon: facebook.includes("github") ? Github : Facebook, label: "Facebook" },
+    { href: facebook, icon: facebook?.includes("github") ? Github : Facebook, label: "Facebook" },
     { href: instagram, icon: Instagram, label: "Instagram" },
     { href: linkedin, icon: Linkedin, label: "LinkedIn" },
     { href: telegram, icon: Send, label: "Telegram" },
@@ -106,7 +106,7 @@ export default function TeamItem({
 
         {/* Social links */}
         <div className="flex items-center gap-2 pt-1 border-t border-white/5">
-          {socials.map((s, i) => (
+          {socials.filter((s) => s.href).map((s, i) => (
             <Link
               key={i}
               href={s.href}

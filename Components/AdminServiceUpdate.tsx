@@ -27,7 +27,8 @@ const AdminServiceUpdate = ({ icon, title, description, id, loadData, onClose }:
           ...values,
           id: id
         }
-        await UpdateService(payload, setLoading)
+        const updated = await UpdateService(payload, setLoading)
+        if (!updated) return
         onClose()
         await loadData()
       })}>

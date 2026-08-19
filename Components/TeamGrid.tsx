@@ -7,10 +7,10 @@ interface Team {
   position: string;
   title: string;
   description: string;
-  facebook: string;
-  instagram: string;
-  linkedin: string;
-  telegram: string;
+  facebook?: string;
+  instagram?: string;
+  linkedin?: string;
+  telegram?: string;
   portfolio?: string;
   objectPosition?: string;
 }

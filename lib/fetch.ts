@@ -1,4 +1,4 @@
-const BASE = process.env.NEXT_PUBLIC_API_URL || "https://apex-backend-tdth.vercel.app/api";
+const BASE = process.env.NEXT_PUBLIC_API_URL || "https://apex-backend-taupe.vercel.app/api";
 
 // Cached fetch with 60s revalidation + 3s timeout
 async function cachedGet(path: string) {

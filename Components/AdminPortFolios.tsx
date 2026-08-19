@@ -84,7 +84,7 @@ const AdminPortFolios = () => {
     (async () => {
       await loadData();
     })();
-  }, [currentData]);
+  }, []);
 
   return (
     <div className="space-y-10 text-slate-100">
@@ -103,7 +103,8 @@ const AdminPortFolios = () => {
             <form
               className="grid gap-6"
               onSubmit={form.handleSubmit(async (values) => {
-                await CreatePortFolio(values, setLoading);
+                const created = await CreatePortFolio(values, setLoading);
+                if (!created) return;
                 form.reset();
                 setPreviewUrl(null)
                 await loadData();

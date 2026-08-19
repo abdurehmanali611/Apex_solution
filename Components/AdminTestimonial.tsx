@@ -78,7 +78,7 @@ const AdminTestimonial = () => {
     (async () => {
       await loadData();
     })();
-  }, [currentData]);
+  }, []);
 
   const handleDelete = async (id: number) => {
     if (!id) return;
@@ -104,7 +104,8 @@ const AdminTestimonial = () => {
             <form
               className="flex flex-col gap-5"
               onSubmit={form.handleSubmit(async (values) => {
-                await CreateTestimonial(values, setLoading);
+                const created = await CreateTestimonial(values, setLoading);
+                if (!created) return;
                 form.reset();
                 setPreviewUrl(null);
                 await loadData();

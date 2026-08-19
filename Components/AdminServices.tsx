@@ -67,7 +67,7 @@ const AdminServices = () => {
     (async() => {
       await loadData()
     })()
-  }, [currentData]);
+  }, []);
 
   return (
     <div className="space-y-10 text-slate-100">
@@ -83,7 +83,8 @@ const AdminServices = () => {
             <form
               className="grid gap-6"
               onSubmit={form.handleSubmit(async (values) => {
-                await CreateService(values, setLoading);
+                const created = await CreateService(values, setLoading);
+                if (!created) return;
                 form.reset();
                 await loadData()
               })}

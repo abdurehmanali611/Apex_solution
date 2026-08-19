@@ -104,7 +104,8 @@ const AdminBlogUpdate = ({
             id: id,
             date: formattedDate,
           };
-          await UpdateBlog(payload, setLoading);
+          const updated = await UpdateBlog(payload, setLoading);
+          if (!updated) return;
           onClose();
           await loadData();
         })}
