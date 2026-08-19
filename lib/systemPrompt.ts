@@ -13,7 +13,6 @@ export function buildSystemPrompt(): string {
     .map(
       (m) =>
         `- ${m.name} | ${m.position} | "${m.title}" | ${m.description}` +
-        (m.portfolio ? ` | Portfolio: ${m.portfolio}` : "") +
         ` | LinkedIn: ${m.linkedin} | Telegram: ${m.telegram}`
     )
     .join("\n");

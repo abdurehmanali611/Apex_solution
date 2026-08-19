@@ -399,7 +399,6 @@ export const defaultTeamMembers = [
     instagram: "https://www.instagram.com/atlawu_/",
     linkedin: "https://www.linkedin.com/in/atile-networkengineer/",
     telegram: "https://t.me/Yodahe_Enat",
-    portfolio: "https://5d9a0d16.mydala.app/",
   },
   {
     id: 2,
@@ -412,7 +411,6 @@ export const defaultTeamMembers = [
     instagram: "https://www.instagram.com/abdurehman6252/",
     linkedin: "https://www.linkedin.com/in/abdurehman-ali-592238281/",
     telegram: "https://t.me/AbduWolf",
-    portfolio: "https://apex-abdu-portfolio.vercel.app",
   }
 ];
 

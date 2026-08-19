@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Facebook, Instagram, Linkedin, Send, ExternalLink, Mail } from "lucide-react";
+import { Github, Facebook, Instagram, Linkedin, Send } from "lucide-react";
 
 interface TeamItemProps {
   image: string;
@@ -12,22 +12,14 @@ interface TeamItemProps {
   instagram?: string;
   linkedin?: string;
   telegram?: string;
-  portfolio?: string;
   objectPosition?: string;
 }
 
 export default function TeamItem({
   image, name, position, title, description,
-  facebook, instagram, linkedin, telegram, portfolio,
+  facebook, instagram, linkedin, telegram,
   objectPosition = "center",
 }: TeamItemProps) {
-  const teamEmailMap: Record<string, string> = {
-    "Atlabachew Tadesse": "atlabachew.t@apexsolutionhub.com",
-    "Abdurehman Ali": "abdurehman.a@apexsolutionhub.com",
-    "Tedros Milion": "tedros.m@apexsolutionhub.com",
-  };
-  const workEmail = teamEmailMap[name];
-
   const socials = [
     { href: facebook, icon: facebook?.includes("github") ? Github : Facebook, label: "Facebook" },
     { href: instagram, icon: Instagram, label: "Instagram" },
@@ -76,33 +68,6 @@ export default function TeamItem({
         <p className="text-xs text-[#71717A] leading-relaxed border-l-2 border-blue-500/30 pl-3">
           {description}
         </p>
-        {workEmail && (
-          <Link
-            href={`mailto:${workEmail}`}
-            className="inline-flex items-center gap-2 text-xs text-blue-300 hover:text-white transition-colors break-all"
-          >
-            <Mail className="w-3.5 h-3.5" />
-            {workEmail}
-          </Link>
-        )}
-
-        {/* Portfolio CTA */}
-        {portfolio ? (
-          <Link
-            href={portfolio}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-300 text-xs font-semibold hover:bg-blue-600 hover:text-white hover:border-blue-500 transition-all duration-200 w-full justify-center group/btn"
-          >
-            <ExternalLink className="w-3.5 h-3.5" />
-            View Portfolio
-            <span className="ml-auto opacity-0 group-hover/btn:opacity-100 transition-opacity">→</span>
-          </Link>
-        ) : (
-          <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/3 border border-white/5 text-[#71717A] text-xs font-medium w-full justify-center">
-            Portfolio coming soon
-          </div>
-        )}
 
         {/* Social links */}
         <div className="flex items-center gap-2 pt-1 border-t border-white/5">

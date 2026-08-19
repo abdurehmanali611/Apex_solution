@@ -11,7 +11,6 @@ interface Team {
   instagram?: string;
   linkedin?: string;
   telegram?: string;
-  portfolio?: string;
   objectPosition?: string;
 }
 
