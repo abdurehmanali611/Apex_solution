@@ -1,4 +1,3 @@
-import Image from "next/image";
 import SectionHeader from "./SectionHeader";
 
 interface Partner {

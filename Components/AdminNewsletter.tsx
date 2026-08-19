@@ -38,7 +38,9 @@ const AdminNewsletter = () => {
   };
 
   useEffect(() => {
-    void loadData();
+    (async () => {
+      await loadData();
+    })();
   }, []);
 
   return (

@@ -68,8 +68,10 @@ export default function ApexChat() {
   useEffect(() => {
     if (open && !minimized) {
       bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-      setTimeout(() => inputRef.current?.focus(), 100);
-      setUnread(0);
+      setTimeout(() => {
+        inputRef.current?.focus();
+        setUnread(0);
+      }, 100);
     }
   }, [messages, open, minimized]);
 

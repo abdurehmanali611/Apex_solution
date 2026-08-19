@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { HeroFooterItem } from "@/constants";
 import { ArrowRight, Calendar, Sparkles, Brain, Zap, FileDown } from "lucide-react";
-import CompanyProfileCard from "./CompanyProfileCard";
 
 const TYPEWRITER_WORDS = [
   "AI-Powered Software.",
@@ -56,7 +55,11 @@ function TypewriterText() {
       t = setTimeout(() => setDeleting(true), 2000);
     else if (deleting && displayed.length > 0)
       t = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 35);
-    else { setDeleting(false); setWordIndex((i) => (i + 1) % TYPEWRITER_WORDS.length); }
+    else
+      t = setTimeout(() => {
+        setDeleting(false);
+        setWordIndex((i) => (i + 1) % TYPEWRITER_WORDS.length);
+      }, 0);
     return () => clearTimeout(t);
   }, [displayed, deleting, wordIndex]);
 

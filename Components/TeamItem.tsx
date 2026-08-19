@@ -106,7 +106,8 @@ export default function TeamItem({
 
         {/* Social links */}
         <div className="flex items-center gap-2 pt-1 border-t border-white/5">
-          {socials.filter((s) => s.href).map((s, i) => (
+          {socials.map((s, i) =>
+            s.href ? (
             <Link
               key={i}
               href={s.href}
@@ -117,7 +118,8 @@ export default function TeamItem({
             >
               <s.icon className="w-3.5 h-3.5" />
             </Link>
-          ))}
+            ) : null
+          )}
         </div>
       </div>
     </div>
